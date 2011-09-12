@@ -1,0 +1,196 @@
+diff --git a/cmd/ossdevlinks/ossdevlinks.c b/cmd/ossdevlinks/ossdevlinks.c
+index a19039f..0fb61a8 100644
+--- a/cmd/ossdevlinks/ossdevlinks.c
++++ b/cmd/ossdevlinks/ossdevlinks.c
+@@ -75,7 +75,7 @@ static int find_midilink (oss_midi_info *);
+ #if defined(sun)
+ #define DEFAULT_OSSLIBDIR "/etc/oss"
+ #else
+-#define DEFAULT_OSSLIBDIR "/usr/lib/oss"
++#define DEFAULT_OSSLIBDIR "/var/lib/oss4"
+ #endif
+ 
+ static char *
+@@ -99,7 +99,7 @@ get_mapname (void)
+       if (l > 0 && tmp[l - 1] == '\n')
+ 	tmp[l - 1] = '\0';
+ 
+-      if (strncmp (tmp, "OSSLIBDIR=", 10) == 0)
++      if (strncmp (tmp, "OSSVARDIR=", 10) == 0)
+ 	{
+ 	  l = snprintf (name, sizeof (name), "%s", &tmp[10]);
+ 	  if ((l >= OSSLIBDIRLEN) || (l < 0))
+@@ -991,7 +991,7 @@ save_links (void)
+       char lfile[PATH_MAX+20], * osslibdir;
+ 
+       osslibdir = get_mapname ();
+-      snprintf (lfile, sizeof (lfile), "%s/%s", osslibdir, "etc/legacy_devices");
++      snprintf (lfile, sizeof (lfile), "%s/%s", osslibdir, "legacy_devices");
+       if ((f = fopen (lfile, "w")) == NULL)
+ 	{
+ 	  perror (lfile);
+diff --git a/cmd/ossdevlinks/ossdevlinks.man b/cmd/ossdevlinks/ossdevlinks.man
+index 9fb23f9..88b6e70 100644
+--- a/cmd/ossdevlinks/ossdevlinks.man
++++ b/cmd/ossdevlinks/ossdevlinks.man
+@@ -34,7 +34,7 @@ ossinfo(1)
+ 
+ FILES
+ /usr/sbin/ossdevlinks
+-/usr/lib/oss/etc/legacy_devices
++/var/lib/oss4/legacy_devices
+ /dev/dspN
+ /dev/midiNN
+ /dev/mixerN
+diff --git a/cmd/savemixer/savemixer.c b/cmd/savemixer/savemixer.c
+index f0aaf0e..4d9a021 100644
+--- a/cmd/savemixer/savemixer.c
++++ b/cmd/savemixer/savemixer.c
+@@ -268,14 +268,14 @@ static char *
+ get_mapname (void)
+ {
+   FILE *f;
+-  char tmp[ETCDIRLEN+11]; /* Adding 'OSSLIBDIR=' */
+-  static char name[ETCDIRLEN+15]; /* Adding '/etc/mixer.save' */
++  char tmp[ETCDIRLEN+11]; /* Adding 'OSSVARDIR=' */
++  static char name[ETCDIRLEN+10]; /* Adding 'mixer.save' */
+   struct stat st;
+ 
+-  if (stat ("/etc/oss", &st) != -1)	/* Use /etc/oss/mixer.save */
++  if (stat ("/var/lib/oss4", &st) != -1)	/* Use /var/lib/oss4/mixer.save */
+     {
+-      strcpy (name, "/etc/oss/mixer.save");
+-      strcpy (ossetcdir, "/etc/oss");
++      strcpy (name, "/var/lib/oss4/mixer.save");
++      strcpy (ossetcdir, "/var/lib/oss4");
+       return name;
+     }
+ 
+@@ -291,15 +291,15 @@ get_mapname (void)
+       if (l > 0 && tmp[l - 1] == '\n')
+ 	tmp[l - 1] = '\0';
+ 
+-      if (strncmp (tmp, "OSSLIBDIR=", 10) == 0)
++      if (strncmp (tmp, "OSSVARDIR=", 10) == 0)
+ 	{
+-	  l = snprintf (name, sizeof (name), "%s/etc/mixer.save", &tmp[10]);
++	  l = snprintf (name, sizeof (name), "%s/mixer.save", &tmp[10]);
+ 	  if ((l >= sizeof (name)) || (l < 0))
+ 	    {
+ 	      fprintf (stderr, "String in /etc/oss.conf is too long!\n");
+ 	      goto oexit;
+ 	    }
+-	  snprintf (ossetcdir, sizeof (ossetcdir), "%s/etc", &tmp[10]);
++	  snprintf (ossetcdir, sizeof (ossetcdir), "%s", &tmp[10]);
+ 	  if ((l >= sizeof (ossetcdir)) || (l < 0))
+ 	    {
+ 	      fprintf (stderr, "String in /etc/oss.conf is too long!\n");
+@@ -311,7 +311,7 @@ get_mapname (void)
+     }
+ 
+   fclose (f);
+-  fprintf (stderr, "Error: OSSLIBDIR not set in /etc/oss.conf\n");
++  fprintf (stderr, "Error: OSSVARDIR not set in /etc/oss.conf\n");
+ 
+ dexit:
+   snprintf (name, sizeof (name), "%s/mixer.save", ossetcdir);
+diff --git a/cmd/savemixer/savemixer.man b/cmd/savemixer/savemixer.man
+index dd43326..708dcde 100644
+--- a/cmd/savemixer/savemixer.man
++++ b/cmd/savemixer/savemixer.man
+@@ -9,8 +9,8 @@ The savemixer program saves mixer settings. It can also load saved mixer
+ settings back into the mixer.
+ 
+ Running this program without any parameters will save the current mixer
+-settings into /etc/oss/mixer.save or $OSSLIBDIR/etc/mixer.save file.
+-OSSLIBDIR is decided by reading /etc/oss.conf, and defaults to /usr/lib/oss.
++settings into /var/lib/oss4/mixer.save or $OSSVARDIR/mixer.save file.
++OSSVARDIR is decided by reading /etc/oss.conf, and defaults to /var/lib/oss4.
+ 
+ AUTOMATIC SAVE
+ By default the soundoff command will automatically run savemixer to save
+@@ -29,9 +29,9 @@ soundoff(1), soundon(1), ossdetect(1), ossdevlinks(1), ossmix(1), ossxmix(1)
+ FILES
+ /etc/oss.conf
+ /usr/sbin/savemixer
+-/usr/lib/oss/etc/mixer.save
+-/usr/lib/oss/etc/dspdevs.map
+-/usr/lib/oss/etc/applist.conf
++/var/lib/oss4/mixer.save
++/var/lib/oss4/dspdevs.map
++/var/lib/oss4/applist.conf
+ 
+ AUTHOR
+ 4Front Technologies
+diff --git a/os_cmd/Linux/ossdetect/ossdetect.c b/os_cmd/Linux/ossdetect/ossdetect.c
+index 43a7c10..170c93b 100644
+--- a/os_cmd/Linux/ossdetect/ossdetect.c
++++ b/os_cmd/Linux/ossdetect/ossdetect.c
+@@ -90,7 +90,7 @@ get_mapname (void)
+       if (l > 0 && tmp[l - 1] == '\n')
+ 	tmp[l - 1] = '\0';
+ 
+-      if (strncmp (tmp, "OSSLIBDIR=", 10) == 0)
++      if (strncmp (tmp, "OSSETCDIR=", 10) == 0)
+ 	{
+ 	  l = snprintf (name, sizeof (name), "%s", &tmp[10]);
+ 	  if ((l >= OSSLIBDIRLEN) || (l < 0))
+@@ -109,12 +109,12 @@ get_mapname (void)
+ 	}
+     }
+ 
+-  fprintf (stderr, "OSSLIBDIR not set in /etc/oss.conf, using default "
+-		   "/usr/lib/oss\n");
++  fprintf (stderr, "OSSETCDIR not set in /etc/oss.conf, using default "
++		   "/etc/oss4\n");
+ oexit:
+   fclose (f);
+ oexit2:
+-  snprintf (name, sizeof (name), "/usr/lib/oss");
++  snprintf (name, sizeof (name), "/etc/oss4");
+   return name;
+ }
+ 
+@@ -648,7 +648,7 @@ main (int argc, char *argv[])
+       exit (0);
+     }
+ 
+-  load_devlist ("etc/devices.list", 0);
++  load_devlist ("devices.list", 0);
+ 
+   if (stat ("/etc/oss_3rdparty", &st) != -1)
+     load_devlist ("/etc/oss_3rdparty", 1);
+@@ -674,7 +674,7 @@ main (int argc, char *argv[])
+     }
+ 
+   snprintf (instfname, sizeof (instfname), "%s/%s", osslibdir,
+-	    "etc/installed_drivers");
++	    "installed_drivers");
+  
+   if ((f = fopen (instfname, "w")) == NULL)
+     {
+diff --git a/os_cmd/Linux/ossdetect/ossdetect.man b/os_cmd/Linux/ossdetect/ossdetect.man
+index a05cca5..d7424d6 100644
+--- a/os_cmd/Linux/ossdetect/ossdetect.man
++++ b/os_cmd/Linux/ossdetect/ossdetect.man
+@@ -6,9 +6,10 @@ ossdetect [-diuv] [-m<mode>] [-L<path>]
+ 
+ DESCRIPTION
+ The ossdetect application performs automatic detection of soundcards.
+-The application looks at the /usr/lib/oss/etc/device.list and performs
++The application looks at the $OSSETCDIR/device.list and performs
+ automatic detection. It will create a file with the list of the configured
+-drivers in /usr/lib/oss/etc/installed_drivers.
++drivers in $OSSETCDIR/installed_drivers.
++OSSETCDIR is decided by reading /etc/oss.conf, and defaults to /etc/oss4.
+ 
+ The Input Multiplexer driver (IMUX) is not configured by default and
+ can be added to the OSS configuration using the -i option.
+@@ -26,6 +27,7 @@ SEE ALSO
+ ossdevlinks(1), ossinfo(1)
+ 
+ FILES
++/etc/oss.conf
+ /usr/sbin/ossdetect
+ 
+ AUTHOR

@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+opts="save"
+
+start() {
+	for i in ${DRIVERS}; do
+		modprobe oss_${i}
+	done
+	ossdetect -d
+	ossdevlinks
+}
+
+stop() {
+	modprobe -r osscore
+
+	save
+}
+
+save() {
+	ebegin "Saving mixer levels"
+	savemixer
+	eend $?
+}

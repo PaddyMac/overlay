@@ -1,0 +1,13 @@
+diff --git a/setup/Linux/build.sh b/setup/Linux/build.sh
+index 4b7838c..4931e1f 100644
+--- a/setup/Linux/build.sh
++++ b/setup/Linux/build.sh
+@@ -8,7 +8,7 @@ then
+ else
+    echo "No gawk found. Using lesser replacement" >&2
+    cc -o txt2man origdir/setup/txt2man.c
+-   TXT2MAN=./txt2man
++   TXT2MAN=/usr/bin/txt2man
+ fi
+ 
+ rm -rf prototype

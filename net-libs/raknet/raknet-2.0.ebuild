@@ -1,0 +1,42 @@
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+inherit eutils
+
+DESCRIPTION="Multiplayer game network engine"
+HOMEPAGE="http://www.rakkarsoft.com/"
+SRC_URI="http://www.sumwars.org/data/Raknet2_0.tar.gz"
+
+LICENSE="CCPL-Attribution-NonCommercial-2.5"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc"
+
+DEPEND=""
+RDEPEND=""
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	ebegin "Setting makefile variables"
+	echo "VERSION = ${PV}" >> ${S}/makefile.defs
+	echo "LIBS_DIR = ${D}${DESTTREE}/lib" >> ${S}/makefile.defs
+	echo "INCLUDE_DIR = ${D}${DESTTREE}/include" >> ${S}/makefile.defs
+	eend
+}
+
+src_compile() {
+	emake -j1 || die "Error: emake failed!"
+}
+
+src_install() {
+	dolib.so Lib/linux/libraknet.so.${PV}
+	dosym ${DESTTREE}/lib/libraknet.so.${PV} ${DESTTREE}/lib/libraknet.so 
+	insinto ${DESTTREE}/include/raknet
+	doins Include/* 
+	if use doc; then		# if the useflag doc is enabled we copy our readme as well
+		dodoc readme.txt
+		dohtml Help/*
+	fi
+}

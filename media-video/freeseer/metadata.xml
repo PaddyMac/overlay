@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <use>
+    <flag name="development">Use the development branch</flag>
+    <flag name="experimental">Use the latest experimental branch</flag>
+    <flag name="master">Use the stable master branch</flag>
+  </use>
+</pkgmetadata>

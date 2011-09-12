@@ -1,0 +1,2 @@
+#masked until missing dependency issues are resolved.
+=media-video/freeseer-9999
