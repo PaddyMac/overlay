@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!-- 
+$Header: $
+-->
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>@gentoo.org</email>
+</maintainer>
+<use>
+  <flag name='debug'>Enable a debug build. If disabled, a release build will be compiled.</flag>
+  <flag name='libircclient'>Use external <pkg>net-libs/libircclient</pkg>. If disabled, MegaGlest
+  will be compiled using the embedded libircclient included in the source.</flag>
+  <flag name='miniupnpc'>Use external <pkg>net-libs/miniupnpc</pkg>. If disabled, Megaglest
+  will be compiled using the embedded miniupnpc included in the source.</flag>
+</use>
+-->
+</pkgmetadata>
