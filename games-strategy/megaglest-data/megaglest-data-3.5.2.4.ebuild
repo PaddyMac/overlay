@@ -21,6 +21,11 @@ PDEPEND=">=games-strategy/megaglest-${PV}"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
+src_prepare() {
+	# The 3.5.2.4 data archive includes the Windows version of configuration.xml. Patch it to match the Linux version.
+	epatch "${FILESDIR}"/megaglest-linux-configuration.xml-${PV}.patch
+}
+
 src_install() {
 	# Initialize installation directory
 	insinto "${GAMES_DATADIR}"/${MY_PN}
@@ -38,5 +43,7 @@ src_install() {
 	if use doc; then
 	dohtml -r docs/glest_factions/ || die "dohtml failed"
 	fi
+	
+	# Set proper permissions
 	prepgamesdirs
 }

@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=3
-inherit cmake-utils eutils wxwidgets games
+inherit eutils cmake-utils wxwidgets games
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="http://www.megaglest.org/"
@@ -12,8 +12,8 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="libircclient miniupnpc static-libs"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug libircclient miniupnpc static-libs"
 
 # MegaGlest configuration script will only attempt to locate an external libircclient or miniupnpc if -DWANT_STATIC_LIBS="off"
 # If static-libs is off and an external copy is not present, it will use an embedded libircclient or miniupnpc.
@@ -47,6 +47,13 @@ RDEPEND="${DEPEND}
 
 S=${WORKDIR}/${PN}-${PV}
 
+# Determine build type
+	if use debug; then
+		CMAKE_BUILD_TYPE=Debug
+	else
+		CMAKE_BUILD_TYPE=Release
+	fi
+
 pkg_setup() {
 
 	games_pkg_setup
@@ -61,9 +68,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Edit the glest.ini so the megaglest binary knows where to find its data.
-	# Otherwise megaglest will abort with "Can't open propertyMap file: /usr/games/bin//data/lang/english.lng"
-	sed -i -e "s|^DataPath=.*|DataPath=${GAMES_DATADIR}/${PN}|" glest.ini || die "sed glest.ini failed"
+
+	# Ensure wxwidgets is the right version
+	WX_GTK_VER=2.8
+	need-wxwidgets unicode
 }
 
 src_configure() {
@@ -71,17 +79,20 @@ src_configure() {
 	mycmakeargs="
 		-DWANT_SVN_STAMP=off
 		-DCMAKE_INSTALL_PREFIX=/
-		-DCUSTOM_DATA_INSTALL_PATH=${GAMES_DATADIR}/${PN}/
-		-DMEGAGLEST_BIN_INSTALL_PATH=${GAMES_BINDIR}
+		-DMEGAGLEST_BIN_INSTALL_PATH=${GAMES_BINDIR}/
 		-DMEGAGLEST_DATA_INSTALL_PATH=${GAMES_DATADIR}/${PN}/
 		-DMEGAGLEST_DESKTOP_INSTALL_PATH=/usr/share/applications/
 		-DMEGAGLEST_ICON_INSTALL_PATH=/usr/share/pixmaps/
 		-DMEGAGLEST_MANPAGE_INSTALL_PATH=/usr/share/man/man6/"
 
+		if use debug; then
+			mycmakeargs="${mycmakeargs} -LA"
+		fi
+
 		if use static-libs; then
-			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=on"
+			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=ON wxWidgets_USE_STATIC=ON"
 		else
-			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=off"
+			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=OFF wxWidgets_USE_STATIC=OFF"
 		fi
 		
 		if use !libircclient; then
