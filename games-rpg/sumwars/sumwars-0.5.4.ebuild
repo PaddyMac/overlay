@@ -19,7 +19,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 
-IUSE=""
+IUSE="debug"
 
 DEPEND=">=dev-games/ogre-1.7
 	dev-games/ois
@@ -35,6 +35,11 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}_${MY_PV}_src"
 
 src_configure() {
+	# Determine build type
+	if use debug; then
+		CMAKE_BUILD_TYPE=Debug
+	fi
+	
 	cmake-utils_src_configure
 }
 
@@ -62,7 +67,7 @@ src_install() {
 	doicon resources/itempictures/sword.png || die "doicon failed"
 
 	# Creatue desktop menu entry
-	make_desktop_entry "${GAMES_BINDIR}/${PN}" "Summoning Wars" "sword" "Game;RolePlaying" "~/.${PN}"
+	make_desktop_entry "${GAMES_BINDIR}/${PN}" "Summoning Wars" "sword" "Game;RolePlaying" "Path=~/.${PN}"
 
 	prepgamesdirs
 }
