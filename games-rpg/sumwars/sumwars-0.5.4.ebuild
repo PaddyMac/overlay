@@ -23,7 +23,7 @@ IUSE=""
 
 DEPEND=">=dev-games/ogre-1.7
 	dev-games/ois
-	>=dev-games/cegui-0.7
+	>=dev-games/cegui-0.7[ogre]
 	>=dev-util/cmake-2.6
 	media-libs/freealut
 	media-libs/openal
