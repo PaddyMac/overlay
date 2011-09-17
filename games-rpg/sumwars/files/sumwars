@@ -1,0 +1,48 @@
+#!/bin/bash
+
+GAME="sumwars"
+BIN="/usr/games/bin/${GAME}.bin"
+ORIGINAL_DIRECTORY="${PWD}"
+
+
+if [ ! -d "${SUMWARS_DIRECTORY}" ]; then
+	mkdir ~/.sumwars
+fi
+
+if [ ! -d ~/.sumwars/save/ ]; then
+	mkdir ~/.sumwars/save
+fi
+
+if [ ! -L  ~/.sumwars/data/ ]; then
+	ln -s /usr/share/games/sumwars/data ~/.sumwars/data
+fi
+
+if [ ! -L  ~/.sumwars/lib/ ]; then
+	ln -s /usr/share/games/sumwars/lib ~/.sumwars/lib
+fi
+
+if [ ! -L  ~/.sumwars/resources/ ]; then
+	ln -s /usr/share/games/sumwars/resources ~/.sumwars/resources
+fi
+
+if [ ! -L  ~/.sumwars/translation/ ]; then
+	ln -s /usr/share/games/sumwars/translation ~/.sumwars/translation
+fi
+
+if [ ! -f  ~/.sumwars/authors.txt ]; then
+        ln -s /usr/share/games/sumwars/authors.txt ~/.sumwars/authors.txt
+fi
+
+if [ ! -f  ~/.sumwars/plugins.cfg ]; then
+	ln -s /usr/share/games/sumwars/plugins.cfg ~/.sumwars/plugins.cfg
+fi
+
+if [ ! -f  ~/.sumwars/resources.cfg ]; then
+	ln -s /usr/share/games/sumwars/resources.cfg ~/.sumwars/resources.cfg
+fi
+
+cd ~/.sumwars
+
+exec $BIN "$@"
+
+cd ${ORIGINAL_DIRECTORY}
