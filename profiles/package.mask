@@ -1,2 +1,10 @@
+
+#Let users unmask live ebuilds at their discretion.
+=dev-games/ogre-1.7.9999
+=dev-games/ogre-9999
+
+#Let users unmask live ebuilds at their discretion.
+=games-rpg/sumwars-9999
+
 #masked until missing dependency issues are resolved.
 =media-video/freeseer-9999
