@@ -34,7 +34,8 @@ DEPEND="sys-devel/make
 	dev-python/PyQt4
 	dev-python/gst-python
 	dev-python/feedparser
-	dev-python/setuptools"
+	dev-python/setuptools
+	dev-python/yapsy"
 RDEPEND="${DEPEND}"
 RESTRICT_PYTHON_ABIS="3.*"
 
@@ -46,4 +47,4 @@ src_install() {
 	distutils_src_install
 }
 
-DOCS="LICENSE PACKAGE.txt PKG-INFO README.txt release_notes.txt translate.txt"
+DOCS="LICENSE PACKAGE.txt README.txt translate.txt"
