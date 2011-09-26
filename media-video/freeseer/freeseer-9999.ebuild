@@ -30,7 +30,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="development +experimental master"
 
 DEPEND="sys-devel/make
-	dev-lang/python
+	dev-db/sqlite:3
+	dev-lang/python[sqlite]
 	dev-python/PyQt4
 	dev-python/gst-python
 	dev-python/feedparser
