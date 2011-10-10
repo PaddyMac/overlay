@@ -4,7 +4,7 @@
 
 EAPI=3
 PYTHON_DEPEND="2:2.6:2.7"
-inherit distutils git python
+inherit distutils git-2 python
 
 DESCRIPTION="Freeseer captures video from a choice of sources along with audio and mixes them together to produce a video."
 HOMEPAGE="https://github.com/fosslc/freeseer/wiki/"
