@@ -48,4 +48,4 @@ src_install() {
 	distutils_src_install
 }
 
-DOCS="LICENSE PACKAGE.txt README.txt translate.txt"
+DOCS="LICENSE PACKAGE.txt README.md index.html release_notes.txt"
