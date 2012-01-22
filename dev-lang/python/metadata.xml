@@ -1,0 +1,748 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- ViewVC :: http://www.viewvc.org/ -->
+<head>
+<title>[gentoo-x86] Log of /dev-lang/python/metadata.xml</title>
+<meta name="generator" content="ViewVC 1.1.11" />
+<link rel="shortcut icon" href="/cgi-bin/viewvc.cgi/*docroot*/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/cgi-bin/viewvc.cgi/*docroot*/styles.css" type="text/css" />
+
+</head>
+<body>
+<div class="vc_navheader">
+<table><tr>
+<td><strong><a href="/cgi-bin/viewvc.cgi"><span class="pathdiv">/</span></a><a href="/cgi-bin/viewvc.cgi/gentoo-x86/">[gentoo-x86]</a><span class="pathdiv">/</span><a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/">dev-lang</a><span class="pathdiv">/</span><a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/">python</a><span class="pathdiv">/</span>metadata.xml</strong></td>
+<td style="text-align: right;">
+</td>
+</tr></table>
+</form>
+</div>
+<div style="float: right; padding: 5px;"><a href="http://www.gentoo.org/" title="Gentoo Linux"><img src="/cgi-bin/viewvc.cgi/*docroot*/images/gentoo-new.gif" alt="Gentoo" width="182" height="59" /></a></div>
+<h1>Log of /dev-lang/python/metadata.xml</h1>
+
+<p style="margin:0;">
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/"><img src="/cgi-bin/viewvc.cgi/*docroot*/images/back_small.png" class="vc_icon" alt="Parent Directory" /> Parent Directory</a>
+
+| <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log"><img src="/cgi-bin/viewvc.cgi/*docroot*/images/log.png" class="vc_icon" alt="Revision Log" /> Revision Log</a>
+
+
+
+
+</p>
+
+<hr />
+<table class="auto">
+
+
+
+<tr>
+<td>Links to HEAD:</td>
+<td>
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=markup">view</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=annotate">annotate</a>)
+</td>
+</tr>
+
+
+
+</table>
+ 
+
+
+
+
+
+
+
+<div>
+<hr />
+
+<a name="rev1.7"></a>
+<a name="HEAD"></a>
+
+
+Revision <strong>1.7</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.7&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.7">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.7&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.7">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.7&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Sun Dec  6 17:50:22 2009 UTC</em>
+(21 months, 2 weeks ago)
+by <em>arfrever</em>
+
+
+<br />Branch:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+<br />CVS Tags:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=HEAD"><strong>HEAD</strong></a>
+
+
+
+
+
+
+<br />Changes since <strong>1.6: +3 -3 lines</strong>
+
+
+
+
+
+
+
+
+<br />Diff to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.6&amp;r2=1.7">previous 1.6</a>
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">Remove &quot;ucs2&quot; USE flag and add &quot;wide-unicode&quot; USE flag (bug #293135).
+(Portage version: 14950-svn/cvs/Linux x86_64)
+
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.6"></a>
+
+
+Revision <strong>1.6</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.6&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.6">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.6&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.6">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.6&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Sun Aug  2 17:04:59 2009 UTC</em>
+(2 years, 1 month ago)
+by <em>darkside</em>
+
+
+<br />Branch:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+
+
+
+
+<br />Changes since <strong>1.5: +1 -0 lines</strong>
+
+
+
+
+
+
+
+
+<br />Diff to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.5&amp;r2=1.6">previous 1.5</a>
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">Be more verbose about the 'threads' USE flag.
+(Portage version: 2.1.6.13/cvs/Linux x86_64)
+
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.5"></a>
+
+
+Revision <strong>1.5</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.5&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.5">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.5&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.5">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.5&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Sun May 31 07:14:11 2009 UTC</em>
+(2 years, 3 months ago)
+by <em>mr_bones_</em>
+
+
+<br />Branch:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+
+
+
+
+<br />Changes since <strong>1.4: +0 -1 lines</strong>
+
+
+
+
+
+
+
+
+<br />Diff to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.4&amp;r2=1.5">previous 1.4</a>
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">remove unused nothreads use flag
+(Portage version: 2.1.6.11/cvs/Linux i686)
+
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.4"></a>
+
+
+Revision <strong>1.4</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.4&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.4">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.4&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.4">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.4&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Tue Aug 19 09:11:59 2008 UTC</em>
+(3 years, 1 month ago)
+by <em>hawking</em>
+
+
+<br />Branch:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+
+
+
+
+<br />Changes since <strong>1.3: +5 -0 lines</strong>
+
+
+
+
+
+
+
+
+<br />Diff to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.3&amp;r2=1.4">previous 1.3</a>
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">Drop python-2.3, drop old 2.4, 2.5 ebuilds. Add local use flag descriptions to metadata.xml.
+(Portage version: -svn.wrabbit)
+
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.3"></a>
+
+
+Revision <strong>1.3</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.3&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.3">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.3&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.3">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.3&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Thu May 31 02:14:34 2007 UTC</em>
+(4 years, 3 months ago)
+by <em>kloeri</em>
+
+
+<br />Branch:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+
+
+
+
+<br />Changes since <strong>1.2: +0 -3 lines</strong>
+
+
+
+
+
+
+
+
+<br />Diff to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.2&amp;r2=1.3">previous 1.2</a>
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">Remove myself as I'm retiring.
+(Portage version: 2.1.2.2)
+
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.2"></a>
+
+
+Revision <strong>1.2</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.2&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.2">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.2&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.2">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.2&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Thu May 17 20:00:21 2007 UTC</em>
+(4 years, 4 months ago)
+by <em>kloeri</em>
+
+
+<br />Branch:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+
+
+
+
+<br />Changes since <strong>1.1: +1 -1 lines</strong>
+
+
+
+
+
+
+
+
+<br />Diff to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.1&amp;r2=1.2">previous 1.1</a>
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">Mark myself as maintainer.
+(Portage version: 2.1.2.7)
+
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.1.1.1"></a>
+
+
+Revision <strong>1.1.1.1</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.1.1.1&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.1.1.1">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.1.1.1&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.1.1.1">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.1.1.1&amp;view=log">[select for diffs]</a>
+
+
+
+
+<em>(vendor branch)</em>
+
+<br />
+
+<em>Wed Nov 30 09:58:39 2005 UTC</em>
+(5 years, 9 months ago)
+by <em>chriswhite</em>
+
+
+
+
+
+
+
+<br />Changes since <strong>1.1: +0 -0 lines</strong>
+
+
+
+
+
+
+
+
+<br />Diff to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.1&amp;r2=1.1.1.1">previous 1.1</a>
+
+
+
+
+
+
+, to <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.7&amp;r2=1.1.1.1">next main 1.7</a>
+
+
+
+
+
+
+
+<pre class="vc_log">*** empty log message ***
+
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.1"></a>
+
+
+Revision <strong>1.1</strong> -
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.1&amp;view=markup">view</a>)
+
+
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.1">download</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?revision=1.1&amp;content-type=text%2Fplain">as text</a>)
+(<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?annotate=1.1">annotate</a>)
+
+
+
+- <a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?r1=1.1&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Thu Jul  3 20:36:48 2003 UTC</em>
+(8 years, 2 months ago)
+by <em>liquidx</em>
+
+
+<br />Branch:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+
+<br />Branch point for:
+
+<a href="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml?view=log&amp;pathrev=RELEASE-1_4"><strong>RELEASE-1_4</strong></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">patch python for db4 compat. also force enabling threads
+
+</pre>
+</div>
+
+ 
+
+
+ <hr />
+<p><a name="diff"></a>
+This form allows you to request diffs between any two revisions of this file.
+For each of the two "sides" of the diff,
+
+select a symbolic revision name using the selection box, or choose
+'Use Text Field' and enter a numeric revision.
+
+</p>
+<form method="get" action="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml" id="diff_select">
+<table cellpadding="2" cellspacing="0" class="auto">
+<tr>
+<td>&nbsp;</td>
+<td>
+<input type="hidden" name="view" value="diff"/>
+Diffs between
+
+<select name="r1">
+<option value="text" selected="selected">Use Text Field</option>
+
+<option value="1.1:RELEASE-1_4">RELEASE-1_4</option>
+
+<option value="1.7:MAIN">MAIN</option>
+
+<option value="1.7:HEAD">HEAD</option>
+
+</select>
+<input type="text" size="12" name="tr1"
+value="1.7"
+onchange="document.getElementById('diff_select').r1.selectedIndex=0" />
+
+and
+
+<select name="r2">
+<option value="text" selected="selected">Use Text Field</option>
+
+<option value="1.1:RELEASE-1_4">RELEASE-1_4</option>
+
+<option value="1.7:MAIN">MAIN</option>
+
+<option value="1.7:HEAD">HEAD</option>
+
+</select>
+<input type="text" size="12" name="tr2"
+value="1.1"
+onchange="document.getElementById('diff_select').r2.selectedIndex=0" />
+
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>
+Type of Diff should be a
+<select name="diff_format" onchange="submit()">
+<option value="h" selected="selected">Colored Diff</option>
+<option value="l" >Long Colored Diff</option>
+<option value="f" >Full Colored Diff</option>
+<option value="u" >Unidiff</option>
+<option value="c" >Context Diff</option>
+<option value="s" >Side by Side</option>
+</select>
+<input type="submit" value=" Get Diffs " />
+</td>
+</tr>
+</table>
+</form>
+
+
+
+<form method="get" action="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml">
+<div>
+<hr />
+<a name="logsort"></a>
+<input type="hidden" name="view" value="log"/>
+Sort log by:
+<select name="logsort" onchange="submit()">
+<option value="cvs" >Not sorted</option>
+<option value="date" selected="selected">Commit date</option>
+<option value="rev" >Revision</option>
+</select>
+<input type="submit" value=" Sort " />
+</div>
+</form>
+
+<br>
+<tr>
+<td>Sticky Tag:</td>
+<td><form method="get" action="/cgi-bin/viewvc.cgi/gentoo-x86/dev-lang/python/metadata.xml" style="display: inline">
+<div style="display: inline">
+<input type="hidden" name="view" value="log"/>
+
+
+<select name="pathrev" onchange="submit()">
+<option value=""></option>
+
+<optgroup label="Branches">
+
+
+<option>RELEASE-1_4</option>
+
+
+
+<option>MAIN</option>
+
+
+</optgroup>
+
+<optgroup label="Non-branch tags">
+
+
+<option>HEAD</option>
+
+
+</optgroup>
+
+</select>
+
+<input type="submit" value="Set" />
+</div>
+</form>
+
+</td>
+</tr>
+
+<hr />
+<table>
+<tr>
+<td>&nbsp;</td>
+<td style="text-align: right;"><strong><a href="/cgi-bin/viewvc.cgi/*docroot*/help_log.html">ViewVC Help</a></strong></td>
+</tr>
+<tr>
+<td>Powered by <a href="http://viewvc.tigris.org/">ViewVC 1.1.11</a></td>
+<td style="text-align: right;">&nbsp;</td>
+</tr>
+</table>
+</body>
+</html>
+
+
