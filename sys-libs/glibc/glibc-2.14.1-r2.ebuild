@@ -1,6 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.14.ebuild,v 1.12 2011/11/22 16:38:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.14.1-r2.ebuild,v 1.3 2012/01/17 23:51:59 vapier Exp $
 
 inherit eutils versionator libtool toolchain-funcs flag-o-matic gnuconfig multilib
 
@@ -33,13 +33,13 @@ esac
 MANPAGE_VER=""                                 # pregenerated manpages
 INFOPAGE_VER=""                                # pregenerated infopages
 LIBIDN_VER=""                                  # it's integrated into the main tarball now
-PATCH_VER="7"                                  # Gentoo patchset
+PATCH_VER="3"                                  # Gentoo patchset
 PORTS_VER=${RELEASE_VER}                       # version of glibc ports addon
 LT_VER=""                                      # version of linuxthreads addon
 NPTL_KERN_VER=${NPTL_KERN_VER:-"2.6.9"}        # min kernel version nptl requires
 #LT_KERN_VER=${LT_KERN_VER:-"2.4.1"}           # min kernel version linuxthreads requires
 
-IUSE="debug gd glibc-omitfp hardened multilib nls selinux profile vanilla crosscompile_opts_headers-only ${LT_VER:+glibc-compat20 nptl linuxthreads}"
+IUSE="debug gd glibc-omitfp hardened multilib selinux profile vanilla crosscompile_opts_headers-only ${LT_VER:+glibc-compat20 nptl linuxthreads}"
 [[ -n ${RELEASE_VER} ]] && S=${WORKDIR}/glibc-${RELEASE_VER}${SNAP_VER:+-${SNAP_VER}}
 
 # Here's how the cross-compile logic breaks down ...
@@ -97,12 +97,11 @@ DEPEND=">=sys-devel/gcc-3.4.4
 	${LT_VER:+nptl? (} >=sys-kernel/linux-headers-${NPTL_KERN_VER} ${LT_VER:+)}
 	>=app-misc/pax-utils-0.1.10
 	virtual/os-headers
-	nls? ( sys-devel/gettext )
 	!<sys-apps/sandbox-1.2.18.1-r2
 	!<sys-apps/portage-2.1.2
+	!<sys-devel/patch-2.6
 	selinux? ( sys-libs/libselinux )"
 RDEPEND="!sys-kernel/ps3-sources
-	nls? ( sys-devel/gettext )
 	selinux? ( sys-libs/libselinux )"
 
 if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
@@ -205,6 +204,14 @@ pkg_setup() {
 	fi
 }
 
+eblit-src_unpack-pre() {
+	case ${CHOST} in
+	x86_64*)
+		has x32 $(get_all_abis) || GLIBC_PATCH_EXCLUDE+=" 1200_all_glibc-2.14.1-x32.patch"
+		;;
+	esac
+}
+
 eblit-src_unpack-post() {
 	if use hardened ; then
 		cd "${S}"
@@ -258,3 +265,4 @@ maint_pkg_create() {
 		du -b "${T}"/${tarball}.tar.lzma
 	done
 }
+
