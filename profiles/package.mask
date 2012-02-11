@@ -3,9 +3,6 @@
 =dev-games/ogre-1.7.9999
 =dev-games/ogre-9999
 
-#Masked until ebuild is fixed.
-=dev-libs/poco-1.4.2
-
 #Let users unmask live ebuilds at their discretion.
 =games-rpg/sumwars-9999
 
