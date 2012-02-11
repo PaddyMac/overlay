@@ -9,11 +9,22 @@ $Header: $
   <email>@gentoo.org</email>
 </maintainer>
 <use>
+  <flag name='configurator'>Build configurator.</flag>
+  <flag name='curl_dynamic'>Force the use of dynamic libs for CURL.</flag>
   <flag name='debug'>Enable a debug build. If disabled, a release build will be compiled.</flag>
+  <flag name='editor'>Build map editor.</flag>
+  <flag name='freetype'>Use Freetype-GL for onscreen fonts.</flag>
+  <flag name='ftgl'>Use FTGL for on-screen fonts.</flag>
   <flag name='libircclient'>Use external <pkg>net-libs/libircclient</pkg>. If disabled, MegaGlest
   will be compiled using the embedded libircclient included in the source.</flag>
   <flag name='miniupnpc'>Use external <pkg>net-libs/miniupnpc</pkg>. If disabled, Megaglest
   will be compiled using the embedded miniupnpc included in the source.</flag>
+  <flag name='sse'>Fast floating point optimization for PentiumIII+ class chips.</flag>
+  <flag name='sse2'>Faster floating point optimization for SSE2 capable chips.</flag>
+  <flag name='sse3'>Faster floating point optimization for SSE3 capable chips.</flag>
+  <flag name='static-libs'>Build static libraries. Forces use of embedded libircclient and miniupnpc.</flag>
+  <flag name='tools'>Build model import/export tools.</flag>
+  <flag name='viewer'>Build model viewer.</flag>
 </use>
 -->
 </pkgmetadata>

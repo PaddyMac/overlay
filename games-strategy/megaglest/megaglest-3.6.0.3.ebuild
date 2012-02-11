@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug libircclient miniupnpc static-libs"
+IUSE="+configurator curl_dynamic +editor freetype +ftgl debug +libircclient +miniupnpc sse sse2 sse3 static-libs +tools +viewer"
 
 # MegaGlest configuration script will only attempt to locate an external libircclient or miniupnpc if -DWANT_STATIC_LIBS="off"
 # If static-libs is off and an external copy is not present, it will use an embedded libircclient or miniupnpc.
@@ -26,6 +26,10 @@ DEPEND="app-arch/p7zip
 	dev-libs/icu
 	dev-libs/libxml2
 	>=dev-libs/xerces-c-3
+	media-libs/fontconfig
+	freetype? ( !ftgl? ( media-libs/freetype ) )
+	ftgl? ( !freetype? ( media-libs/ftgl ) )
+	media-libs/glew
 	>=media-libs/libsdl-1.2.5[joystick,video]
 	media-libs/libogg
 	>=media-libs/libpng-1.4
@@ -34,15 +38,18 @@ DEPEND="app-arch/p7zip
 	net-libs/gnutls
 	libircclient? ( !static-libs? ( net-libs/libircclient ) )
 	>=net-misc/curl-7.21.0
-	miniupnpc? ( !static-libs? ( net-libs/miniupnpc ) )
+	miniupnpc? ( !static-libs? ( >=net-libs/miniupnpc-1.6-r1 ) )
+	sys-apps/help2man
 	sys-libs/zlib
 	virtual/jpeg
 	virtual/opengl
 	virtual/glu
 	x11-libs/libX11
+	x11-libs/libXext
 	x11-libs/wxGTK:2.8[X]"
 RDEPEND="${DEPEND}
 	=games-strategy/megaglest-data-${PV}"
+#REQUIRED_USE="^^ ( sse sse2 sse3 )"
 
 S=${WORKDIR}/${PN}-${PV}
 
@@ -51,6 +58,17 @@ S=${WORKDIR}/${PN}-${PV}
 		CMAKE_BUILD_TYPE=Debug
 	else
 		CMAKE_BUILD_TYPE=Release
+	fi
+
+# Determine SSE optimization level
+	if use sse3; then
+		SSE=3
+	elif use sse2; then
+		SSE=2
+	elif use sse; then
+		SSE=1
+	elif use !sse; then
+		SSE=0
 	fi
 
 pkg_setup() {
@@ -82,16 +100,45 @@ src_configure() {
 		-DMEGAGLEST_DATA_INSTALL_PATH=${GAMES_DATADIR}/${PN}/
 		-DMEGAGLEST_DESKTOP_INSTALL_PATH=/usr/share/applications/
 		-DMEGAGLEST_ICON_INSTALL_PATH=/usr/share/pixmaps/
-		-DMEGAGLEST_MANPAGE_INSTALL_PATH=/usr/share/man/man6/"
+		-DMEGAGLEST_MANPAGE_INSTALL_PATH=/usr/share/man/man6/
+		-DMAX_SSE_LEVEL_DESIRED:STRING=${SSE}"
 
 		if use debug; then
-			mycmakeargs="${mycmakeargs} -LA"
+			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_UPNP_DEBUG:BOOL=ON -DwxWidgets_USE_DEBUG:BOOL=ON -LA"
+		fi
+
+		if use !configurator; then
+			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_CONFIGURATOR:BOOL=OFF"
+		fi
+
+		if curl_dynamic; then
+			mycmakeargs="${mycmakeargs} -DFORCE_CURL_DYNAMIC_LIBS:BOOL=ON"
+		fi
+
+		if use !editor; then
+			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_MAP_EDITOR:BOOL=OFF"
+		fi
+
+		if use !freetype; then
+			mycmakeargs="${mycmakeargs} -DUSE_FREETYPEGL:BOOL=OFF"
+		fi
+
+		if use !ftgl; then
+			mycmakeargs="${mycmakeargs} -DUSE_FTGL:BOOL=OFF"
 		fi
 
 		if use static-libs; then
 			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=ON wxWidgets_USE_STATIC=ON"
 		else
 			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=OFF wxWidgets_USE_STATIC=OFF"
+		fi
+
+		if use !tools; then
+			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_MODEL_IMPORT_EXPORT_TOOLS:BOOL=OFF"
+		fi
+
+		if use !viewer; then
+			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_MODEL_VIEWER:BOOL=OFF"
 		fi
 		
 		if use !libircclient; then
@@ -129,7 +176,9 @@ src_install() {
 	dodoc AUTHORS.source_code.txt CHANGELOG.txt COPYRIGHT.source_code.txt README.txt gnu_gpl_3.0.txt || die "dodoc failed"
 	
 	# Install manpage
-	doman megaglest.6 || die "doman failed"
+	doman mk/linux/megaglest.6 || die "doman failed"
+	doman mk/linux/megaglest_editor.6 || die "doman failed"
+	doman mk/linux/megaglest_g3dviewer.6 || die "doman failed"
 
 	# Install binaries
 	dogamesbin mk/linux/megaglest || die "dogamesbin megaglest failed"
