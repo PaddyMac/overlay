@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+configurator curl_dynamic +editor freetype +ftgl debug +libircclient +miniupnpc sse sse2 sse3 static-libs +tools +viewer"
+IUSE="+configurator curl_dynamic +editor freetype +ftgl debug +libircclient +miniupnpc sse sse2 sse3 static-libs +tools +unicode universal +viewer"
 
 # MegaGlest configuration script will only attempt to locate an external libircclient or miniupnpc if -DWANT_STATIC_LIBS="off"
 # If static-libs is off and an external copy is not present, it will use an embedded libircclient or miniupnpc.
@@ -27,8 +27,8 @@ DEPEND="app-arch/p7zip
 	dev-libs/libxml2
 	>=dev-libs/xerces-c-3
 	media-libs/fontconfig
-	freetype? ( !ftgl? ( media-libs/freetype ) )
-	ftgl? ( !freetype? ( media-libs/ftgl ) )
+	freetype? ( media-libs/freetype )
+	ftgl? ( media-libs/ftgl )
 	media-libs/glew
 	>=media-libs/libsdl-1.2.5[joystick,video]
 	media-libs/libogg
@@ -36,9 +36,9 @@ DEPEND="app-arch/p7zip
 	media-libs/libvorbis
 	media-libs/openal
 	net-libs/gnutls
-	libircclient? ( !static-libs? ( net-libs/libircclient ) )
+	libircclient? ( !static-libs? ( >=net-libs/libircclient-1.6 ) )
 	>=net-misc/curl-7.21.0
-	miniupnpc? ( !static-libs? ( >=net-libs/miniupnpc-1.6-r1 ) )
+	miniupnpc? ( !static-libs? ( net-libs/miniupnpc ) )
 	sys-apps/help2man
 	sys-libs/zlib
 	virtual/jpeg
@@ -74,6 +74,13 @@ S=${WORKDIR}/${PN}-${PV}
 pkg_setup() {
 
 	games_pkg_setup
+
+	if use freetype && use ftgl; then
+		einfo
+		einfo "You have enabled Freetype and FTGL for on-screen fonts."
+		einfo "Megaglest will default to using FTGL."
+		einfo
+	fi
 
 	if use libircclient || use miniupnpc; then
 		einfo
@@ -111,7 +118,7 @@ src_configure() {
 			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_CONFIGURATOR:BOOL=OFF"
 		fi
 
-		if curl_dynamic; then
+		if use curl_dynamic; then
 			mycmakeargs="${mycmakeargs} -DFORCE_CURL_DYNAMIC_LIBS:BOOL=ON"
 		fi
 
@@ -119,22 +126,38 @@ src_configure() {
 			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_MAP_EDITOR:BOOL=OFF"
 		fi
 
-		if use !freetype; then
+		if use freetype; then
+			mycmakeargs="${mycmakeargs} -DUSE_FREETYPEGL:BOOL=ON"
+		elif use !freetype; then
 			mycmakeargs="${mycmakeargs} -DUSE_FREETYPEGL:BOOL=OFF"
 		fi
 
-		if use !ftgl; then
+		if use ftgl; then
+			mycmakeargs="${mycmakeargs} -DUSE_FTGL:BOOL=ON"
+		elif use !ftgl; then
 			mycmakeargs="${mycmakeargs} -DUSE_FTGL:BOOL=OFF"
 		fi
 
 		if use static-libs; then
 			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=ON wxWidgets_USE_STATIC=ON"
-		else
+		elif use !static-libs; then
 			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=OFF wxWidgets_USE_STATIC=OFF"
 		fi
 
 		if use !tools; then
 			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_MODEL_IMPORT_EXPORT_TOOLS:BOOL=OFF"
+		fi
+
+		if use unicode; then
+			mycmakeargs="${mycmakeargs} wxWidgets_USE_UNICODE:BOOL=ON"
+		elif use !unicode; then
+			mycmakeargs="${mycmakeargs} wxWidgets_USE_UNICODE:BOOL=OFF"
+		fi
+
+		if use universal; then
+			mycmakeargs="${mycmakeargs} wxWidgets_USE_UNIVERSAL:BOOL=ON"
+		elif use !universal; then
+			mycmakeargs="${mycmakeargs} wxWidgets_USE_UNIVERSAL:BOOL=OFF"
 		fi
 
 		if use !viewer; then

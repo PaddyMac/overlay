@@ -24,6 +24,8 @@ $Header: $
   <flag name='sse3'>Faster floating point optimization for SSE3 capable chips.</flag>
   <flag name='static-libs'>Build static libraries. Forces use of embedded libircclient and miniupnpc.</flag>
   <flag name='tools'>Build model import/export tools.</flag>
+  <flag name='unicode'>Use unicode build with wxWidgets.</flag>
+  <flag name='universal'>Use universal build with wxWidgets.</flag>
   <flag name='viewer'>Build model viewer.</flag>
 </use>
 -->
