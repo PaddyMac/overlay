@@ -11,3 +11,6 @@
 
 #masked until missing dependency issues are resolved.
 =media-video/freeseer-9999
+
+#Let users unmask live ebuilds at their discretion.
+=net-misc/modemmanager-9999
