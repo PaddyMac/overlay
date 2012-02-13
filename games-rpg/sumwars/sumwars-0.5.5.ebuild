@@ -4,14 +4,13 @@
 
 EAPI=3
 
-inherit eutils games versionator cmake-utils
+inherit eutils games cmake-utils
 
-MY_PV=$(replace_all_version_separators '-')
 DESCRIPTION="open source role-playing game featuring both a single-player and a multiplayer mode for about 2 to 8 players"
 
 HOMEPAGE="http://sumwars.org/"
 
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${MY_PV}_src.tgz"
+SRC_URI="mirror://sourceforge/${PN}/${PN}-${PV}-src.tgz"
 
 LICENSE="GPL-3"
 
@@ -21,10 +20,11 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="debug"
 
-DEPEND=">=dev-games/ogre-1.7
+DEPEND="debug? ( dev-libs/poco )
+	>=dev-games/ogre-1.7.3
 	dev-games/ois
-	>=dev-games/cegui-0.7[ogre]
 	dev-games/physfs
+	>=dev-games/cegui-0.7.5[ogre]
 	>=dev-util/cmake-2.6
 	media-libs/freealut
 	media-libs/openal
