@@ -191,12 +191,12 @@ pkg_postinst() {
 	einfo Note about Configuration:
 	einfo DO NOT directly edit glest.ini and glestkeys.ini but rather edit glestuser.ini
 	einfo and glestuserkeys.ini and create your user over-ride values in these files.
-	einfo On Linux, these files are located in ~/.megaglest/
+	einfo On Linux, these files are located in \~/.megaglest/
 	einfo
 	einfo If you have an older graphics card which only fully supports OpenGL 1.2, and the
-	einfo game crashes when you try to play, try starting with "megaglest --disable-vbo"
-	einfo and lower some of the graphics settings such as color depth 16 and/or setting the
-	einfo number of lights to 1 before starting play.
+	einfo game crashes when you try to play, try starting with \"megaglest --disable-vbo\"
+	einfo and lowering some of the graphics options such as setting the color depth to 16
+	einfo and/or setting the number of lights to 1 before starting play.
 	echo
 	
 	games_pkg_postinst
