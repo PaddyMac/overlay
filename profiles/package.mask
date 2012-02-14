@@ -6,9 +6,6 @@
 #Let users unmask live ebuilds at their discretion.
 =games-rpg/sumwars-9999
 
-#Masked until ebuild works
-=games-strategy/megaglest-3.6.0.3
-
 #masked until missing dependency issues are resolved.
 =media-video/freeseer-9999
 
