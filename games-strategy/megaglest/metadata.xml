@@ -17,6 +17,7 @@ $Header: $
   <flag name='ftgl'>Use FTGL for on-screen fonts.</flag>
   <flag name='libircclient'>Use external <pkg>net-libs/libircclient</pkg>. If disabled, MegaGlest
   will be compiled using the embedded libircclient included in the source.</flag>
+  <flag name='manpages'>Build the manpages for MegaGlest and its optional programs.</flag>
   <flag name='miniupnpc'>Use external <pkg>net-libs/miniupnpc</pkg>. If disabled, Megaglest
   will be compiled using the embedded miniupnpc included in the source.</flag>
   <flag name='sse'>Fast floating point optimization for PentiumIII+ class chips.</flag>
