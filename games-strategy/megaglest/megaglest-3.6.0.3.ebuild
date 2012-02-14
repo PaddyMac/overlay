@@ -79,14 +79,17 @@ src_prepare() {
 src_configure() {
 
 # Determine build type
-# If you want a normal release, then you want "Gentoo" so it will respect your /etc/make.conf.
-# "Release" and "Debug" will *not* respect /etc/make.conf, so any desired settings have to be set in src_configure() and passed to cmake.
+# To Do: The default setting for cmake-utils is CMAKE_BUILD_TYPE=Gentoo. This is the "proper" setting.
+# However, when the setting is "Gentoo", MegaGlest is unable to find certain data files even if the
+# --data-path=x parameter is passed to megaglest. So we should try to figure out how to fix that.
+# By default, "Debug" and "Release" do not respect /etc/make.conf or its CFLAGS settings. To compensate,
+# the hard set cmake parameters below compensate to ensure CFLAGS in make.conf are respected.
 # See http://devmanual.gentoo.org/eclass-reference/cmake-utils.eclass/index.html for more info.
-        if use debug; then
-                CMAKE_BUILD_TYPE=Debug
-        else
-                CMAKE_BUILD_TYPE=Gentoo
-        fi
+	if use debug; then
+		CMAKE_BUILD_TYPE=Debug
+	else
+		CMAKE_BUILD_TYPE=Release
+	fi
 
 # Determine SSE optimization level
         if use sse3; then
@@ -212,8 +215,7 @@ pkg_postinst() {
 	einfo
 	einfo If you have an older graphics card which only fully supports OpenGL 1.2, and the
 	einfo game crashes when you try to play, try starting with \"megaglest --disable-vbo\"
-	einfo and lowering some of the graphics options such as setting the color depth to 16
-	einfo and/or setting the number of lights to 1 before starting play.
+	einfo Some graphics cards may require setting Max Lights to 1.
 	echo
 	
 	games_pkg_postinst
