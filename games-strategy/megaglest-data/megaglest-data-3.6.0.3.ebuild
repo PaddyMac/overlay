@@ -3,9 +3,11 @@
 # $Header: $
 
 EAPI=3
-inherit eutils games
+inherit eutils cmake-utils games
 
 MY_PN="megaglest"
+MY_GAMES_BINDIR="${GAMES_BINDIR#/usr/}"
+MY_GAMES_DATADIR="${GAMES_DATADIR#/usr/}"
 DESCRIPTION="Data files for the cross-platform 3D realtime strategy game MegaGlest"
 HOMEPAGE="http://www.megaglest.org/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-${PV}.tar.xz"
@@ -21,29 +23,35 @@ PDEPEND=">=games-strategy/megaglest-${PV}"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
-#src_prepare() {
-#	# The 3.5.2.4 data archive includes the Windows version of configuration.xml. Patch it to match the Linux version.
-#	epatch "${FILESDIR}"/megaglest-linux-configuration.xml-${PV}.patch
-#}
+pkg_setup() {
+        games_pkg_setup
+}
+
+src_configure() {
+
+	mycmakeargs=(
+		"CMAKE_INSTALL_PREFIX:PATH=/usr"
+		"-DMEGAGLEST_BIN_INSTALL_PATH:STRING=${MY_GAMES_BINDIR}"
+		"-DMEGAGLEST_DATA_INSTALL_PATH:STRING=${MY_GAMES_DATADIR}/${MY_PN}"
+		"-DMEGAGLEST_ICON_INSTALL_PATH:STRING=/usr/share/pixmaps"
+	)
+	cmake-utils_src_configure
+}
+
+src_compile() {
+        cmake-utils_src_compile
+}
 
 src_install() {
-	# Initialize installation directory
-	insinto "${GAMES_DATADIR}"/${MY_PN}
 	
-	# insert configuration file for megaglest_configurator
-	doins configuration.xml
-	
-	# insert megaglest game data
-        doins -r data maps scenarios techs tilesets tutorials || die "doins data failed"
-        
-        # insert standard documentation
-        dodoc docs/AUTHORS.data.txt docs/COPYRIGHT.data.txt docs/README.data-license.txt docs/cc-by-sa-3.0-unported.txt || die "dodoc failed"
-	
-	# If DOC USE flag is enabled, install optional documentation.
+	DOCS="docs/AUTHORS.data.txt docs/CHANGELOG.txt docs/README.txt"
+
 	if use doc; then
-	dohtml -r docs/glest_factions/ || die "dohtml failed"
+		HTML_DOCS="docs/glest_factions/"
 	fi
-	
-	# Set proper permissions
+
+	cmake-utils_src_install
+
 	prepgamesdirs
+
 }

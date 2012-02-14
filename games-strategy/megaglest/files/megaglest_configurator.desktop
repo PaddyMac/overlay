@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;StrategyGame;
+Comment=MegaGlest Configurator
+Name=MegaGlest Configurator
+Icon=megaglest
+Exec=megaglest_configurator
+Terminal=false
+Type=Application

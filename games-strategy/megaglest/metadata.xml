@@ -6,7 +6,7 @@ $Header: $
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>@gentoo.org</email>
+  <email>doctorwhoguy@gmail.com</email>
 </maintainer>
 <use>
   <flag name='configurator'>Build configurator.</flag>
