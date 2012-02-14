@@ -5,6 +5,8 @@
 EAPI=3
 inherit eutils cmake-utils wxwidgets games
 
+MY_GAMES_BINDIR="${GAMES_BINDIR#/usr/}"
+MY_GAMES_DATADIR="${GAMES_DATADIR#/usr/}"
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="http://www.megaglest.org/"
 
@@ -13,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+configurator curl_dynamic +editor freetype +ftgl debug +libircclient +miniupnpc sse sse2 sse3 static-libs +tools +unicode universal +viewer"
+IUSE="+configurator curl_dynamic +editor +freetype +ftgl debug +libircclient +manpages +miniupnpc sse sse2 sse3 static-libs +streflop +tools +unicode universal +viewer"
 
 # MegaGlest configuration script will only attempt to locate an external libircclient or miniupnpc if -DWANT_STATIC_LIBS="off"
 # If static-libs is off and an external copy is not present, it will use an embedded libircclient or miniupnpc.
@@ -30,7 +32,7 @@ DEPEND="app-arch/p7zip
 	freetype? ( media-libs/freetype )
 	ftgl? ( media-libs/ftgl )
 	media-libs/glew
-	>=media-libs/libsdl-1.2.5[joystick,video]
+	>=media-libs/libsdl-1.2.5[audio,joystick,video]
 	media-libs/libogg
 	>=media-libs/libpng-1.4
 	media-libs/libvorbis
@@ -39,7 +41,7 @@ DEPEND="app-arch/p7zip
 	libircclient? ( !static-libs? ( >=net-libs/libircclient-1.6 ) )
 	>=net-misc/curl-7.21.0
 	miniupnpc? ( !static-libs? ( net-libs/miniupnpc ) )
-	sys-apps/help2man
+	manpages? ( sys-apps/help2man )
 	sys-libs/zlib
 	virtual/jpeg
 	virtual/opengl
@@ -49,15 +51,17 @@ DEPEND="app-arch/p7zip
 	x11-libs/wxGTK:2.8[X]"
 RDEPEND="${DEPEND}
 	=games-strategy/megaglest-data-${PV}"
-#REQUIRED_USE="^^ ( sse sse2 sse3 )"
 
 S=${WORKDIR}/${PN}-${PV}
 
 # Determine build type
+# If you want a normal release, then you want "Gentoo" so it will respect your /etc/make.conf.
+# "Release" and "Debug" will *not* respect /etc/make.conf, so any desired settings have to be set in src_configure() and passed to cmake.
+# See http://devmanual.gentoo.org/eclass-reference/cmake-utils.eclass/index.html for more info.
 	if use debug; then
 		CMAKE_BUILD_TYPE=Debug
 	else
-		CMAKE_BUILD_TYPE=Release
+		CMAKE_BUILD_TYPE=Gentoo
 	fi
 
 # Determine SSE optimization level
@@ -72,15 +76,7 @@ S=${WORKDIR}/${PN}-${PV}
 	fi
 
 pkg_setup() {
-
 	games_pkg_setup
-
-	if use freetype && use ftgl; then
-		einfo
-		einfo "You have enabled Freetype and FTGL for on-screen fonts."
-		einfo "Megaglest will default to using FTGL."
-		einfo
-	fi
 
 	if use libircclient || use miniupnpc; then
 		einfo
@@ -93,6 +89,9 @@ pkg_setup() {
 
 src_prepare() {
 
+	#The help2man patch resolves an issue where the compilation may fail when creating the man pages.
+	epatch "${FILESDIR}"/${P}-help2man.patch
+
 	# Ensure wxwidgets is the right version
 	WX_GTK_VER=2.8
 	need-wxwidgets unicode
@@ -100,18 +99,28 @@ src_prepare() {
 
 src_configure() {
 	# Configure cmake
+#Please be aware that MegaGlest seems to be very picky about path names.
+#Avoid trailing backslashes as they can cause runtime errors sesulting in binaries being unable to find their config or data files.
+
 	mycmakeargs="
-		-DWANT_SVN_STAMP=off
-		-DCMAKE_INSTALL_PREFIX=/
-		-DMEGAGLEST_BIN_INSTALL_PATH=${GAMES_BINDIR}/
-		-DMEGAGLEST_DATA_INSTALL_PATH=${GAMES_DATADIR}/${PN}/
-		-DMEGAGLEST_DESKTOP_INSTALL_PATH=/usr/share/applications/
-		-DMEGAGLEST_ICON_INSTALL_PATH=/usr/share/pixmaps/
-		-DMEGAGLEST_MANPAGE_INSTALL_PATH=/usr/share/man/man6/
-		-DMAX_SSE_LEVEL_DESIRED:STRING=${SSE}"
+		-DCMAKE_C_FLAGS:STRING=${CFLAGS}
+		-DCMAKE_C_FLAGS_DEBUG:STRING=
+		-DCMAKE_CXX_FLAGS:STRING=${CFLAGS}
+		-DCMAKE_CXX_FLAGS_DEBUG:STRING=
+		-DCMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=${LDFLAGS}
+		-DCMAKE_MODULE_LINKER_FLAGS_DEBUG:STRING=${LDFLAGS}
+		-DCMAKE_SHARED_LINKER_FLAGS_DEBUG:STRING=${LDFLAGS}
+		-DMAX_SSE_LEVEL_DESIRED:STRING=${SSE}
+		-DMEGAGLEST_BIN_INSTALL_PATH=${MY_GAMES_BINDIR}
+		-DMEGAGLEST_DATA_INSTALL_PATH=${MY_GAMES_DATADIR}/${PN}
+		-DMEGAGLEST_DESKTOP_INSTALL_PATH=/usr/share/applications
+		-DMEGAGLEST_ICON_INSTALL_PATH=/usr/share/pixmaps
+		-DMEGAGLEST_MANPAGE_INSTALL_PATH=/usr/share/man/man6
+		-DWANT_SVN_STAMP=off"
 
 		if use debug; then
-			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_UPNP_DEBUG:BOOL=ON -DwxWidgets_USE_DEBUG:BOOL=ON -LA"
+			mycmakeargs="${mycmakeargs} -DBUILD_MEGAGLEST_UPNP_DEBUG:BOOL=ON -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON \
+			-DCMAKE_VERBOSE:BOOL=TRUE -DCMAKE_VERBOSE_MAKEFILE:BOOL=TRUE -DwxWidgets_USE_DEBUG:BOOL=ON -LA"
 		fi
 
 		if use !configurator; then
@@ -138,10 +147,20 @@ src_configure() {
 			mycmakeargs="${mycmakeargs} -DUSE_FTGL:BOOL=OFF"
 		fi
 
+		if use !manpages; then
+			mycmakeargs="${mycmakeargs} -DHELP2MAN:FILEPATH="
+		fi
+
 		if use static-libs; then
 			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=ON wxWidgets_USE_STATIC=ON"
 		elif use !static-libs; then
 			mycmakeargs="${mycmakeargs} -DWANT_STATIC_LIBS=OFF wxWidgets_USE_STATIC=OFF"
+		fi
+
+		if use streflop; then
+			mycmakeargs="${mycmakeargs} -DWANT_STREFLOP:BOOL=ON"
+		elif use !streflop; then
+			mycmakeargs="${mycmakeargs} -DWANT_STREFLOP:BOOL=OFF"
 		fi
 
 		if use !tools; then
@@ -190,33 +209,70 @@ src_install() {
 	doins servers.ini || die "doins servers.ini failed"
 	
 	# Install .ico files
-	doins editor.ico || die "doisn editor.ico failed"
-	doins g3dviewer.ico || die "doins g3dviewer.ico failed"
-	doins glest.ico || die "doins glest.ico failed"
+
+	if use editor; then
+		doins editor.ico || die "doisn editor.ico failed"
+	fi
+
+	if use viewer; then
+		doins g3dviewer.ico || die "doins g3dviewer.ico failed"
+	fi
+
+	if use configurator; then
+		doins glest.ico || die "doins glest.ico failed"
+	fi
+
 	doins megaglest.ico || die "doins megaglest.ico failed"
 
 	# Install standard documentation
 	dodoc AUTHORS.source_code.txt CHANGELOG.txt COPYRIGHT.source_code.txt README.txt gnu_gpl_3.0.txt || die "dodoc failed"
 	
-	# Install manpage
-	doman mk/linux/megaglest.6 || die "doman failed"
-	doman mk/linux/megaglest_editor.6 || die "doman failed"
-	doman mk/linux/megaglest_g3dviewer.6 || die "doman failed"
+	# Install manpages
+
+	if use manpages; then
+		doman mk/linux/megaglest.6 || die "doman failed"
+
+		if use editor; then
+			doman mk/linux/megaglest_editor.6 || die "doman failed"
+		fi
+
+		if use viewer; then
+			doman mk/linux/megaglest_g3dviewer.6 || die "doman failed"
+		fi
+	fi
 
 	# Install binaries
 	dogamesbin mk/linux/megaglest || die "dogamesbin megaglest failed"
-	dogamesbin mk/linux/megaglest_editor|| die "dogamesbin megaglest_editor failed"
-	dogamesbin mk/linux/megaglest_g3dviewer || die "dogamesbin megaglest_g3dviewer failed"
-	dogamesbin mk/linux/megaglest_configurator || die "dogamesbin megaglest_configurator failed"
+
+	if use editor; then
+		dogamesbin mk/linux/megaglest_editor|| die "dogamesbin megaglest_editor failed"
+	fi
+
+	if use viewer; then
+		dogamesbin mk/linux/megaglest_g3dviewer || die "dogamesbin megaglest_g3dviewer failed"
+	fi
+
+	if use configurator; then
+		dogamesbin mk/linux/megaglest_configurator || die "dogamesbin megaglest_configurator failed"
+	fi
 
 	# Install icon
 	doicon megaglest.png || die "doicon megaglest.png failed"
 
 	# Create desktop menu entries
 	make_desktop_entry megaglest MegaGlest ${PN} "Game;StrategyGame"
-	make_desktop_entry megaglest_editor "MegaGlest Editor" ${PN} "Game;StrategyGame"
-	make_desktop_entry megaglest_g3dviewer "MegaGlest G3Dviewer" ${PN} "Game;StrategyGame"
-	make_desktop_entry megaglest_configurator "MegaGlest Configurator" ${PN} "Game;StrategyGame"
+
+	if use editor; then
+		make_desktop_entry megaglest_editor "MegaGlest Editor" ${PN} "Game;StrategyGame"
+	fi
+
+	if use viewer; then
+		make_desktop_entry megaglest_g3dviewer "MegaGlest G3Dviewer" ${PN} "Game;StrategyGame"
+	fi
+
+	if use configurator; then
+		make_desktop_entry megaglest_configurator "MegaGlest Configurator" ${PN} "Game;StrategyGame"
+	fi
 
 	prepgamesdirs
 }
@@ -227,6 +283,11 @@ pkg_postinst() {
 	einfo DO NOT directly edit glest.ini and glestkeys.ini but rather edit glestuser.ini
 	einfo and glestuserkeys.ini and create your user over-ride values in these files.
 	einfo On Linux, these files are located in ~/.megaglest/
+	einfo
+	einfo If you have an older graphics card which only fully supports OpenGL 1.2, and the
+	einfo game crashes when you try to play, try starting with "megaglest --disable-vbo"
+	einfo and lower some of the graphics settings such as color depth 16 and/or setting the
+	einfo number of lights to 1 before starting play.
 	echo
 	
 	games_pkg_postinst
