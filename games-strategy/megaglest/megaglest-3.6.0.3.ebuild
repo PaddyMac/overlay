@@ -72,7 +72,11 @@ src_prepare() {
 
 	#The desktop patch adds .desktop files for the configurator, editor, and viewer, and it patches
 	#source/glest_game/CMakeLists.txt so that they will be installed.
-	epatch "${FILESDIR}"/${P}-desktop.patch
+#	epatch "${FILESDIR}"/${P}-desktop.patch
+
+	#This patch corrects the installation locations of icon files and adds additional .desktop files
+	#for the configurator, map editor, and model viewer.
+	epatch "${FILESDIR}"/${P}-CMakeLists.txt.patch
 
 	#The help2man patch resolves an issue where the compilation may fail when creating the man pages.
 	epatch "${FILESDIR}"/${P}-help2man.patch

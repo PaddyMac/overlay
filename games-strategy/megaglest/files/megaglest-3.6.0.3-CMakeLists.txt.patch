@@ -1,0 +1,148 @@
+diff -rupN megaglest/megaglest_configurator.desktop megaglest.new/megaglest_configurator.desktop
+--- megaglest/megaglest_configurator.desktop	1969-12-31 18:00:00.000000000 -0600
++++ megaglest.new/megaglest_configurator.desktop	2012-02-16 11:54:53.334554183 -0600
+@@ -0,0 +1,8 @@
++[Desktop Entry]
++Categories=Game;StrategyGame;
++Comment=MegaGlest Configurator
++Name=MegaGlest Configurator
++Icon=megaglest
++Exec=megaglest_configurator
++Terminal=false
++Type=Application
+diff -rupN megaglest/megaglest_editor.desktop megaglest.new/megaglest_editor.desktop
+--- megaglest/megaglest_editor.desktop	1969-12-31 18:00:00.000000000 -0600
++++ megaglest.new/megaglest_editor.desktop	2012-02-16 11:54:53.334554183 -0600
+@@ -0,0 +1,8 @@
++[Desktop Entry]
++Categories=Game;StrategyGame;
++Comment=MegaGlest Map Editor
++Name=MegaGlest Map Editor
++Icon=megaglest
++Exec=megaglest_editor
++Terminal=false
++Type=Application
+diff -rupN megaglest/megaglest_g3dviewer.desktop megaglest.new/megaglest_g3dviewer.desktop
+--- megaglest/megaglest_g3dviewer.desktop	1969-12-31 18:00:00.000000000 -0600
++++ megaglest.new/megaglest_g3dviewer.desktop	2012-02-16 11:54:53.334554183 -0600
+@@ -0,0 +1,8 @@
++[Desktop Entry]
++Categories=Game;StrategyGame;
++Comment=MegaGlest Model Viewer
++Name=MegaGlest Model Viewer
++Icon=megaglest
++Exec=megaglest_g3dviewer
++Terminal=false
++Type=Application
+diff -rupN megaglest/source/configurator/CMakeLists.txt megaglest.new/source/configurator/CMakeLists.txt
+--- megaglest/source/configurator/CMakeLists.txt	2011-12-16 00:24:21.000000000 -0600
++++ megaglest.new/source/configurator/CMakeLists.txt	2012-02-16 14:13:13.962456664 -0600
+@@ -147,16 +147,19 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 		DESTINATION ${MEGAGLEST_BIN_INSTALL_PATH})
+ 
+ 	# Installation of the program config and image files
+-	#INSTALL(FILES 
+-	#  "${PROJECT_SOURCE_DIR}/mk/linux/glest.ini"
+-	#  "${PROJECT_SOURCE_DIR}/mk/linux/glestkeys.ini"
++	INSTALL(FILES 
+         #  "${PROJECT_SOURCE_DIR}/mk/linux/configuration.xml"
+-        #  "${PROJECT_SOURCE_DIR}/mk/linux/glest.ico"
+-	#  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
++          "${PROJECT_SOURCE_DIR}/glest.ico"
++	  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
++
++	# Installation of the program desktop file
++	INSTALL(FILES
++	  "${PROJECT_SOURCE_DIR}/megaglest_configurator.desktop"
++	  DESTINATION ${MEGAGLEST_DESKTOP_INSTALL_PATH})
+ 
+ 	# Installation of the program desktop icon file
+ 	#INSTALL(FILES 
+-	#  "${PROJECT_SOURCE_DIR}/mk/linux/glest.ico"
++	#  "${PROJECT_SOURCE_DIR}/mk/linux/megaglest_configurator.png"
+ 	#  DESTINATION ${MEGAGLEST_ICON_INSTALL_PATH})
+ 
+ ENDIF()
+diff -rupN megaglest/source/g3d_viewer/CMakeLists.txt megaglest.new/source/g3d_viewer/CMakeLists.txt
+--- megaglest/source/g3d_viewer/CMakeLists.txt	2011-12-20 01:00:23.000000000 -0600
++++ megaglest.new/source/g3d_viewer/CMakeLists.txt	2012-02-16 14:14:31.238666650 -0600
+@@ -184,15 +184,18 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 	ENDIF()
+ 
+ 	# Installation of the program config and image files
+-	#INSTALL(FILES 
+-	#  "${PROJECT_SOURCE_DIR}/mk/linux/glest.ini"
+-	#  "${PROJECT_SOURCE_DIR}/mk/linux/glestkeys.ini"
+-	#  "${PROJECT_SOURCE_DIR}/data/glest_game/g3dviewer.ico"
+-	#  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
++	INSTALL(FILES 
++	  "${PROJECT_SOURCE_DIR}/g3dviewer.ico"
++	  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
++
++	# Installation of the program desktop file
++	  INSTALL(FILES
++	  "${PROJECT_SOURCE_DIR}/megaglest_g3dviewer.desktop"
++	  DESTINATION ${MEGAGLEST_DESKTOP_INSTALL_PATH})
+ 
+ 	# Installation of the program desktop icon file
+ 	#INSTALL(FILES 
+-	#  "${PROJECT_SOURCE_DIR}/data/glest_game/g3dviewer.ico"
++	#  "${PROJECT_SOURCE_DIR}/data/glest_game/megaglest_g3dviewer.png"
+ 	#  DESTINATION ${MEGAGLEST_ICON_INSTALL_PATH})
+ 
+ ENDIF()
+diff -rupN megaglest/source/glest_game/CMakeLists.txt megaglest.new/source/glest_game/CMakeLists.txt
+--- megaglest/source/glest_game/CMakeLists.txt	2011-12-20 01:00:23.000000000 -0600
++++ megaglest.new/source/glest_game/CMakeLists.txt	2012-02-16 12:06:36.016820207 -0600
+@@ -278,11 +278,6 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 		# Installation of the program desktop icon file
+ 		INSTALL(FILES 
+ 		  "${PROJECT_SOURCE_DIR}/mk/linux/megaglest.png"
+-		  "${PROJECT_SOURCE_DIR}/mk/linux/megaglest.xpm"
+-		  "${PROJECT_SOURCE_DIR}/mk/linux/megaglest.bmp"
+-		  "${PROJECT_SOURCE_DIR}/data/glest_game/editor.ico"
+-		  "${PROJECT_SOURCE_DIR}/mk/linux/glest.ico"
+-		  "${PROJECT_SOURCE_DIR}/data/glest_game/g3dviewer.ico"
+ 		  DESTINATION ${MEGAGLEST_ICON_INSTALL_PATH})
+ 	ELSE()
+ 
+@@ -294,11 +289,6 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 		# Installation of the program desktop icon file
+ 		INSTALL(FILES 
+ 		  "${PROJECT_SOURCE_DIR}/megaglest.png"
+-		  "${PROJECT_SOURCE_DIR}/megaglest.xpm"
+-		  "${PROJECT_SOURCE_DIR}/megaglest.bmp"
+-		  "${PROJECT_SOURCE_DIR}/editor.ico"
+-		  "${PROJECT_SOURCE_DIR}/glest.ico"
+-		  "${PROJECT_SOURCE_DIR}/g3dviewer.ico"
+ 		  DESTINATION ${MEGAGLEST_ICON_INSTALL_PATH})
+ 	ENDIF()
+ ENDIF()
+diff -rupN megaglest/source/glest_map_editor/CMakeLists.txt megaglest.new/source/glest_map_editor/CMakeLists.txt
+--- megaglest/source/glest_map_editor/CMakeLists.txt	2012-01-23 01:22:43.000000000 -0600
++++ megaglest.new/source/glest_map_editor/CMakeLists.txt	2012-02-16 14:10:09.393678810 -0600
+@@ -178,15 +178,18 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 	ENDIF()
+ 
+ 	# Installation of the program config and image files
+-	#INSTALL(FILES 
+-	#  "${PROJECT_SOURCE_DIR}/mk/linux/glest.ini"
+-	#  "${PROJECT_SOURCE_DIR}/mk/linux/glestkeys.ini"
+-        #  "${PROJECT_SOURCE_DIR}/data/glest_game/editor.ico"
+-	#  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
++	INSTALL(FILES 
++          "${PROJECT_SOURCE_DIR}/editor.ico"
++	  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
++
++	# Installation of the program desktop file
++	  INSTALL(FILES
++	  "${PROJECT_SOURCE_DIR}/megaglest_editor.desktop"
++	  DESTINATION ${MEGAGLEST_DESKTOP_INSTALL_PATH})
+ 
+ 	# Installation of the program desktop icon file
+ 	#INSTALL(FILES 
+-	#  "${PROJECT_SOURCE_DIR}/data/glest_game/editor.ico"
++	#  "${PROJECT_SOURCE_DIR}/data/glest_game/megaglest_editor.png"
+ 	#  DESTINATION ${MEGAGLEST_ICON_INSTALL_PATH})
+ 
+ ENDIF()
