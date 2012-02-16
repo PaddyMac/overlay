@@ -48,7 +48,9 @@ DEPEND="app-arch/p7zip
 	virtual/glu
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/wxGTK:2.8[X]"
+	configurator? ( x11-libs/wxGTK:2.8[X] )
+	editor? ( x11-libs/wxGTK:2.8[X] )
+	viewer? ( x11-libs/wxGTK:2.8[X] )"
 RDEPEND="${DEPEND}
 	=games-strategy/megaglest-data-${PV}"
 
@@ -57,7 +59,7 @@ S=${WORKDIR}/${PN}-${PV}
 pkg_setup() {
 	games_pkg_setup
 
-	if use libircclient || use miniupnpc; then
+	if ( use libircclient || use miniupnpc ); then
 		einfo
 		einfo "If you experience compilation failures with either the libircclient or miniupnpc"
 		einfo "USE flags enabled. Try disabling these USE flags in order to use the embedded"
@@ -68,12 +70,18 @@ pkg_setup() {
 
 src_prepare() {
 
+	#The desktop patch adds .desktop files for the configurator, editor, and viewer, and it patches
+	#source/glest_game/CMakeLists.txt so that they will be installed.
+	epatch "${FILESDIR}"/${P}-desktop.patch
+
 	#The help2man patch resolves an issue where the compilation may fail when creating the man pages.
 	epatch "${FILESDIR}"/${P}-help2man.patch
 
-	# Ensure wxwidgets is the right version
-	WX_GTK_VER=2.8
-	need-wxwidgets unicode
+	if ( use configurator || use editor || use viewer ); then
+		# Ensure wxwidgets is the right version
+		WX_GTK_VER=2.8
+		need-wxwidgets unicode
+	fi
 }
 
 src_configure() {
@@ -185,19 +193,6 @@ src_compile() {
 }
 
 src_install() {
-
-	# Create desktop menu entries for programs which do not have an included .desktop file.
-	if use editor; then
-		make_desktop_entry megaglest_editor "MegaGlest Map Editor" ${PN} "Game;StrategyGame;"
-	fi
-
-	if use viewer; then
-		make_desktop_entry megaglest_g3dviewer "MegaGlest Model Viewer" ${PN} "Game;StrategyGame;"
-	fi
-
-	if use configurator; then
-		make_desktop_entry megaglest_configurator "MegaGlest Configurator" ${PN} "Game;StrategyGame;"
-	fi
 
 	DOCS="AUTHORS.source_code.txt CHANGELOG.txt README.txt"
 

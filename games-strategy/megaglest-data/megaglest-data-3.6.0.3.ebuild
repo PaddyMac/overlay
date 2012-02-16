@@ -27,6 +27,12 @@ pkg_setup() {
         games_pkg_setup
 }
 
+src_prepare() {
+	# This patches CMakeLists.txt to ensure that all necessary .ico and .ini files are installed
+	# and prevents the .html documentation from being automatically installed.
+	epatch "${FILESDIR}"/${P}-CMakeLists.txt.patch
+}
+
 src_configure() {
 
 	mycmakeargs=(

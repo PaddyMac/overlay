@@ -1,0 +1,37 @@
+diff -rupN megaglest-data/CMakeLists.txt megaglest-data.new/CMakeLists.txt
+--- megaglest-data/CMakeLists.txt	2011-12-14 00:27:35.000000000 -0600
++++ megaglest-data.new/CMakeLists.txt	2012-02-15 17:18:19.873723491 -0600
+@@ -25,8 +25,8 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 		# Installation of the program config and image files
+ 		INSTALL(FILES 
+ 		  "${PROJECT_SOURCE_DIR}/../../mk/linux/glestkeys.ini"
+-		  "${PROJECT_SOURCE_DIR}/../../mk/linux/megaglest.bmp"
+           	  "${PROJECT_SOURCE_DIR}/../../mk/linux/configuration.xml"
++		  "${PROJECT_SOURCE_DIR}/../../mk/linux/servers.ini"
+ 		  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
+ 
+ 		# Installation of data files from outside normal data folder
+@@ -37,7 +37,6 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 		# Installation of the data
+ 		install(
+ 		  DIRECTORY "${PROJECT_SOURCE_DIR}/data" 
+-			    "${PROJECT_SOURCE_DIR}/docs" 
+ 			    "${PROJECT_SOURCE_DIR}/maps"
+ 			    "${PROJECT_SOURCE_DIR}/scenarios"
+ 			    "${PROJECT_SOURCE_DIR}/techs"
+@@ -83,14 +82,13 @@ IF(NOT CMAKE_INSTALL_PREFIX STREQUAL "")
+ 		# Installation of the program config and image files
+ 		INSTALL(FILES 
+ 		  "${PROJECT_SOURCE_DIR}/glestkeys.ini"
+-		  "${PROJECT_SOURCE_DIR}/megaglest.bmp"
+                   "${PROJECT_SOURCE_DIR}/configuration.xml"
++		  "${PROJECT_SOURCE_DIR}/servers.ini"
+ 		  DESTINATION ${MEGAGLEST_DATA_INSTALL_PATH})
+ 
+ 		# Installation of the data
+ 		install(
+ 		  DIRECTORY "${PROJECT_SOURCE_DIR}/data" 
+-			    "${PROJECT_SOURCE_DIR}/docs" 
+ 			    "${PROJECT_SOURCE_DIR}/maps"
+ 			    "${PROJECT_SOURCE_DIR}/scenarios"
+ 			    "${PROJECT_SOURCE_DIR}/techs"
