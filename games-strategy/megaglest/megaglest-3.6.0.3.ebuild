@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+configurator curl_dynamic debug +editor +freetype +ftgl +libircclient +manpages +miniupnpc sse sse2 sse3 static-libs +streflop +tools +unicode universal +viewer"
+IUSE="+configurator curl_dynamic debug +editor freetype +ftgl +libircclient +manpages +miniupnpc sse sse2 sse3 static-libs +streflop +tools +unicode universal +viewer"
 
 # MegaGlest configuration script will only attempt to locate an external libircclient or miniupnpc if -DWANT_STATIC_LIBS="off"
 # If static-libs is off and an external copy is not present, it will use an embedded libircclient or miniupnpc.
