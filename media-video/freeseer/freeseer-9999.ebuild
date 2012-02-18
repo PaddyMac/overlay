@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 2012 Funtoo Technologies
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -11,23 +11,14 @@ HOMEPAGE="https://github.com/fosslc/freeseer/wiki/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/Freeseer/freeseer.git"
 
-if use development; then
-		BRANCH="development"
-	elif use experimental; then
-		BRANCH="experimental"
-	elif use master; then
-		BRANCH="master"
-fi
-
-
-EGIT_BRANCH="${BRANCH}"
-EGIT_COMMIT="${BRANCH}"
+EGIT_BRANCH="experimental"
+EGIT_COMMIT="experimental"
 EGIT_PROJECT="freeseer"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="development +experimental master"
+IUSE=""
 
 DEPEND="sys-devel/make
 	dev-db/sqlite:3
