@@ -7,6 +7,7 @@
     <flag name="directfb">Enable the DirectFB renderer. This 
 	renderer is currently broken and incomplete; it should 
 	only be enabled for development and/or testing purposes.</flag>
+    <flag name="examples">Enable building of samples framework and applications.</flag>
     <flag name="expat">Enable building of the expat XML parser module.</flag>
     <flag name="freeimage">Enable FreeImage based ImageCodec module.</flag>
     <flag name="irrlicht">Enable the Irrlicht renderer.</flag>
@@ -17,7 +18,6 @@
     <flag name="opengl">Enable the OpenGL renderer.</flag>
     <flag name="pcre">Enable the use of the PCRE library for regular expression support.</flag>
     <flag name="python">Enable building of the Python extension module.</flag>
-    <flag name="samples">Enable building of samples framework and applications.</flag>
     <flag name="stb">Enable STB based ImageCodec module.</flag>
     <flag name="tga">Enable basic TGA loading ImageCodec module.</flag>
     <flag name="tinyxml">Enable the Tiny XML parser module.</flag>
