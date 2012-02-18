@@ -14,15 +14,14 @@ SRC_URI="mirror://sourceforge/crayzedsgui/${MY_P}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 -ppc ~x86"
-IUSE="bidi debug devil directfb doc examples expat freeimage gtk irrlicht lua null-renderer ogre opengl pcre python \
-	static-libs stb tga tinyxml truetype xerces-c xml zip" # corona rapidxml silly
+IUSE="bidi debug +devil doc examples expat gtk irrlicht lua +null-renderer ogre +opengl pcre \
+	static-libs +stb +tga tinyxml truetype +xerces-c xml zip" # corona directfb freeimage python rapidxml silly
 REQUIRED_USE="|| ( expat tinyxml xerces-c xml )" # bug 362223
 
 RDEPEND="bidi? ( dev-libs/fribidi )
 	devil? ( media-libs/devil )
 	examples? ( gtk? ( x11-libs/gtk+:2 ) )
 	expat? ( dev-libs/expat )
-	freeimage? ( media-libs/freeimage )
 	truetype? ( media-libs/freetype:2 )
 	irrlicht? ( dev-games/irrlicht )
 	lua? (
@@ -64,10 +63,12 @@ src_configure() {
 		$(use_enable debug) \
 		--disable-dependency-tracking \
 		$(use_enable devil) \
-		$(use_enable directfb directfb-renderer) \
+		--disable-directfb-renderer
+#		$(use_enable directfb directfb-renderer) \
 		$(use_enable examples samples) \
 		$(use_enable expat) \
-		$(use_enable freeimage) \
+		--disable-freeimage
+#		$(use_enable freeimage) \
 		$(use_enable truetype freetype) \
 		$(use_enable irrlicht irrlicht-renderer) \
 		$(use_enable lua lua-module) \
@@ -78,7 +79,8 @@ src_configure() {
 		$(use_enable opengl opengl-renderer) \
 		--enable-external-glew \
 		$(use_enable pcre) \
-		$(use_enable python python-module) \
+		--disable-python-module
+#		$(use_enable python python-module) \
 		--disable-rapidxml \
 		--enable-shared \
 		--disable-silly \
