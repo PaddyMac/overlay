@@ -3,11 +3,27 @@
 <pkgmetadata>
   <herd>games</herd>
   <use>
-    <flag name="devil">Enable image loading via DevIL</flag>
-    <flag name="irrlicht">Enable the Irrlicht renderer</flag>
-    <flag name="ogre">Enable the OGRE renderer</flag>
-    <flag name="tinyxml">Enable the Tiny XML parser module</flag>
-    <flag name="xerces-c">Enable the Xerces-C++ XML parser module</flag>
-    <flag name="zip">Enable the Minizip resource provider</flag>
+    <flag name="devil">Enable DevIL based ImageCodec module.</flag>
+    <flag name="directfb">Enable the DirectFB renderer. This 
+	renderer is currently broken and incomplete; it should 
+	only be enabled for development and/or testing purposes.</flag>
+    <flag name="expat">Enable building of the expat XML parser module.</flag>
+    <flag name="freeimage">Enable FreeImage based ImageCodec module.</flag>
+    <flag name="irrlicht">Enable the Irrlicht renderer.</flag>
+    <flag name="lua">Enables building of the Lua scripting module and 
+	the custom tolua++ based binding generator tool, tolua++cegui.</flag>
+    <flag name="null-renderer">Enable building the Null renderer module.</flag>
+    <flag name="ogre">Enable the OGRE renderer.</flag>
+    <flag name="opengl">Enable the OpenGL renderer.</flag>
+    <flag name="pcre">Enable the use of the PCRE library for regular expression support.</flag>
+    <flag name="python">Enable building of the Python extension module.</flag>
+    <flag name="samples">Enable building of samples framework and applications.</flag>
+    <flag name="stb">Enable STB based ImageCodec module.</flag>
+    <flag name="tga">Enable basic TGA loading ImageCodec module.</flag>
+    <flag name="tinyxml">Enable the Tiny XML parser module.</flag>
+    <flag name="truetype">Enable the use of the Freetype 2 library for font support.</flag>
+    <flag name="xerces-c">Enable the Xerces-C++ XML parser module.</flag>
+    <flag name="xml">Enable building of the libxml XML parser module.</flag>
+    <flag name="zip">Enable the Minizip resource provider.</flag>
   </use>
 </pkgmetadata>
