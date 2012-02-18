@@ -1,0 +1,14 @@
+Title: Welcome
+Author: Patrick McMunn <doctorwhoguy@gmail.com>
+Content-Type: text/plain
+Posted: 2012-02-17
+Revision: 1
+News-Item-Format: 1.0
+
+Welcome to my overlay. The content of this overlay is experimental in nature.
+This overlay is intended to be a sort of staging ground for new and experimental
+ebuilds. When they are tested and found to be stable and well-writen enough, 
+they will be submitted to the flora overlay. Please email me directly with any 
+feedback, as it is welcome and appreciated. It requires a community effort to 
+ensure that high quality software is available for easy installation on Gentoo 
+and Funtoo systems.
