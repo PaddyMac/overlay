@@ -13,8 +13,8 @@ EHG_REPO_URI="http://bitbucket.org/sinbad/ogre/"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+boost +boost-threads +bsp doc cg +dds double-precision examples +freeimage nedmalloc +newcompiler +octree +ois +opengl +paging +particlefx +pcz poco-threads \
-	+pooling profiling +property pvrtc +rtshader static +terrain test tbb-threads threading +threading2 tools unity viewport +zip"
+IUSE="+boost +boost-threads +bsp doc cg +dds double-precision examples +freeimage nedmalloc +octree +opengl +paging +particlefx +pcz poco-threads \
+	+pooling profiling +property pvrtc +rtshader +scriptcompiler static +terrain test threading +threading2 tools tracker unity viewport +zip"
 RESTRICT="test" #139905
 
 RDEPEND="media-libs/freetype:2
@@ -27,11 +27,11 @@ RDEPEND="media-libs/freetype:2
 	boost? ( dev-libs/boost )
 	boost-threads? ( dev-libs/boost )
 	cg? ( media-gfx/nvidia-cg-toolkit )
-	freeimage? ( media-libs/freeimage )
-	ois? ( dev-games/ois )
+	freeimage? ( media-libs/freeimage[cxx] )
+	dev-games/ois
 	poco-threads? ( dev-libs/poco )
-	tbb-threads? ( dev-cpp/tbb )
-	zip? ( sys-libs/zlib dev-libs/zziplib )"
+	zip? ( sys-libs/zlib dev-libs/zziplib )
+	!boost-threads? ( !poco-threads? ( dev-cpp/tbb ) )"
 DEPEND="${RDEPEND}
 	x11-proto/xf86vidmodeproto
 	dev-util/pkgconfig
@@ -64,7 +64,6 @@ src_configure() {
 		$(cmake-utils_use doc OGRE_INSTALL_DOCS)
 		$(cmake-utils_use examples OGRE_INSTALL_SAMPLES)
 		$(cmake-utils_use freeimage OGRE_CONFIG_ENABLE_FREEIMAGE)
-		$(cmake-utils_use newcompiler OGRE_CONFIG_NEW_COMPILERS)
 		$(cmake-utils_use octree OGRE_BUILD_PLUGIN_OCTREE)
 		$(cmake-utils_use opengl OGRE_BUILD_RENDERSYSTEM_GL)
 		$(cmake-utils_use paging OGRE_BUILD_COMPONENT_PAGING)
@@ -76,12 +75,15 @@ src_configure() {
 		$(cmake-utils_use rtshader OGRE_BUILD_COMPONENT_RTSHADERSYSTEM)
 		$(cmake-utils_use rtshader OGRE_BUILD_RTSHADERSYSTEM_CORE_SHADERS)
 		$(cmake-utils_use rtshader OGRE_BUILD_RTSHADERSYSTEM_EXT_SHADERS)
+		$(cmake-utils_use scriptcompiler OGRE_CONFIG_NEW_COMPILERS)
 		$(cmake-utils_use source OGRE_INSTALL_SAMPLES_SOURCE)
 		$(cmake-utils_use static OGRE_STATIC)
 		$(cmake-utils_use terrain OGRE_BUILD_COMPONENT_TERRAIN)
 		$(cmake-utils_use test OGRE_BUILD_TESTS)
 		$(cmake-utils_use tools OGRE_BUILD_TOOLS)
 		$(cmake-utils_use tools OGRE_INSTALL_TOOLS)
+		$(cmake-utils_use tracker OGRE_CONFIG_MEMTRACK_DEBUG)
+		$(cmake-utils_use tracker OGRE_CONFIG_MEMTRACK_RELEASE)
 		$(cmake-utils_use unity OGRE_UNITY_BUILD)
 		$(cmake-utils_use viewport OGRE_CONFIG_ENABLE_VIEWPORT_ORIENTATIONMODE)
 		$(cmake-utils_use zip OGRE_CONFIG_ENABLE_ZIP)
@@ -113,17 +115,17 @@ src_configure() {
 	if use boost-threads; then
 		einfo "Enabling boost as Threading provider"
 		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREADS=ON -DOGRE_CONFIG_THREAD_PROVIDER=boost"
+			"-DOGRE_CONFIG_THREAD_PROVIDER=boost"
 		)
 	elif use poco-threads; then
 		einfo "Enabling poco as Threading provider"
 		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREADS=ON -DOGRE_CONFIG_THREAD_PROVIDER=poco"
+			"-DOGRE_CONFIG_THREAD_PROVIDER=poco"
 		)
 	else
 		einfo "Enabling tbb as Threading provider"
 		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREADS=ON -DOGRE_CONFIG_THREAD_PROVIDER=tbb"
+			"-DOGRE_CONFIG_THREAD_PROVIDER=tbb"
 		)
 	fi
 

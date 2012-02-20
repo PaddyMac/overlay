@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <use>
+	<flag name='boost'>Use Boost extensions.</flag>
+	<flag name='boost-threads'>Use boost library for thread support. "Boost-threads" and "poco-threads" are mutually exclusive. If both are enabled, "boost-threads" will take precedence. If both are disabled, the default threading provider will be tbb.</flag>
+	<flag name='bsp'>Build BSP SceneManager plugin.</flag>
+	<flag name='cg'>Build Cg plugin.</flag>
+	<flag name='dds'>Build DDS codec.</flag>
+	<flag name='double-precision'>Use doubles instead of floats in Ogre.</flag>
+	<flag name='examples'>Build Ogre demos.</flag>
+	<flag name='freeimage'>Build FreeImage codec. If you disable this option, you need to provide your own image handling codecs.</flag>
+	<flag name='nedmalloc'>Use nedmalloc as the memory allocator. "Nedmalloc" and "pooling" are mutually exclusive. If both are enabled, "pooling" will take precedent. If both are disabled, the standard memory allocator will be used.</flag>
+	<flag name='octree'>Build Octree SceneManager plugin.</flag>
+	<flag name='opengl'>Build OpenGL RenderSystem.</flag>
+	<flag name='paging'>Build Paging component.</flag>
+	<flag name='particlefx'>Build ParticleFX plugin.</flag>
+	<flag name='pcz'>Build PCZ SceneManager plugin.</flag>
+	<flag name='poco-threads'>Use poco library for thread support. "Boost-threads" and "poco-threads" are mutually exclusive. If both are enabled, "boost-threads" will take precedence. If both are disabled, the default threading provider will be tbb.</flag>
+	<flag name='pooling'>Use nedmalloc with pooling as the memory allocator. "Nedmalloc" and "pooling" are mutually exclusive. If both are enabled, "pooling" will take precedent. If both are disabled, the standard memory allocator will be used.</flag>
+	<flag name='profiling'>Enable internal profiling support.</flag>
+	<flag name='property'>Build Property component.</flag>
+	<flag name='pvrtc'>Build PVRTC codec.</flag>
+	<flag name='rtshader'>Build RTShader System component.</flag>
+	<flag name='scriptcompiler'>Use the new script compilers.</flag>
+	<flag name='terrain'>Build Terrain component.</flag>
+	<flag name='threading'>Enable Ogre thread support for background loading: Full background loading. "Threading" and "threading2" are mutually exclusive. If both are enabled, "threading2" will take precedence. If both are disabled, threading is turned off.</flag>
+	<flag name='threading2'>Enable Ogre thread support for background loading: Background resource preparation. "Threading" and "threading2" are mutually exclusive. If both are enabled, "threading2" will take precedence. If both are disabled, threading is turned off.</flag>
+	<flag name='tools'>Build the command-line tools.</flag>
+	<flag name='tracker'>Enable Ogre's memory tracker.</flag>
+	<flag name='unity'>Enable unity build for Ogre.</flag>
+	<flag name='viewport'>Include Viewport orientation mode support.</flag>
+	<flag name='zip'>Build ZIP archive support. If you disable this option, you cannot use ZIP archives resource locations. The samples won't work.</flag>
+    </use>
+    <upstream>
+        <changelog>URL to Online Changelogs</changelog>
+    </upstream>
+</pkgmetadata>
