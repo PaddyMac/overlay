@@ -33,7 +33,7 @@
 	<flag name='threading2'>Enable Ogre thread support for background loading: Background resource preparation. "Threading" and "threading2" are mutually exclusive. If both are enabled, "threading2" will take precedence. If both are disabled, threading is turned off.</flag>
 	<flag name='tools'>Build the command-line tools.</flag>
 	<flag name='tracker'>Enable Ogre's memory tracker.</flag>
-	<flag name='unity'>Enable unity build for Ogre.</flag>
+	<flag name='unity'>Enable unity build for Ogre. This significantly reduces compile time but may cause problems.</flag>
 	<flag name='viewport'>Include Viewport orientation mode support.</flag>
 	<flag name='zip'>Build ZIP archive support. If you disable this option, you cannot use ZIP archives resource locations. The samples won't work.</flag>
     </use>
