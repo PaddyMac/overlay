@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 2012 Funtoo Technologies
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,13 +14,14 @@ SRC_URI="mirror://sourceforge/crayzedsgui/${MY_P}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 -ppc ~x86"
-IUSE="bidi debug +devil doc examples expat gtk irrlicht lua +null-renderer ogre +opengl pcre \
-	static-libs +stb +tga tinyxml truetype +xerces-c xml zip" # corona directfb freeimage python rapidxml silly
+IUSE="bidi debug +devil directfb doc examples expat gtk irrlicht lua +null-renderer ogre +opengl pcre python rapidxml \
+	static-libs +stb +tga tinyxml truetype +xerces-c xml zip" # corona freeimage silly
 REQUIRED_USE="|| ( expat tinyxml xerces-c xml )" # bug 362223
 
 RDEPEND="bidi? ( dev-libs/fribidi )
 	devil? ( media-libs/devil )
-	examples? ( gtk? ( x11-libs/gtk+:2 ) )
+	examples? ( gtk? ( x11-libs/gtk+:2 )
+		media-libs/jpeg )
 	expat? ( dev-libs/expat )
 	truetype? ( media-libs/freetype:2 )
 	irrlicht? ( dev-games/irrlicht )
@@ -41,9 +42,21 @@ RDEPEND="bidi? ( dev-libs/fribidi )
 	xml? ( dev-libs/libxml2 )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	python? ( sys-apps/mlocate )"
 
 S=${WORKDIR}/${MY_P}
+
+pkg_setup() {
+	pkg_setup
+
+	if use directfb; then
+		einfo
+		einfo You have enabled the DirectFB renderer. This renderer is currently broken and incomplete.
+		einfo It should only be enabled for development and/or testing purposes.
+		einfo
+	fi
+}
 
 src_prepare() {
 	# build with newer zlib (bug #389863)
@@ -57,18 +70,16 @@ src_prepare() {
 }
 
 src_configure() {
+
 	econf \
 		$(use_enable bidi bidirectional-text) \
 		--disable-corona \
 		$(use_enable debug) \
 		--disable-dependency-tracking \
 		$(use_enable devil) \
-		--disable-directfb-renderer
-#		$(use_enable directfb directfb-renderer) \
+		$(use_enable directfb directfb-renderer) \
 		$(use_enable examples samples) \
 		$(use_enable expat) \
-		--disable-freeimage
-#		$(use_enable freeimage) \
 		$(use_enable truetype freetype) \
 		$(use_enable irrlicht irrlicht-renderer) \
 		$(use_enable lua lua-module) \
@@ -79,9 +90,8 @@ src_configure() {
 		$(use_enable opengl opengl-renderer) \
 		--enable-external-glew \
 		$(use_enable pcre) \
-		--disable-python-module
-#		$(use_enable python python-module) \
-		--disable-rapidxml \
+		$(use_enable python python-module) \
+		$(use_enable rapidxml) \
 		--enable-shared \
 		--disable-silly \
 		$(use_enable stb) \
