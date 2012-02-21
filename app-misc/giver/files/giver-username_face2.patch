@@ -1,0 +1,342 @@
+--- Utilities.cs
++++ Utilities.cs
+@@ -25,6 +25,7 @@
+ using System.Net;
+ using System.IO;
+ using System.Security.Cryptography;
++using Mono.Unix;
+ 
+ 
+ namespace Giver
+@@ -247,5 +248,43 @@
+         }
+ 
+ 
++        public static Gdk.Pixbuf GetUserFaceIcon(int size)
++        {
++			try {
++				Gdk.Pixbuf ret = new Gdk.Pixbuf (Utilities.GetUserFacePath());
++				return ret.ScaleSimple (size, size, Gdk.InterpType.Bilinear);
++			} catch (ArgumentException) {}
++			
++			Logger.Debug ("Unable to load user face.");
++			return null;
++        }
++        
++        public static bool UserFaceExists()
++        {
++            return File.Exists(Utilities.GetUserFacePath());
++        }
++        
++        public static string GetUserFacePath()
++        {
++            /*
++                TODO this can be extended to also check for user faces at /opt/gnome/share/pixmaps/faces
++                     or whatever face file/directories supported by other login managers
++             */
++            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),".face");
++        }
++        
++        public static string GetUserName()
++        {
++            UnixUserInfo user = UnixUserInfo.GetRealUser();
++            string username = null;
++            if ( user.RealName != null && user.RealName.Length > 0)
++                username = user.RealName.Split(new char[]{','})[0];
++            
++            if ( username == null || username == "")
++                username = Environment.UserName;
++            
++            return username;
++        }
++        
+ 	}
+ }
+Index: PreferencesDialog.cs
+===================================================================
+--- PreferencesDialog.cs	(revision 76)
++++ PreferencesDialog.cs	(working copy)
+@@ -31,6 +31,7 @@
+ 		private FileChooserButton	fileLocationButton;
+ 		private Gtk.Entry 			nameEntry;
+ 		private Gtk.RadioButton		noneButton;
++		private Gtk.RadioButton		faceButton;
+ 		private Gtk.RadioButton		localButton;
+ 		private Gtk.RadioButton		webButton;
+ 		private Gtk.RadioButton		gravatarButton;
+@@ -107,7 +108,7 @@
+ 			label.Markup = "<span weight=\"bold\" size=\"large\">Your Picture</span>";
+ 			mainVBox.PackStart(label, true, true, 0);
+ 		
+-			Gtk.Table table = new Table(4, 3, false);
++			Gtk.Table table = new Table(5, 3, false);
+ 			table.Show();
+ 			// None Entry
+ 			noneButton = new RadioButton((Gtk.RadioButton)null);
+@@ -126,10 +127,36 @@
+ 			vbox.Show();
+ 			table.Attach(vbox, 2,3,1,2, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0, 0);
+ 
++            // Face Entry
++            if (Utilities.UserFaceExists())
++            {
++                
++    			faceButton = new RadioButton(noneButton);
++    			faceButton.Show();
++    			table.Attach(faceButton, 0, 1, 1, 2, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++                
++    			vbox = new VBox();
++    			vbox.Show();
++                
++    			image = new Image(Utilities.GetUserFaceIcon(48));
++    			image.Show();
++    			vbox.PackStart(image, false, false, 0);
++                
++    			label = new Label("Login photo");
++    			label.Show();
++    			vbox.PackStart(label, false, false, 0);
++    			table.Attach(vbox, 1, 2, 1 ,2, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++                
++    			vbox = new VBox();
++    			vbox.Show();
++    			table.Attach(vbox, 2,3,2,3, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0, 0);
++
++            }
++            
+ 			// Local Entry
+-			localButton = new RadioButton(noneButton);
++			localButton = new RadioButton(faceButton ?? noneButton);
+ 			localButton.Show();
+-			table.Attach(localButton, 0, 1, 1, 2, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++			table.Attach(localButton, 0, 1, 2, 3, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
+ 			vbox = new VBox();
+ 			vbox.Show();
+ 			localImage = new Image(Utilities.GetIcon("stock_person", 48));
+@@ -138,15 +165,15 @@
+ 			label = new Label("File");
+ 			label.Show();
+ 			vbox.PackStart(label, false, false, 0);
+-			table.Attach(vbox, 1, 2, 1 ,2, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++			table.Attach(vbox, 1, 2, 2 ,3, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
+ 			photoButton = new Button("Change Photo");
+ 			photoButton.Show();
+-			table.Attach(photoButton, 2,3,1,2, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Shrink, 0, 0);
++			table.Attach(photoButton, 2,3,2,3, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Shrink, 0, 0);
+ 
+ 			// Web Entry
+ 			webButton = new RadioButton(noneButton);
+ 			webButton.Show();
+-			table.Attach(webButton, 0, 1, 2, 3, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++			table.Attach(webButton, 0, 1, 3, 4, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
+ 			vbox = new VBox();
+ 			vbox.Show();
+ 			image = new Image(Utilities.GetIcon("web-browser", 48));
+@@ -155,15 +182,15 @@
+ 			label = new Label("Web Link");
+ 			label.Show();
+ 			vbox.PackStart(label, false, false, 0);
+-			table.Attach(vbox, 1, 2, 2 ,3, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++			table.Attach(vbox, 1, 2, 3, 4, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
+ 			webEntry = new Entry();
+ 			webEntry.Show();
+-			table.Attach(webEntry, 2,3,2,3, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0, 0);
++			table.Attach(webEntry, 2,3,3,4, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0, 0);
+ 
+ 			// Gravatar Entry
+ 			gravatarButton = new RadioButton(noneButton);
+ 			gravatarButton.Show();
+-			table.Attach(gravatarButton, 0, 1, 3, 4, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++			table.Attach(gravatarButton, 0, 1, 4, 5, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
+ 			vbox = new VBox();
+ 			vbox.Show();
+ 			image = new Image(Utilities.GetIcon("gravatar", 48));
+@@ -172,10 +199,10 @@
+ 			label = new Label("Gravatar");
+ 			label.Show();
+ 			vbox.PackStart(label, false, false, 0);
+-			table.Attach(vbox, 1, 2, 3 ,4, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
++			table.Attach(vbox, 1, 2, 4 ,5, AttachOptions.Shrink, AttachOptions.Shrink, 0, 0);
+ 			gravatarEntry = new Entry();
+ 			gravatarEntry.Show();
+-			table.Attach(gravatarEntry, 2,3,3,4, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0, 0);
++			table.Attach(gravatarEntry, 2,3,4,5, AttachOptions.Expand | AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0, 0);
+ 
+ 			mainVBox.PackStart(table, true, true, 0);
+ 
+@@ -230,6 +257,8 @@
+ 				photoButton
+ 				localImage
+ */
++            } else if (Giver.Application.Preferences.PhotoType.CompareTo(Giver.Preferences.UserFace) == 0) {
++                faceButton.Active = true;
+ 			} else if(Giver.Application.Preferences.PhotoType.CompareTo(Giver.Preferences.Uri) == 0) {
+ 				webButton.Active = true;
+ 				webEntry.Text = Giver.Application.Preferences.PhotoLocation;
+@@ -239,7 +268,13 @@
+ 				gravatarEntry.Text = Giver.Application.Preferences.PhotoLocation;
+ 			} else {
+ 				// make this none
+-				noneButton.Active = true;
++                if (Utilities.UserFaceExists())
++                {
++                    faceButton.Active = true;
++                    Giver.Application.Preferences.PhotoType = Preferences.UserFace;
++                }
++                else
++				    noneButton.Active = true;
+ 			}
+ 		}
+ 
+@@ -264,6 +299,17 @@
+ 				}
+ 			};
+ 
++            if (faceButton != null)
++                faceButton.Toggled += delegate {
++                    if (faceButton.Active)
++                    {
++                        Application.Preferences.PhotoType = Preferences.UserFace;
++    					photoButton.Sensitive = false;
++    					webEntry.Sensitive = false;
++    					gravatarEntry.Sensitive = false;
++                    }
++                };
++            
+ 			localButton.Toggled += delegate {
+ 				if(localButton.Active)
+ 				{
+Index: ServiceLocator.cs
+===================================================================
+--- ServiceLocator.cs	(revision 76)
++++ ServiceLocator.cs	(working copy)
+@@ -241,7 +241,8 @@
+ 					
+ 					if(serviceInfo.PhotoType.CompareTo(Preferences.Local) == 0 ||
+						serviceInfo.PhotoType.CompareTo (Preferences.Gravatar) == 0 ||
+-						serviceInfo.PhotoType.CompareTo (Preferences.Uri) == 0) {
++						serviceInfo.PhotoType.CompareTo (Preferences.Gravatar) == 0 ||
++						serviceInfo.PhotoType.CompareTo(Preferences.UserFace) == 0) {
+						// Queue the resolution of the photo
+ 						PhotoService.QueueResolve (serviceInfo);
+					}
+Index: RequestHandler.cs
+===================================================================
+--- RequestHandler.cs	(revision 76)
++++ RequestHandler.cs	(working copy)
+@@ -428,7 +428,8 @@
+ 		private void HandlePhoto(HttpListenerContext context)
+ 		{
+ 			// get the information about what wants to be sent
+-			if(Application.Preferences.PhotoType.CompareTo(Preferences.Local) != 0)
++			if(Application.Preferences.PhotoType.CompareTo(Preferences.Local) != 0 && 
++               Application.Preferences.PhotoType.CompareTo(Preferences.UserFace) != 0)
+ 			{
+ 				context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+ 				context.Response.StatusDescription = Application.Preferences.PhotoLocation;
+@@ -438,8 +439,12 @@
+ 
+ 			try
+ 			{
++                string location = Application.Preferences.PhotoLocation;
++                if (Application.Preferences.PhotoType.CompareTo(Preferences.UserFace) == 0)
++                    location = Utilities.GetUserFacePath();
++                
+ 				FileStream fs = 
+-					File.Open(Application.Preferences.PhotoLocation, FileMode.Open, FileAccess.Read);
++					File.Open(location, FileMode.Open, FileAccess.Read);
+ 				Stream stream = context.Response.OutputStream;
+ 				context.Response.ContentLength64 = fs.Length;
+ 				context.Response.StatusCode = (int)HttpStatusCode.OK;
+Index: GiverService.cs
+===================================================================
+--- GiverService.cs	(revision 76)
++++ GiverService.cs	(working copy)
+@@ -121,6 +121,12 @@
+ 													"Version=" + Defines.Version,
+ 													"PhotoType=" + Preferences.Local,
+ 													"Photo=none" };
++                    } else if (Application.Preferences.PhotoType.CompareTo(Preferences.UserFace) == 0) {
++						txtStrings = new string[] { "User Name=" + Application.Preferences.UserName, 
++													"Machine Name=" + Environment.MachineName, 
++													"Version=" + Defines.Version,
++													"PhotoType=" + Preferences.UserFace,
++													"Photo=none" };	
+ 					} else if( Application.Preferences.PhotoType.CompareTo(Preferences.Gravatar) == 0) {
+ 						txtStrings = new string[] { "User Name=" + Application.Preferences.UserName, 
+ 													"Machine Name=" + Environment.MachineName, 
+Index: Preferences.cs
+===================================================================
+--- Preferences.cs	(revision 76)
++++ Preferences.cs	(working copy)
+@@ -31,6 +31,7 @@
+ 	public class Preferences
+ 	{
+ 		public const string None = "none";
++        public const string UserFace = "face";
+ 		public const string Local = "local";
+ 		public const string Gravatar = "gravatar";
+ 		public const string Uri = "uri";
+@@ -48,9 +49,21 @@
+ 				XmlNodeList list = document.GetElementsByTagName("PhotoType");
+ 				XmlElement element = (XmlElement) list[0];
+ 				if(element == null)
+-					return Preferences.None;
+-				else
++                {
++                    if (Utilities.UserFaceExists())
++                        return Preferences.UserFace;
++                    else
++					    return Preferences.None;
++                }
++				else
++                {
++                    if (element.InnerText.CompareTo(Preferences.UserFace) == 0 && !Utilities.UserFaceExists())
++                    {
++                        element.InnerText = Preferences.None;
++                        SavePrefs();
++                    }
+ 					return element.InnerText;
++                }
+ 			}
+ 			
+ 			set
+@@ -91,7 +104,6 @@
+ 			}
+ 		}
+ 
+-
+ 		public string UserName
+ 		{
+ 			get
+@@ -99,7 +111,7 @@
+ 				XmlNodeList list = document.GetElementsByTagName("UserName");
+ 				XmlElement element = (XmlElement) list[0];
+ 				if( (element == null) || (element.InnerText.Length < 1) )
+-					return Environment.UserName;
++					return Utilities.GetUserName();
+ 				else
+ 					return element.InnerText;
+ 			}
+@@ -113,7 +125,7 @@
+ 					document.DocumentElement.AppendChild(element);
+ 				}
+ 				if(value == null)
+-					element.InnerText = Environment.UserName; 
++					element.InnerText = Utilities.GetUserName(); 
+ 				else
+ 					element.InnerText = value; 
+ 				SavePrefs();
+Index: PhotoService.cs
+===================================================================
+--- PhotoService.cs	(revision 76)
++++ PhotoService.cs	(working copy)
+@@ -64,7 +64,8 @@
+ 
+ 				Logger.Debug ("Resolving photo for: {0}", serviceInfo.UserName);
+ 				try {
+-					if (serviceInfo.PhotoType.CompareTo(Preferences.Local) == 0 ) {
++					if (serviceInfo.PhotoType.CompareTo(Preferences.Local) == 0 || 
++                        serviceInfo.PhotoType.CompareTo(Preferences.UserFace) == 0) {
+ 						SendingHandler.GetPhoto (serviceInfo);
+ 						serviceInfo.Photo = serviceInfo.Photo.ScaleSimple(48, 48, Gdk.InterpType.Bilinear);
+ 					} else if (serviceInfo.PhotoType.CompareTo (Preferences.Gravatar) == 0 ){
