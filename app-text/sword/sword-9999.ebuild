@@ -1,6 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 2012 Funtoo Technologies
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/sword/sword-1.6.2.ebuild,v 1.1 2011/06/11 17:52:00 beandog Exp $
+# $Header: $
 
 EAPI="3"
 
