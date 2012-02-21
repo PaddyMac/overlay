@@ -3,13 +3,14 @@
 # $Header: $
 
 EAPI=3
-inherit multilib eutils cmake-utils mercurial
+inherit multilib eutils cmake-utils versionator
 
 MY_PV="${PV//./-}"
+MY_PV="${MY_PV//_rc/RC}"
+
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
-EHG_REPO_URI="http://bitbucket.org/sinbad/ogre/"
-EHG_REVISION="v1-7"
+SRC_URI="mirror://sourceforge/${PN}/${PN}_src_v${MY_PV}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -40,10 +41,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 
 S="${WORKDIR}/${PN}"
-
-src_unpack() {
-	mercurial_src_unpack
-}
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-gcc46.patch"

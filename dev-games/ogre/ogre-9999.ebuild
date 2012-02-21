@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 2012 Funtoo Technologies
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,8 +13,8 @@ EHG_REPO_URI="http://bitbucket.org/sinbad/ogre/"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+boost +boost-threads +bsp doc cg +dds double-precision examples +freeimage nedmalloc +octree +opengl +paging +particlefx +pcz poco-threads \
-	+pooling profiling +property pvrtc +rtshader +scriptcompiler static +terrain test threading +threading2 tools tracker unity viewport +zip"
+IUSE="+boost +boost-threads +bsp debug doc cg +dds double-precision examples +freeimage nedmalloc +octree +opengl +paging +particlefx +pcz poco-threads +pooling \
+	profiling +property pvrtc +rtshader +scriptcompiler static +stl string tbb-threads +terrain test threading +threading2 tools tracker unity viewport +zip"
 RESTRICT="test" #139905
 
 RDEPEND="media-libs/freetype:2
@@ -27,11 +27,11 @@ RDEPEND="media-libs/freetype:2
 	boost? ( dev-libs/boost )
 	boost-threads? ( dev-libs/boost )
 	cg? ( media-gfx/nvidia-cg-toolkit )
-	freeimage? ( media-libs/freeimage[cxx] )
+	freeimage? ( media-libs/freeimage )
 	dev-games/ois
 	poco-threads? ( dev-libs/poco )
 	zip? ( sys-libs/zlib dev-libs/zziplib )
-	!boost-threads? ( !poco-threads? ( dev-cpp/tbb ) )"
+	tbb-threads? ( dev-cpp/tbb )"
 DEPEND="${RDEPEND}
 	x11-proto/xf86vidmodeproto
 	dev-util/pkgconfig
@@ -54,11 +54,19 @@ src_prepare() {
 
 src_configure() {
 
-	local mycmakeargs=(
+	# Determine build type
+	if use debug; then
+		CMAKE_BUILD_TYPE=Debug
+	else
+		CMAKE_BUILD_TYPE=Release
+	fi
+
+	local mycmakeargs+=(
 		"-DOGRE_LIB_DIRECTORY=$(get_libdir)"
 		$(cmake-utils_use boost OGRE_USE_BOOST)
 		$(cmake-utils_use bsp OGRE_BUILD_PLUGIN_BSP)
 		$(cmake-utils_use cg OGRE_BUILD_PLUGIN_CG)
+		$(cmake-utils_use debug CMAKE_VERBOSE_MAKEFILE)
 		$(cmake-utils_use dds OGRE_CONFIG_ENABLE_DDS)
 		$(cmake-utils_use double-precision OGRE_CONFIG_DOUBLE)
 		$(cmake-utils_use doc OGRE_INSTALL_DOCS)
@@ -78,6 +86,8 @@ src_configure() {
 		$(cmake-utils_use scriptcompiler OGRE_CONFIG_NEW_COMPILERS)
 		$(cmake-utils_use source OGRE_INSTALL_SAMPLES_SOURCE)
 		$(cmake-utils_use static OGRE_STATIC)
+		$(cmake-utils_use stl OGRE_CONFIG_CONTAINERS_USE_CUSTOM_ALLOCATOR)
+		$(cmake-utils_use string OGRE_CONFIG_STRING_USE_CUSTOM_ALLOCATOR)
 		$(cmake-utils_use terrain OGRE_BUILD_COMPONENT_TERRAIN)
 		$(cmake-utils_use test OGRE_BUILD_TESTS)
 		$(cmake-utils_use tools OGRE_BUILD_TOOLS)
@@ -110,6 +120,18 @@ src_configure() {
 		)
 	fi
 
+	# Determine Ogre thread support for background loading.
+	if use threading2; then
+		einfo "Setting Ogre thread support for background loading to: Background resource preparation."
+		mycmakeargs+=(
+			"-DOGRE_CONFIG_THREADS=2"
+		)
+	elif use threading; then
+		einfo "Setting Ogre thread support for background loading to: Full background loading."
+		mycmakeargs+=(
+			"-DOGRE_CONFIG_THREADS=1"
+		)
+	fi
 
 	# Determine threading provider to use.
 	if use boost-threads; then
@@ -122,23 +144,10 @@ src_configure() {
 		mycmakeargs+=(
 			"-DOGRE_CONFIG_THREAD_PROVIDER=poco"
 		)
-	else
+	elif use tbb-threads; then
 		einfo "Enabling tbb as Threading provider"
 		mycmakeargs+=(
 			"-DOGRE_CONFIG_THREAD_PROVIDER=tbb"
-		)
-	fi
-
-	# Determine Ogre thread support for background loading.
-	if use threading2; then
-		einfo "Enabling Ogre thread support for background loading: Background resource preparation."
-		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREADS=2"
-		)
-	elif use threading; then
-		einfo "Enabling Ogre thread support for background loading: Full background loading."
-		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREADS=1"
 		)
 	else
 		echo
@@ -149,6 +158,5 @@ src_configure() {
 		)
 	fi
 
-	CMAKE_BUILD_TYPE="Release"
 	cmake-utils_src_configure
 }
