@@ -1,0 +1,21 @@
+diff -rupN SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp SILLY-0.1.0.new/src/loaders/SILLYPNGImageLoader.cpp
+--- SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp	2006-06-18 17:42:12.000000000 -0500
++++ SILLY-0.1.0.new/src/loaders/SILLYPNGImageLoader.cpp	2012-02-20 16:08:13.311804586 -0600
+@@ -41,6 +41,8 @@
+ 
+ #include "loaders/SILLYPNGImageContext.h" 
+ #include <png.h>
++#include <zlib.h>
++
+ // Start section of namespace SILLY
+ namespace SILLY
+ {
+@@ -66,7 +68,7 @@ void PNG_error_function(png_structp png_
+     //  printf("PNG Error: %s\n", error);
+     // copied from libpng's pngerror.cpp
+     jmp_buf buf;
+-    memcpy(buf, png_ptr->jmpbuf, sizeof(jmp_buf));
++    memcpy(buf, png_jmpbuf(png_ptr), sizeof(jmp_buf));
+     longjmp(buf, 1);
+ }
+ 
