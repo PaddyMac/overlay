@@ -14,9 +14,9 @@ SRC_URI="mirror://sourceforge/crayzedsgui/${MY_P}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 -ppc ~x86"
-IUSE="bidi debug +devil directfb doc examples expat gtk irrlicht lua +null-renderer ogre +opengl pcre python rapidxml \
-	static-libs +stb +tga tinyxml truetype +xerces-c xml zip" # corona freeimage silly
-REQUIRED_USE="|| ( expat tinyxml xerces-c xml )" # bug 362223
+IUSE="bidi debug +devil directfb doc examples expat freeimage gtk irrlicht lua +null-renderer ogre +opengl pcre python rapidxml \
+	silly static-libs +stb +tga tinyxml truetype +xerces-c xml zip" # corona
+REQUIRED_USE="|| ( expat rapidxml tinyxml xerces-c xml )" # bug 362223
 
 RDEPEND="bidi? ( dev-libs/fribidi )
 	devil? ( media-libs/devil )
@@ -80,6 +80,7 @@ src_configure() {
 		$(use_enable directfb directfb-renderer) \
 		$(use_enable examples samples) \
 		$(use_enable expat) \
+		$(use_enable freeimage) \
 		$(use_enable truetype freetype) \
 		$(use_enable irrlicht irrlicht-renderer) \
 		$(use_enable lua lua-module) \
@@ -93,7 +94,7 @@ src_configure() {
 		$(use_enable python python-module) \
 		$(use_enable rapidxml) \
 		--enable-shared \
-		--disable-silly \
+		$(use_enable silly) \
 		$(use_enable stb) \
 		$(use_enable tga) \
 		$(use_enable tinyxml) \

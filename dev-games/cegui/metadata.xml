@@ -18,6 +18,8 @@
     <flag name="opengl">Enable the OpenGL renderer.</flag>
     <flag name="pcre">Enable the use of the PCRE library for regular expression support.</flag>
     <flag name="python">Enable building of the Python extension module.</flag>
+    <flag name="rapidxml">Enable building of the RapidXML parser module.</flag>
+    <flag name="silly">Enable SILLY based ImageCodec module.</flag>
     <flag name="stb">Enable STB based ImageCodec module.</flag>
     <flag name="tga">Enable basic TGA loading ImageCodec module.</flag>
     <flag name="tinyxml">Enable the Tiny XML parser module.</flag>
