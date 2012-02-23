@@ -40,10 +40,9 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/ogre_src_v${MY_PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gcc46.patch"
 	if use doc; then
 		sed -i -e "s:share/OGRE/docs:share/doc/${P}:" \
 			Docs/CMakeLists.txt || die "sed failed"
@@ -59,7 +58,7 @@ src_configure() {
 		CMAKE_BUILD_TYPE=Release
 	fi
 
-	local mycmakeargs+=(
+	local mycmakeargs=(
 		"-DOGRE_LIB_DIRECTORY=$(get_libdir)"
 		$(cmake-utils_use boost OGRE_USE_BOOST)
 		$(cmake-utils_use bsp OGRE_BUILD_PLUGIN_BSP)

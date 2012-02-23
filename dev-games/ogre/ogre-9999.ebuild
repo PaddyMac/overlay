@@ -45,7 +45,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gcc46.patch"
 	if use doc; then
 		sed -i -e "s:share/OGRE/docs:share/doc/${P}:" \
 			Docs/CMakeLists.txt || die "sed failed"
