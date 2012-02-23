@@ -6,6 +6,9 @@ dev-games/celayouteditor
 =dev-games/ogre-1.7.9999
 =dev-games/ogre-9999
 
+#Masked until further testing can be done
+=dev-games/ogre-1.8.0_rc1
+
 #Masked until it can be properly tested
 games-engines/openmw
 
