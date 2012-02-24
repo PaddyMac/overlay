@@ -23,6 +23,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND=">=dev-games/ogre-1.7
+	<dev-games/ogre-1.8
 	dev-games/ois
 	>=dev-games/cegui-0.7
 	>=dev-util/cmake-2.6

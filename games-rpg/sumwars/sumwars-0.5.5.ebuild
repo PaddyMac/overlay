@@ -22,6 +22,7 @@ IUSE="debug"
 
 DEPEND="debug? ( dev-libs/poco )
 	>=dev-games/ogre-1.7.3
+	<dev-games/ogre-1.8
 	dev-games/ois
 	dev-games/physfs
 	>=dev-games/cegui-0.7.5[ogre]
@@ -35,11 +36,23 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}_${MY_PV}_src"
 
+# Determine build type
+        if use debug; then
+                CMAKE_BUILD_TYPE=Debug
+        else
+                CMAKE_BUILD_TYPE=Release
+        fi
+
+src_prepare() {
+
+	epatch "${FILESDIR}"/${P}-CMakeLists.txt.patch
+	epatch "${FILESDIR}"/${P}-desktop.patch
+}
+
 src_configure() {
-	# Determine build type
-	if use debug; then
-		CMAKE_BUILD_TYPE=Debug
-	fi
+        # Configure cmake
+        mycmakeargs="
+                -DCMAKE_INSTALL_PREFIX=/usr"
 	
 	cmake-utils_src_configure
 }
@@ -49,26 +62,13 @@ src_compile() {
 }
 
 src_install() {
-	# Install binary
-	newgamesbin ${WORKDIR}/${P}_build/${PN} ${PN}.bin || die "dogamesbin failed"
+
+	DOCS="README"
+
+	cmake-utils_src_install
 
 	# Install wrapper script to execute binary
 	dogamesbin "${FILESDIR}/${PN}"
-
-	# Initialize installation directory
-	insinto "${GAMES_DATADIR}/${PN}"
-
-	# Install data and config files
-	doins -r data lib resources translation authors.txt plugins.cfg resources.cfg || die "doins failed"
-
-	# Install documentation
-	dodoc AUTHORS README
-
-	# Install an icon
-	doicon resources/itempictures/sword.png || die "doicon failed"
-
-	# Creatue desktop menu entry
-	make_desktop_entry "${GAMES_BINDIR}/${PN}" "Summoning Wars" "sword" "Game;RolePlaying" "Path=~/.${PN}"
 
 	prepgamesdirs
 }

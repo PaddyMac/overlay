@@ -22,6 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND=">=dev-games/ogre-1.7
+	<dev-games/ogre-1.8
 	dev-games/ois
 	>=dev-games/cegui-0.7[ogre]
 	dev-games/physfs
@@ -68,7 +69,7 @@ src_install() {
 	doicon resources/itempictures/sword.png || die "doicon failed"
 
 	# Creatue desktop menu entry
-	make_desktop_entry "${GAMES_BINDIR}/${PN}" "Summoning Wars" "sword" "Game;RolePlaying" "Path=~/.${PN}"
+	make_desktop_entry "${GAMES_BINDIR}/${PN}" "Summoning Wars" "sword" "Game;RolePlaying;" "Path=~/.${PN}"
 
 	prepgamesdirs
 }

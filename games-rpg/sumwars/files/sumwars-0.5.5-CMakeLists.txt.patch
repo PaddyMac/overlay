@@ -1,0 +1,34 @@
+diff -rupN sumwars-0.5.5-src/CMakeLists.txt sumwars-0.5.5-src.new/CMakeLists.txt
+--- sumwars-0.5.5-src/CMakeLists.txt	2011-11-14 16:00:48.000000000 -0600
++++ sumwars-0.5.5-src.new/CMakeLists.txt	2012-02-24 00:32:18.822947907 -0600
+@@ -471,27 +471,13 @@ ENDIF(POST_BUILD_COPY)
+ 
+ # install the application
+ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/sumwars
+-  DESTINATION games)
++  DESTINATION games/bin
++  RENAME sumwars.bin)
+ 
+ install(FILES packaging/sumwars.desktop
+   DESTINATION share/applications)
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/icon/SumWarsIcon_16x16.png"
+-  DESTINATION share/icons/hicolor/16x16/
+-  RENAME sumwars.png)
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/icon/SumWarsIcon_24x24.png"
+-  DESTINATION share/icons/hicolor/24x24/
+-  RENAME sumwars.png)
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/icon/SumWarsIcon_32x32.png"
+-  DESTINATION share/icons/hicolor/32x32/
+-  RENAME sumwars.png)
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/icon/SumWarsIcon_48x48.png"
+-  DESTINATION share/icons/hicolor/48x48/
+-  RENAME sumwars.png)
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/icon/SumWarsIcon_64x64.png"
+-  DESTINATION share/icons/hicolor/64x64/
+-  RENAME sumwars.png)
+ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/icon/SumWarsIcon_128x128.png"
+-  DESTINATION share/icons/hicolor/128x128/
++  DESTINATION share/pixmaps
+   RENAME sumwars.png)
+ 
+ execute_process(COMMAND sed "s|INSTALL_PATH|${CFG_FILES_DIR}|g" "${CMAKE_CURRENT_SOURCE_DIR}/resources.cfg.in" OUTPUT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/resources.cfg")

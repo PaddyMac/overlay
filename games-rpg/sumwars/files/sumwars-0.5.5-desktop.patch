@@ -1,0 +1,10 @@
+diff -rupN sumwars-0.5.5-src/packaging/sumwars.desktop sumwars-0.5.5-src.new/packaging/sumwars.desktop
+--- sumwars-0.5.5-src/packaging/sumwars.desktop	2011-10-27 18:44:37.000000000 -0500
++++ sumwars-0.5.5-src.new/packaging/sumwars.desktop	2012-02-24 00:23:45.647595841 -0600
+@@ -7,5 +7,5 @@ Comment=A multi-player, 3D Action Role-P
+ TryExec=/usr/games/sumwars
+ Exec=/usr/games/sumwars
+ Categories=Game;RolePlaying;
+-Icon=/usr/share/icons/hicolor/128x128/sumwars.png
++Icon=sumwars.png
+ Terminal=false
