@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+boost +boost-threads +bsp debug doc cg +dds double-precision examples +freeimage nedmalloc +octree +opengl +paging +particlefx +pcz poco-threads +pooling \
-	profiling +property pvrtc +rtshader +scriptcompiler static +stl string tbb-threads +terrain test threading +threading2 tools tracker unity viewport +zip"
+	profiling +property pvrtc +rtshader +scriptcompiler source static +stl string tbb-threads +terrain test threading +threading2 tools tracker unity viewport +zip"
 RESTRICT="test" #139905
 
 RDEPEND="media-libs/freetype:2

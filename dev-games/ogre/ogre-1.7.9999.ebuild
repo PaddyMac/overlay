@@ -15,7 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+boost +boost-threads +bsp debug doc cg +dds double-precision examples +freeimage nedmalloc +octree +opengl +paging +particlefx +pcz poco-threads +pooling \
-	profiling +property pvrtc +rtshader +scriptcompiler static +stl string tbb-threads +terrain test threading +threading2 tools tracker unity viewport +zip"
+	profiling +property pvrtc +rtshader +scriptcompiler source static +stl string tbb-threads +terrain test threading +threading2 tools tracker viewport +zip"
 RESTRICT="test" #139905
 
 RDEPEND="media-libs/freetype:2
@@ -46,7 +46,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gcc46.patch"
+#	epatch "${FILESDIR}/${P}-gcc46.patch"
 	if use doc; then
 		sed -i -e "s:share/OGRE/docs:share/doc/${P}:" \
 			Docs/CMakeLists.txt || die "sed failed"
@@ -62,7 +62,7 @@ src_configure() {
 		CMAKE_BUILD_TYPE=Release
 	fi
 
-	local mycmakeargs+=(
+	local mycmakeargs=(
 		"-DOGRE_LIB_DIRECTORY=$(get_libdir)"
 		$(cmake-utils_use boost OGRE_USE_BOOST)
 		$(cmake-utils_use bsp OGRE_BUILD_PLUGIN_BSP)
@@ -95,7 +95,6 @@ src_configure() {
 		$(cmake-utils_use tools OGRE_INSTALL_TOOLS)
 		$(cmake-utils_use tracker OGRE_CONFIG_MEMTRACK_DEBUG)
 		$(cmake-utils_use tracker OGRE_CONFIG_MEMTRACK_RELEASE)
-		$(cmake-utils_use unity OGRE_UNITY_BUILD)
 		$(cmake-utils_use viewport OGRE_CONFIG_ENABLE_VIEWPORT_ORIENTATIONMODE)
 		$(cmake-utils_use zip OGRE_CONFIG_ENABLE_ZIP)
 	)
