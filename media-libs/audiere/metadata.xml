@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <use>
+        <flag name='cdaudio'>Adds support for media-libs/libcdaudio</flag>
+        <flag name='dumb'>Adds support for media-libs/dumb</flag>
+        <flag name='wxwindows'>Adds support for x11-libs/wxGTK</flag>
+    </use>
+</pkgmetadata>
