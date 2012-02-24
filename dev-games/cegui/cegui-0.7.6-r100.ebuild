@@ -23,6 +23,7 @@ RDEPEND="bidi? ( dev-libs/fribidi )
 	examples? ( gtk? ( x11-libs/gtk+:2 )
 		media-libs/jpeg )
 	expat? ( dev-libs/expat )
+	freeimage? ( media-libs/freeimage )
 	truetype? ( media-libs/freetype:2 )
 	irrlicht? ( dev-games/irrlicht )
 	lua? (
@@ -48,7 +49,6 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
-	pkg_setup
 
 	if use directfb; then
 		einfo
