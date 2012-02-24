@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=">=dev-games/cegui-0.7.0[opengl]
+DEPEND=">=dev-games/cegui-0.7.0[opengl,silly]
 	>=x11-libs/wxGTK-2.6.0"
 RDEPEND="${DEPEND}"
 
