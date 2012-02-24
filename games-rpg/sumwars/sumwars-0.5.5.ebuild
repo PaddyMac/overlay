@@ -34,7 +34,7 @@ DEPEND="debug? ( dev-libs/poco )
 	media-libs/libvorbis"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}_${MY_PV}_src"
+S="${WORKDIR}/${P}-src"
 
 # Determine build type
         if use debug; then
