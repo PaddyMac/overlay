@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/games-arcade/smc/smc-1.9.ebuild,v 1.5 2011/04/27 16:39:06 mr_bones_ Exp $
 
 EAPI=3
-inherit base autotools eutils flag-o-matic git-2 games
+inherit autotools eutils flag-o-matic git-2 games
 
 MUSIC_P=SMC_Music_5.0_high
 DESCRIPTION="Secret Maryo Chronicles"
@@ -65,10 +65,10 @@ src_configure() {
 }
 
 src_install() {
-	HTML_DOCS=(${S}/docs/)
 	emake DESTDIR="${D}" install || die
 	newicon data/icon/window_32.png smc.png
 	make_desktop_entry "${PN}" "Secret Maryo Chronicles" "${PN}" "Game;ArcadeGame;"
 	doman makefiles/unix/man/smc.6
+	dohtml docs/{*.css,*.html}
 	prepgamesdirs
 }
