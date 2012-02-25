@@ -9,6 +9,6 @@
     <use>
         <flag name='cdaudio'>Adds support for media-libs/libcdaudio</flag>
         <flag name='dumb'>Adds support for media-libs/dumb</flag>
-        <flag name='wxwindows'>Adds support for x11-libs/wxGTK</flag>
+        <flag name='wxwidgets'>Adds support for x11-libs/wxGTK</flag>
     </use>
 </pkgmetadata>

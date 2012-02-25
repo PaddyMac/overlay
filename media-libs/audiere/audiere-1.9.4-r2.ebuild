@@ -14,14 +14,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cdaudio debug dumb flac speex vorbis wxwindows"
+IUSE="cdaudio debug dumb flac speex vorbis wxwidgets"
 
 RDEPEND="cdaudio? ( media-libs/libcdaudio )
 	dumb? ( media-libs/dumb )
 	flac? ( media-libs/flac )
 	speex? ( media-libs/speex )
 	vorbis? ( media-libs/libvorbis )
-	wxwindows? ( >=x11-libs/wxGTK-2.6 )"
+	wxwidgets? ( >=x11-libs/wxGTK-2.6 )"
 DEPEND="${RDEPEND}"
 
 src_unpack() {
@@ -43,7 +43,7 @@ src_compile() {
 		$(use_enable flac) \
 		$(use_with speex) \
 		$(use_with vorbis) \
-		$(use_enable wxwindows player) || die "econf failed"
+		$(use_enable wxwidgets player) || die "econf failed"
 	emake || die "emake failed"
 }
 
