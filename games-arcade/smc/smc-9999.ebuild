@@ -46,15 +46,17 @@ src_unpack() {
 }
 
 src_prepare() {
-
 	mkdir -p m4
 	cp -f /usr/share/gettext/config.rpath .
-
 	eautoreconf
 }
 
-src_install() {
+src_compile() {
 	games_src_compile
+}
+
+src_install() {
+	emake DESTDIR="${D}" install || die "emake install failed"
 	newicon data/icon/window_32.png smc.png
 	make_desktop_entry "${PN}" "Secret Maryo Chronicles" "${PN}" "Game;ArcadeGame;"
 	doman makefiles/unix/man/smc.6
