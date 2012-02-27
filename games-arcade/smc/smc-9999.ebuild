@@ -15,10 +15,10 @@ EGIT_REPO_URI="git://github.com/FluXy/SMC.git
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="music +nls"
+IUSE="music"
 
 RDEPEND=">=dev-games/cegui-0.7.4[opengl,devil]
-	>=dev-libs/boost-1.44
+	>=dev-libs/boost-1.46
 	virtual/opengl
 	virtual/glu
 	dev-libs/libpcre[unicode]
@@ -43,9 +43,6 @@ src_unpack() {
 		cd ${S}
 		unpack ${MUSIC_P}.zip
 	fi
-
-	# The default filesystem version is 3 for Boost 1.46 and higher, but this line should specify version 3 in case end users are using Boost 1.44 or 1.45.
-	append-flags -DBOOST_FILESYSTEM_VERSION=3
 }
 
 src_prepare() {
@@ -56,16 +53,8 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-
-	egamesconf \
-		
-		$(use_enable nls)
-
-}
-
 src_install() {
-	emake DESTDIR="${D}" install || die
+	games_src_compile
 	newicon data/icon/window_32.png smc.png
 	make_desktop_entry "${PN}" "Secret Maryo Chronicles" "${PN}" "Game;ArcadeGame;"
 	doman makefiles/unix/man/smc.6
