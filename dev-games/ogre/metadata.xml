@@ -32,8 +32,7 @@
 	<flag name='string'>Enable strings to use the memory allocator.</flag>
 	<flag name='tbb-threads'>Use tbb library for threads support. Boost-threads, poco-threads, and tbb-threads are mutually exclusive. If more than one is enabled, boost takes precedence followed by poco then tbb. If none are enabled, threading will be disabled.</flag>
 	<flag name='terrain'>Build Terrain component.</flag>
-	<flag name='threading'>Enable Ogre thread support for background loading: Full background loading. "Threading" and "threading2" are mutually exclusive. If both are enabled, "threading2" will take precedence.</flag>
-	<flag name='threading2'>Enable Ogre thread support for background loading: Background resource preparation. "Threading" and "threading2" are mutually exclusive. If both are enabled, "threading2" will take precedence.</flag>
+	<flag name='threading'>Flag enabled: Ogre threading strategy for background loading will be background resource preparation. Flag disabled: Ogre threading strategy for background loading will be full background loading.</flag>
 	<flag name='tools'>Build the command-line tools.</flag>
 	<flag name='tracker'>Enable Ogre's memory tracker.</flag>
 	<flag name='unity'>Enable unity build for Ogre. This significantly reduces compile time but may cause problems.</flag>

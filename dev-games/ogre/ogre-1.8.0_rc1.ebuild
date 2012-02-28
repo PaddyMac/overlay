@@ -96,6 +96,8 @@ src_configure() {
 		$(cmake-utils_use zip OGRE_CONFIG_ENABLE_ZIP)
 	)
 
+	use cg && [ -d /opt/nvidia-cg-toolkit ] && ogre_dynamic_config+="-DCg_HOME=/opt/nvidia-cg-toolkit"
+
 	use freeimage && LDFLAGS="$LDFLAGS $(pkg-config --libs freeimage)"
 
 
@@ -117,35 +119,55 @@ src_configure() {
 		)
 	fi
 
-	# Determine Ogre thread support for background loading.
-	if use threading2; then
-		einfo "Setting Ogre thread support for background loading to: Background resource preparation."
-		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREADS=2"
-		)
-	elif use threading; then
-		einfo "Setting Ogre thread support for background loading to: Full background loading."
-		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREADS=1"
-		)
-	fi
-
-	# Determine threading provider to use.
-	if use boost-threads; then
-		einfo "Enabling boost as Threading provider"
-		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREAD_PROVIDER=boost"
-		)
-	elif use poco-threads; then
-		einfo "Enabling poco as Threading provider"
-		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREAD_PROVIDER=poco"
-		)
-	elif use tbb-threads; then
-		einfo "Enabling tbb as Threading provider"
-		mycmakeargs+=(
-			"-DOGRE_CONFIG_THREAD_PROVIDER=tbb"
-		)
+        # Determine threading provider and threading strategy to use.
+        if use boost-threads; then
+                if use threading; then
+                        einfo "Enabling boost as Threading provider"
+                        einfo "Setting Ogre thread support for background loading to: Background resource preparation."
+                        mycmakeargs+=(
+                                "-DOGRE_CONFIG_THREAD_PROVIDER=boost"
+                                "-DOGRE_CONFIG_THREADS=2"
+                        )
+                else
+                        einfo "Enabling boost as Threading provider"
+                        einfo "Setting Ogre thread support for background loading to: Full background loading."
+                        mycmakeargs+=(
+                                "-DOGRE_CONFIG_THREAD_PROVIDER=boost"
+                                "-DOGRE_CONFIG_THREADS=1"
+                        )
+                fi
+        elif use poco-threads; then
+                if use threading; then
+                        einfo "Enabling poco as Threading provider"
+                        einfo "Setting Ogre thread support for background loading to: Background resource preparation."
+                        mycmakeargs+=(
+                                "-DOGRE_CONFIG_THREAD_PROVIDER=poco"
+                                "-DOGRE_CONFIG_THREADS=2"
+                        )
+                else
+                        einfo "Enabling poco as Threading provider"
+                        einfo "Setting Ogre thread support for background loading to: Full background loading."
+                        mycmakeargs+=(
+                                "-DOGRE_CONFIG_THREAD_PROVIDER=poco"
+                                "-DOGRE_CONFIG_THREADS=1"
+                        )
+                fi
+        elif use tbb-threads; then
+                if use threading; then
+                        einfo "Enabling tbb as Threading provider"
+                        einfo "Setting Ogre thread support for background loading to: Background resource preparation."
+                        mycmakeargs+=(
+                                "-DOGRE_CONFIG_THREAD_PROVIDER=tbb"
+                                "-DOGRE_CONFIG_THREADS=2"
+                        )
+                else
+                        einfo "Enabling poco as Threading provider"
+                        einfo "Setting Ogre thread support for background loading to: Full background loading."
+                        mycmakeargs+=(
+                                "-DOGRE_CONFIG_THREAD_PROVIDER=poco"
+                                "-DOGRE_CONFIG_THREADS=1"
+                        )
+                fi
 	else
 		echo
 		ewarn "Ogre thread support for background loading is disabled!"
