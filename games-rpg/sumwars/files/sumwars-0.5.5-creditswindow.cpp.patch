@@ -1,0 +1,12 @@
+diff -rupN sumwars-0.5.5-src/src/gui/creditswindow.cpp sumwars-0.5.5-src.new/src/gui/creditswindow.cpp
+--- sumwars-0.5.5-src/src/gui/creditswindow.cpp	2011-10-28 03:32:13.000000000 -0500
++++ sumwars-0.5.5-src.new/src/gui/creditswindow.cpp	2012-02-28 13:45:18.395293594 -0600
+@@ -62,7 +62,7 @@ CreditsWindow::CreditsWindow(Document* d
+     path = resPath;
+     cf.load(path + "/authors.txt");
+ #elif defined (__unix__)
+-	cf.load(std::string(CFG_FILES_DIR) + "authors.txt");
++	cf.load(std::string(CFG_FILES_DIR) + "/authors.txt");
+ #else // WINDOWS
+ 	cf.load("authors.txt");
+ #endif

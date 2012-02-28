@@ -45,8 +45,9 @@ S="${WORKDIR}/${P}-src"
 
 src_prepare() {
 
-	epatch "${FILESDIR}"/${P}-CMakeLists.txt.patch
-	epatch "${FILESDIR}"/${P}-desktop.patch
+	epatch "${FILESDIR}/${P}-CMakeLists.txt.patch"
+	epatch "${FILESDIR}/${P}-desktop.patch"
+	epatch "${FILESDIR}/${P}-creditswindow.cpp.patch"
 }
 
 src_configure() {
