@@ -40,7 +40,7 @@ DEPEND="app-arch/p7zip
 	net-libs/gnutls
 	libircclient? ( !static-libs? ( >=net-libs/libircclient-1.6 ) )
 	>=net-misc/curl-7.21.0
-	miniupnpc? ( !static-libs? ( net-libs/miniupnpc ) )
+	miniupnpc? ( !static-libs? ( >=net-libs/miniupnpc-1.6-r1 ) )
 	manpages? ( sys-apps/help2man )
 	sys-libs/zlib
 	virtual/jpeg
