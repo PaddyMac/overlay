@@ -10,7 +10,7 @@ MY_GAMES_BINDIR="${GAMES_BINDIR#/usr/}"
 MY_GAMES_DATADIR="${GAMES_DATADIR#/usr/}"
 DESCRIPTION="Data files for the cross-platform 3D realtime strategy game MegaGlest"
 HOMEPAGE="http://www.megaglest.org/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${PV}.tar.xz"
+SRC_URI="mirror://sourceforge/${MY_PN}/${PN}-${PV}.tar.xz"
 
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
