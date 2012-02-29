@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 2012 Funtoo Technologies
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -67,9 +67,6 @@ src_install() {
 	DOCS="README"
 
 	cmake-utils_src_install
-
-	# Install wrapper script to execute binary
-	dogamesbin "${FILESDIR}/${PN}"
 
 	prepgamesdirs
 }

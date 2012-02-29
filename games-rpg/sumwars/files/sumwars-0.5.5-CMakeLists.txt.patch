@@ -7,7 +7,6 @@ diff -rupN sumwars-0.5.5-src/CMakeLists.txt sumwars-0.5.5-src.new/CMakeLists.txt
  install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/sumwars
 -  DESTINATION games)
 +  DESTINATION games/bin
-+  RENAME sumwars.bin)
  
  install(FILES packaging/sumwars.desktop
    DESTINATION share/applications)

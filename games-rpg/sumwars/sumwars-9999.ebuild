@@ -1,18 +1,20 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 2012 Funtoo Technologies
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=3
 
-inherit eutils games versionator cmake-utils subversion
+inherit eutils games versionator cmake-utils mercurial
 
+MY_GAMES_BINDIR="${GAMES_BINDIR#/usr/}"
+MY_GAMES_DATADIR="${GAMES_DATADIR#/usr/}"
 MY_PV=$(replace_all_version_separators '-')
 DESCRIPTION="open source role-playing game featuring both a single-player and a multiplayer mode for about 2 to 8 players"
 
 HOMEPAGE="http://sumwars.org/"
 
 #SRC_URI="mirror://sourceforge/${PN}/${PN}_${MY_PV}_src.tgz"
-ESVN_REPO_URI="http://sumwars.svn.sourceforge.net/svnroot/sumwars/trunk"
+EHG_REPO_URI="https://bitbucket.org/sumwars/sumwars-code"
 
 LICENSE="GPL-3"
 
@@ -20,11 +22,14 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug"
+IUSE="debug +noenet +notinyxml +randomregions tools"
 
-DEPEND=">=dev-games/ogre-1.7
+DEPEND="noenet? ( net-libs/enet )
+	notinyxml? ( dev-libs/tinyxml )
+	>=dev-games/ogre-1.7
 	<dev-games/ogre-1.8
 	dev-games/ois
+	dev-games/physfs
 	>=dev-games/cegui-0.7
 	>=dev-util/cmake-2.6
 	media-libs/freealut
@@ -37,8 +42,13 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}"
 
 src_unpack() {
-	subversion_src_unpack
+	mercurial_src_unpack
 }
+
+#src_prepare() {
+#	epatch "${FILESDIR}/${P}-CMakeLists.txt.patch"
+#	epatch "${FILESDIR}/${P}-desktop.patch"
+#}
 
 src_configure() {
 
@@ -50,10 +60,21 @@ src_configure() {
 	fi
 
 	# Configure cmake
-	mycmakeargs="
-		-DCMAKE_INSTALL_PREFIX=/usr
-		-DUPDATE_SUBVERSION_REVISION=off"
-
+	local mycmakeargs=(
+		"-DCMAKE_INSTALL_PREFIX=/usr"
+		"-DSUMWARS_DOC_DIR=share/doc/${P}"
+		"-DSUMWARS_EXECUTABLE_DIR=MY_GAMES_BINDIR}"
+		"-DSUMWARS_PORTABLE_MODE=OFF"
+		"-DSUMWARS_POST_BUILD_COPY=OFF"
+		"-DSUMWARS_SHARE_DIR=${MY_GAMES_DATADIR}/${PN}"
+		"-DSUMWARS_STANDALONE_MODE=OFF"
+		"-DSUMWARS_UPDATE_HG_REVISION=ON"
+		$(cmake-utils_use noenet SUMWARS_NO_ENET)
+		$(cmake-utils_use notinyxml SUMWARS_NO_TINYXML)
+		$(cmake-utils_use randomregions SUMWARS_RANDOM_REGIONS)
+		$(cmake-utils_use tools SUMWARS_BUILD_TOOLS)
+	)
+		
 	cmake-utils_src_configure
 }
 
@@ -62,26 +83,10 @@ src_compile() {
 }
 
 src_install() {
-	# Install binary
-	newgamesbin ${WORKDIR}/${P}_build/${PN} ${PN}.bin || die "dogamesbin failed"
 
-	# Install wrapper script to execute binary
-	dogamesbin "${FILESDIR}/${PN}"
+	DOCS="README"
 
-	# Initialize installation directory
-	insinto "${GAMES_DATADIR}/${PN}"
-
-	# Install data and config files
-	doins -r data lib resources translation authors.txt plugins.cfg resources.cfg || die "doins failed"
-
-	# Install documentation
-	dodoc AUTHORS README
-
-	# Install an icon
-	doicon resources/itempictures/sword.png || die "doicon failed"
-
-	# Creatue desktop menu entry
-	make_desktop_entry "${GAMES_BINDIR}/${PN}" "Summoning Wars" "sword" "Game;RolePlaying" "~/.${PN}"
+	cmake-utils_src_install
 
 	prepgamesdirs
 }
