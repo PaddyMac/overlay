@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 2012 Funtoo Technologies
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -59,11 +59,11 @@ S=${WORKDIR}/${PN}-${PV}
 pkg_setup() {
 	games_pkg_setup
 
-	if ( use libircclient || use miniupnpc ); then
+	if ( use !configurator || use !editor || ( use freetype && use !ftgl ) || !libircclient || use !manpages || use static-libs || use !tools || use !viewer ); then
 		einfo
-		einfo "If you experience compilation failures with either the libircclient or miniupnpc"
-		einfo "USE flags enabled. Try disabling these USE flags in order to use the embedded"
-		einfo "versions of these libraries."
+		einfo "You have chosen a use flag setting which is not default and is known to cause problems. If"
+		einfo "you experience a failure during the configure phase or during compilation, please use the"
+		einfo "default setting as specified in this ebuild. This should be resolved upstream in the future."
 		einfo
 	fi
 }
