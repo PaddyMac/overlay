@@ -15,15 +15,15 @@ EHG_REPO_URI="https://bitbucket.org/sumwars/sumwars-code"
 LICENSE="GPL-3 CC-BY-SA-v3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+noenet +notinyxml +randomregions stl tools"
+IUSE="+enet +tinyxml +randomregions +stl tools"
 
 LANGS="de en it pl pt ru uk"
 for L in ${LANGS} ; do
 	IUSE="${IUSE} linguas_${L}"
 done
 
-DEPEND="noenet? ( =net-libs/enet-1.3* )
-	notinyxml? ( dev-libs/tinyxml[stl=] )
+DEPEND="enet? ( =net-libs/enet-1.3* )
+	tinyxml? ( dev-libs/tinyxml[stl=] )
 	=dev-games/ogre-1.7*
 	dev-games/ois
 	dev-games/physfs
@@ -68,8 +68,8 @@ src_configure() {
 
 	# Options controlled by use flags
 	mycmakeargs+=(
-		$(cmake-utils_use noenet SUMWARS_NO_ENET)
-		$(cmake-utils_use notinyxml SUMWARS_NO_TINYXML)
+		$(cmake-utils_use enet SUMWARS_NO_ENET)
+		$(cmake-utils_use tinyxml SUMWARS_NO_TINYXML)
 		$(cmake-utils_use randomregions SUMWARS_RANDOM_REGIONS)
 		$(cmake-utils_use tools SUMWARS_BUILD_TOOLS)
 	)
