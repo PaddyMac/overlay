@@ -15,7 +15,7 @@ EHG_REPO_URI="https://bitbucket.org/sumwars/sumwars-code"
 LICENSE="GPL-3 CC-BY-SA-v3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +noenet +notinyxml +randomregions stl tools"
+IUSE="+noenet +notinyxml +randomregions stl tools"
 
 LANGS="de en it pl pt ru uk"
 for L in ${LANGS} ; do
@@ -51,17 +51,10 @@ src_prepare() {
 
 src_configure() {
 
-	# Determine build type
-	if use debug; then
-		CMAKE_BUILD_TYPE=Debug
-	else
-		CMAKE_BUILD_TYPE=Release
-	fi
-
 	strip-linguas ${LANGS}
 	use stl && append-cppflags -DTIXML_USE_STL
 
-	# Configure cmake
+	# Hard set options
 	local mycmakeargs=(
 		"-DSUMWARS_DOC_DIR=share/doc/${P}"
 		"-DSUMWARS_EXECUTABLE_DIR=${MY_GAMES_BINDIR}"
@@ -71,6 +64,10 @@ src_configure() {
 		"-DSUMWARS_SHARE_DIR=${MY_GAMES_DATADIR}/${PN}"
 		"-DSUMWARS_STANDALONE_MODE=OFF"
 		"-DSUMWARS_UPDATE_HG_REVISION=ON"
+	)
+
+	# Options controlled by use flags
+	mycmakeargs+=(
 		$(cmake-utils_use noenet SUMWARS_NO_ENET)
 		$(cmake-utils_use notinyxml SUMWARS_NO_TINYXML)
 		$(cmake-utils_use randomregions SUMWARS_RANDOM_REGIONS)
