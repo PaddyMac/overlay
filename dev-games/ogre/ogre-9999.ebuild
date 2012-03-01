@@ -53,13 +53,6 @@ src_prepare() {
 
 src_configure() {
 
-	# Determine build type
-	if use debug; then
-		CMAKE_BUILD_TYPE=Debug
-	else
-		CMAKE_BUILD_TYPE=Release
-	fi
-
 	local mycmakeargs=(
 		"-DOGRE_LIB_DIRECTORY=$(get_libdir)"
 		$(cmake-utils_use boost OGRE_USE_BOOST)

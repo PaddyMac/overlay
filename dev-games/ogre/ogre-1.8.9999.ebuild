@@ -3,14 +3,13 @@
 # $Header: $
 
 EAPI=3
-inherit multilib eutils cmake-utils versionator
+inherit multilib eutils cmake-utils mercurial
 
 MY_PV="${PV//./-}"
-MY_PV="${MY_PV//_rc/RC}"
-
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_src_v${MY_PV}.tar.bz2"
+EHG_REPO_URI="http://bitbucket.org/sinbad/ogre/"
+EHG_REVISION="v1-8"
 
 LICENSE="MIT"
 SLOT="0"
@@ -40,7 +39,11 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )"
 
-S="${WORKDIR}/ogre_src_v${MY_PV}"
+S="${WORKDIR}/${PN}"
+
+src_unpack() {
+	mercurial_src_unpack
+}
 
 src_prepare() {
 	if use doc; then
