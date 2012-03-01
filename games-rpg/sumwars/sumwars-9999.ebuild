@@ -4,39 +4,38 @@
 
 EAPI=3
 
-inherit eutils games versionator cmake-utils mercurial
+inherit eutils games flag-o-matic cmake-utils mercurial
 
 MY_GAMES_BINDIR="${GAMES_BINDIR#/usr/}"
 MY_GAMES_DATADIR="${GAMES_DATADIR#/usr/}"
-MY_PV=$(replace_all_version_separators '-')
-DESCRIPTION="open source role-playing game featuring both a single-player and a multiplayer mode for about 2 to 8 players"
 
+DESCRIPTION="a multi-player, 3D action role-playing game"
 HOMEPAGE="http://sumwars.org/"
-
-#SRC_URI="mirror://sourceforge/${PN}/${PN}_${MY_PV}_src.tgz"
 EHG_REPO_URI="https://bitbucket.org/sumwars/sumwars-code"
-
-LICENSE="GPL-3"
-
+LICENSE="GPL-3 CC-BY-SA-v3"
 SLOT="0"
-
 KEYWORDS="~amd64 ~x86"
+IUSE="debug +noenet +notinyxml +randomregions stl tools"
 
-IUSE="debug +noenet +notinyxml +randomregions tools"
+LANGS="de en it pl pt ru uk"
+for L in ${LANGS} ; do
+	IUSE="${IUSE} linguas_${L}"
+done
 
-DEPEND="noenet? ( net-libs/enet )
-	notinyxml? ( dev-libs/tinyxml )
-	>=dev-games/ogre-1.7
-	<dev-games/ogre-1.8
+DEPEND="noenet? ( =net-libs/enet-1.3* )
+	notinyxml? ( dev-libs/tinyxml[stl=] )
+	=dev-games/ogre-1.7*
 	dev-games/ois
 	dev-games/physfs
-	>=dev-games/cegui-0.7
+	=dev-games/cegui-0.7*[ogre]
 	>=dev-util/cmake-2.6
 	media-libs/freealut
 	media-libs/openal
 	=dev-lang/lua-5.1*
 	media-libs/libogg
-	media-libs/libvorbis"
+	media-libs/libvorbis
+	x11-libs/libX11
+	x11-libs/libXext"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
@@ -45,25 +44,28 @@ src_unpack() {
 	mercurial_src_unpack
 }
 
-#src_prepare() {
-#	epatch "${FILESDIR}/${P}-CMakeLists.txt.patch"
-#	epatch "${FILESDIR}/${P}-desktop.patch"
-#}
+src_prepare() {
+	epatch "${FILESDIR}/${P}-CMakeLists.txt.patch"
+	epatch "${FILESDIR}/${P}-desktop.patch"
+}
 
 src_configure() {
 
-# Determine build type
+	# Determine build type
 	if use debug; then
 		CMAKE_BUILD_TYPE=Debug
 	else
 		CMAKE_BUILD_TYPE=Release
 	fi
 
+	strip-linguas ${LANGS}
+	use stl && append-cppflags -DTIXML_USE_STL
+
 	# Configure cmake
 	local mycmakeargs=(
-		"-DCMAKE_INSTALL_PREFIX=/usr"
 		"-DSUMWARS_DOC_DIR=share/doc/${P}"
-		"-DSUMWARS_EXECUTABLE_DIR=MY_GAMES_BINDIR}"
+		"-DSUMWARS_EXECUTABLE_DIR=${MY_GAMES_BINDIR}"
+		"-DSUMWARS_LANGUAGES=${LINGUAS}"
 		"-DSUMWARS_PORTABLE_MODE=OFF"
 		"-DSUMWARS_POST_BUILD_COPY=OFF"
 		"-DSUMWARS_SHARE_DIR=${MY_GAMES_DATADIR}/${PN}"
@@ -74,7 +76,7 @@ src_configure() {
 		$(cmake-utils_use randomregions SUMWARS_RANDOM_REGIONS)
 		$(cmake-utils_use tools SUMWARS_BUILD_TOOLS)
 	)
-		
+
 	cmake-utils_src_configure
 }
 
@@ -83,10 +85,6 @@ src_compile() {
 }
 
 src_install() {
-
-	DOCS="README"
-
 	cmake-utils_src_install
-
 	prepgamesdirs
 }

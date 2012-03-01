@@ -1,0 +1,33 @@
+diff -rupN sumwars-code/CMakeLists.txt sumwars-code.new/CMakeLists.txt
+--- sumwars-code/CMakeLists.txt	2012-02-28 20:37:40.480886930 -0600
++++ sumwars-code.new/CMakeLists.txt	2012-02-29 16:43:23.691274213 -0600
+@@ -476,27 +476,12 @@ if (UNIX)
+   install(FILES "packaging/sumwars.desktop"
+     DESTINATION "share/applications")
+     
+-  install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/share/icon/SumWarsIcon_16x16.png"
+-    DESTINATION "share/icons/hicolor/16x16/"
+-    RENAME "sumwars.png")
+-  install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/share/icon/SumWarsIcon_24x24.png"
+-    DESTINATION "share/icons/hicolor/24x24/"
+-    RENAME "sumwars.png")
+-  install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/share/icon/SumWarsIcon_32x32.png"
+-    DESTINATION "share/icons/hicolor/32x32/"
+-    RENAME "sumwars.png")
+-  install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/share/icon/SumWarsIcon_48x48.png"
+-    DESTINATION "share/icons/hicolor/48x48/"
+-    RENAME "sumwars.png")
+-  install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/share/icon/SumWarsIcon_64x64.png"
+-    DESTINATION "share/icons/hicolor/64x64/"
+-    RENAME "sumwars.png")
+   install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/share/icon/SumWarsIcon_128x128.png"
+-    DESTINATION "share/icons/hicolor/128x128/"
++    DESTINATION "share/pixmaps"
+     RENAME "sumwars.png")
+ endif()
+ 
+-install(FILES "AUTHORS" "COPYING" "README" # we intentionally avoid installing "INSTALL" here
++install(FILES "AUTHORS" "README" # we intentionally avoid installing "INSTALL" here
+   DESTINATION "${SUMWARS_DOC_DIR}")
+   
+ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/share/data"
