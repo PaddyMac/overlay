@@ -70,10 +70,6 @@ pkg_setup() {
 
 src_prepare() {
 
-	#The desktop patch adds .desktop files for the configurator, editor, and viewer, and it patches
-	#source/glest_game/CMakeLists.txt so that they will be installed.
-#	epatch "${FILESDIR}"/${P}-desktop.patch
-
 	#This patch corrects the installation locations of icon files and adds additional .desktop files
 	#for the configurator, map editor, and model viewer.
 	epatch "${FILESDIR}"/${P}-CMakeLists.txt.patch
@@ -115,8 +111,6 @@ src_configure() {
         fi
 
 # Configure cmake
-# Please be aware that MegaGlest seems to be very picky about path names.
-# Avoid trailing backslashes as they can cause runtime errors resulting in binaries being unable to find their config or data files.
 
 	# Hard set options.
 	mycmakeargs=(
