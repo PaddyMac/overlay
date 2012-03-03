@@ -1,10 +1,40 @@
-diff -rupN sumwars-0.5.5-src/packaging/sumwars.desktop sumwars-0.5.5-src.new/packaging/sumwars.desktop
---- sumwars-0.5.5-src/packaging/sumwars.desktop	2011-10-27 18:44:37.000000000 -0500
-+++ sumwars-0.5.5-src.new/packaging/sumwars.desktop	2012-02-24 00:23:45.647595841 -0600
-@@ -7,5 +7,5 @@ Comment=A multi-player, 3D Action Role-P
- TryExec=/usr/games/sumwars
- Exec=/usr/games/sumwars
- Categories=Game;RolePlaying;
+diff -rupN sumwars-code/packaging/sumwars.desktop sumwars-code.new/packaging/sumwars.desktop
+--- sumwars-code/packaging/sumwars.desktop	2012-02-28 20:37:40.480886930 -0600
++++ sumwars-code.new/packaging/sumwars.desktop	2012-03-03 12:36:15.311116712 -0600
+@@ -1,11 +1,30 @@
+ [Desktop Entry]
+ Version=1.0
++Encoding=UTF-8
+ Type=Application
+-Name=SumWars
+-GenericName=Summoning Wars
++Name=Summoning Wars
++Name[de]=Zusammenrufen Kriegen
++Name[it]=Guerre Summoning
++Name[pl]=Wars Summoning
++Name[pt]=Guerras de Evocação
++Name[ru]=Вызов войны
++Name[uk]=Виклик війни
++GenericName=Role-Playing Game
++GenericName[de]=Role-Playingspiel
++GenericName[it]=Gioco di ruolo
++GenericName[pl]=Gry RPG
++GenericName[pt]=Jogo de Role-Playing
++GenericName[ru]=Ролевая игра
++GenericName[uk]=Рольова гра
+ Comment=A multi-player, 3D Action Role-Playing Game
+-TryExec=/usr/games/sumwars
+-Exec=/usr/games/sumwars
+-Categories=Game;RolePlaying;
 -Icon=/usr/share/icons/hicolor/128x128/sumwars.png
-+Icon=sumwars.png
++Comment[de]=Eine Mehrfach-Player, dreidimensionale Action-Rollenspiel gam
++Comment[it]=Un giocatore multiple, tre ruolo d'azione tridimensionale gioco gam
++Comment[pl]=Wielu graczy, trójwymiarowy rola akcja gry Gam
++Comment[pt]=Um jogador múltiplo, três papel de ação dimensional jogando gam
++Comment[ru]=Несколько игроков, трехмерные роль играет действие гамма
++Comment[uk]=Кілька гравців, тривимірні роль відіграє дію гамма
++Exec=sumwars
++TryExec=sumwars
++Icon=sumwars
  Terminal=false
++Categories=Game;RolePlaying;
