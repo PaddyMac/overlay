@@ -1,3 +1,4 @@
+app-backup
 app-emulation
 app-misc
 app-text
@@ -8,7 +9,9 @@ dev-lang
 dev-libs
 dev-python
 games-action
+games-arcade
 games-emulation
+games-engines
 games-misc
 games-rpg
 games-strategy
