@@ -1,9 +1,8 @@
-# Copyright 2012 Funtoo Technologies
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/cegui/cegui-0.7.5-r1.ebuild,v 1.6 2011/11/09 06:56:24 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/cegui/cegui-0.7.6-r1.ebuild,v 1.1 2012/03/03 21:25:22 vapier Exp $
 
-EAPI=4
-inherit eutils
+EAPI="4"
 
 MY_P=CEGUI-${PV}
 MY_D=CEGUI-DOCS-${PV}
@@ -14,15 +13,19 @@ SRC_URI="mirror://sourceforge/crayzedsgui/${MY_P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 -ppc x86"
-IUSE="bidi debug devil doc examples expat gtk irrlicht lua ogre opengl pcre static-libs tinyxml truetype xerces-c xml zip"
-REQUIRED_USE="|| ( xml tinyxml )" # bug 362223
+KEYWORDS="~amd64 -ppc ~x86"
+IUSE="bidi debug devil directfb doc examples expat freeimage gtk irrlicht lua +null ogre opengl pcre python rapidxml \
+	silly static-libs stb tga tinyxml truetype xerces-c xml zip" # corona
+REQUIRED_USE="|| ( expat rapidxml tinyxml xerces-c xml )" # bug 362223
 
 RDEPEND="bidi? ( dev-libs/fribidi )
 	devil? ( media-libs/devil )
+	examples? ( gtk? ( x11-libs/gtk+:2 )
+		media-libs/jpeg )
 	expat? ( dev-libs/expat )
+	freeimage? ( media-libs/freeimage )
 	truetype? ( media-libs/freetype:2 )
-	irrlicht? ( >=dev-games/irrlicht-1.7.1 )
+	irrlicht? ( dev-games/irrlicht )
 	lua? (
 		dev-lang/lua
 		dev-lua/toluapp
@@ -37,20 +40,29 @@ RDEPEND="bidi? ( dev-libs/fribidi )
 	pcre? ( dev-libs/libpcre )
 	tinyxml? ( dev-libs/tinyxml )
 	xerces-c? ( dev-libs/xerces-c )
-	xml? ( dev-libs/libxml2 )"
+	xml? ( dev-libs/libxml2 )
+	zip? ( sys-libs/zlib[minizip] )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	python? ( sys-apps/mlocate )"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinyxml.patch \
-		"${FILESDIR}"/${P}-gcc46.patch
+	# use minizip from zlib rather than local code
+	if use zip ; then
+		sed -i \
+			-e '/CEGUI_BUILD_MINIZIP_RESOURCE_PROVIDER_TRUE/{
+					s:minizip/ioapi.cpp minizip/unzip.cpp::;
+					s:libCEGUIBase@cegui_bsfx@_la-ioapi.lo::;
+					s:libCEGUIBase@cegui_bsfx@_la-unzip.lo::
+				}' \
+			-e '/^ZLIB_LIBS/s:=.*:= -lminizip:' \
+			cegui/src/Makefile.in || die
+	fi
+	rm -rf cegui/src/minizip
 
-	# build with newer zlib (bug #389863)
-	sed -i -e '74i#define OF(x) x' cegui/src/minizip/unzip.h || die
-	sed -i -e '125i#define OF(x) x' cegui/src/minizip/ioapi.h || die
 	if use examples ; then
 		cp -r Samples Samples.clean
 		rm -f $(find Samples.clean -name 'Makefile*')
@@ -58,41 +70,42 @@ src_prepare() {
 }
 
 src_configure() {
-	# ogre-1.6.5 needs older cegui (bug #387103)
 	econf \
-		--disable-ogre-renderer \
 		$(use_enable bidi bidirectional-text) \
+		--disable-corona \
 		$(use_enable debug) \
+		--disable-dependency-tracking \
 		$(use_enable devil) \
 		$(use_enable examples samples) \
 		$(use_enable expat) \
+		$(use_enable freeimage) \
 		$(use_enable truetype freetype) \
 		$(use_enable irrlicht irrlicht-renderer) \
 		$(use_enable lua lua-module) \
 		$(use_enable lua toluacegui) \
 		--enable-external-toluapp \
+		$(use_enable null null-renderer) \
 		$(use_enable ogre ogre-renderer) \
 		$(use_enable opengl opengl-renderer) \
 		--enable-external-glew \
 		$(use_enable pcre) \
+		$(use_enable python python-module) \
+		$(use_enable rapidxml) \
+		--enable-shared \
+		$(use_enable silly) \
+		$(use_enable stb) \
+		$(use_enable tga) \
 		$(use_enable tinyxml) \
 		--enable-external-tinyxml \
 		$(use_enable xerces-c) \
 		$(use_enable xml libxml) \
 		$(use_enable zip minizip-resource-provider) \
-		--enable-null-renderer \
-		--enable-tga \
-		--disable-corona \
-		--disable-dependency-tracking \
-		--disable-samples \
-		--disable-silly \
 		$(use_with gtk gtk2) \
-		$(use_enable static-libs static) \
-		--enable-shared
+		$(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	default
 
 	# remove .la files
 	use static-libs || rm -f "${D}"/usr/*/*.la

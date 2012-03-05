@@ -13,7 +13,7 @@
     <flag name="irrlicht">Enable the Irrlicht renderer.</flag>
     <flag name="lua">Enables building of the Lua scripting module and 
 	the custom tolua++ based binding generator tool, tolua++cegui.</flag>
-    <flag name="null-renderer">Enable building the Null renderer module.</flag>
+    <flag name="null">Enable building the Null renderer module.</flag>
     <flag name="ogre">Enable the OGRE renderer.</flag>
     <flag name="opengl">Enable the OpenGL renderer.</flag>
     <flag name="pcre">Enable the use of the PCRE library for regular expression support.</flag>
