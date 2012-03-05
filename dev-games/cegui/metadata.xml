@@ -10,6 +10,7 @@
     <flag name="examples">Enable building of samples framework and applications.</flag>
     <flag name="expat">Enable building of the expat XML parser module.</flag>
     <flag name="freeimage">Enable FreeImage based ImageCodec module.</flag>
+    <flag name="gtk">Enables the use of a GTK2 based dialog to select a renderer in the samples.</flag>
     <flag name="irrlicht">Enable the Irrlicht renderer.</flag>
     <flag name="lua">Enables building of the Lua scripting module and 
 	the custom tolua++ based binding generator tool, tolua++cegui.</flag>
