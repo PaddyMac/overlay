@@ -21,5 +21,9 @@ games-engines/openmw
 # Masked until upstream issues are resolved which prevent it from installing properly
 =media-video/freeseer-9999
 
+# Let users unmask live ebuilds at their discretion
+=media-video/em8300-libraries-99999999
+=media-video/em8300-modules-99999999
+
 # Let users unmask live ebuilds at their discretion.
 =net-misc/modemmanager-9999
