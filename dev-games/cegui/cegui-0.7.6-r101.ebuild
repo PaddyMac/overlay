@@ -20,11 +20,10 @@ REQUIRED_USE="|| ( expat rapidxml tinyxml xerces-c xml )" # bug 362223
 
 RDEPEND="bidi? ( dev-libs/fribidi )
 	devil? ( media-libs/devil )
-	examples? ( gtk? ( x11-libs/gtk+:2 )
-		media-libs/jpeg )
+	directfb? ( dev-libs/DirectFB )
 	expat? ( dev-libs/expat )
 	freeimage? ( media-libs/freeimage )
-	truetype? ( media-libs/freetype:2 )
+	gtk? ( x11-libs/gtk+:2 )
 	irrlicht? ( dev-games/irrlicht )
 	lua? (
 		dev-lang/lua
@@ -38,7 +37,13 @@ RDEPEND="bidi? ( dev-libs/fribidi )
 		media-libs/glew
 	)
 	pcre? ( dev-libs/libpcre )
+	python? ( || ( dev-lang/python:2.6
+			dev-lang/python:2.7 )
+		)
+	rapidxml? ( dev-libs/rapidxml )
+	silly? ( media-libs/silly )
 	tinyxml? ( dev-libs/tinyxml )
+	truetype? ( media-libs/freetype:2 )
 	xerces-c? ( dev-libs/xerces-c )
 	xml? ( dev-libs/libxml2 )
 	zip? ( sys-libs/zlib[minizip] )"
@@ -48,6 +53,16 @@ DEPEND="${RDEPEND}
 	python? ( sys-apps/mlocate )"
 
 S=${WORKDIR}/${MY_P}
+
+pkg_setup() {
+
+	if use directfb; then
+		einfo
+		einfo You have enabled the DirectFB renderer. This renderer is currently broken and incomplete.
+		einfo It should only be enabled for development and/or testing purposes.
+		einfo
+	fi
+}
 
 src_prepare() {
 	# use minizip from zlib rather than local code
