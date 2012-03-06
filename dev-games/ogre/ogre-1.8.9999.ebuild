@@ -54,6 +54,9 @@ src_prepare() {
 
 src_configure() {
 
+	# CMAKE_BUILD_TYPE must be Release. If it is Gentoo, the shared libraries will not be installed.
+	CMAKE_BUILD_TYPE=Release
+
 	local mycmakeargs=(
 		"-DOGRE_LIB_DIRECTORY=$(get_libdir)"
 		$(cmake-utils_use boost OGRE_USE_BOOST)
