@@ -31,7 +31,7 @@ sys-cluster
 sys-devel
 sys-kernel
 sys-libs
+virtual
 www-misc
 x11-drivers
 x11-wm
-
