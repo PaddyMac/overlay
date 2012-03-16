@@ -20,7 +20,9 @@ DEPEND="sys-devel/make
 	dev-lang/python[sqlite]
 	dev-python/PyQt4
 	dev-python/gst-python
-	dev-python/feedparser"
+	dev-python/feedparser
+	media-plugins/gst-plugins-v4l2
+	media-plugins/gst-plugins-ximagesrc"
 RDEPEND="${DEPEND}"
 RESTRICT_PYTHON_ABIS="3.*"
 

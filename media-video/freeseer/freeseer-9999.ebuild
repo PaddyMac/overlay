@@ -27,7 +27,9 @@ DEPEND="sys-devel/make
 	dev-python/gst-python
 	dev-python/feedparser
 	dev-python/setuptools
-	dev-python/yapsy"
+	dev-python/yapsy
+	media-plugins/gst-plugins-v4l2
+	media-plugins/gst-plugins-ximagesrc"
 RDEPEND="${DEPEND}"
 RESTRICT_PYTHON_ABIS="3.*"
 
