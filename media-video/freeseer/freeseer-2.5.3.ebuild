@@ -7,7 +7,7 @@ PYTHON_DEPEND="2:2.6:2.7"
 inherit distutils python
 
 DESCRIPTION="Freeseer captures video from a choice of sources along with audio and mixes them together to produce a video."
-HOMEPAGE="https://github.com/fosslc/freeseer/wiki/"
+HOMEPAGE="https://github.com/Freeseer/freeseer/wiki"
 SRC_URI="https://github.com/downloads/Freeseer/freeseer/freeseer-2.5.3.tar.gz"
 
 LICENSE="GPL-3"
