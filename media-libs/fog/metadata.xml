@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+		<email>doctorwhoguy@gmail.com</email>
+		<name>Patrick McMunn</name>
+	</maintainer>
+	<longdescription>Fog-Framework is a library designed for a cross-platform development in C++ language. Main goal of the library is to provide very fast and accurate graphics output on all supported operating systems and architectures. Currently Fog is not only graphics library, it contains many other classes related to cross-platform development, but many classes are related to 2d graphics.</longdescription>
+    <use>
+	<flag name='examples'>Build FogExamples.</flag>
+	<flag name='nothing'>only setup project, but build nothing. Usable for cmake projects which are designed to just include Fog and Fog source files into the project and build all of this without making a static library.</flag>
+	<flag name='slave'>Bypass project generator, using cmake Project() function().</flag>
+	<flag name='tools'>Build FogBench benchmarking tool.</flag>
+	<flag name='ui'>Build Fog/UI.</flag>
+	<flag name='X'>Build Fog/UI-X11 support and module.</flag>
+    </use>
+</pkgmetadata>
