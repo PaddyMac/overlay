@@ -13,9 +13,10 @@ ESVN_REPO_URI="http://enesim.googlecode.com/svn/trunk/enesim/"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="altivec +argb8888_unpre benchmark coverage equanime mmx pthreads +rgb565_b1a3 rgb565_xa5 rgb888 rgb888_a8 sse sse2 test" # opencl opengl
+IUSE="altivec +argb8888_unpre benchmark coverage equanime mmx pthreads +rgb565_b1a3 rgb565_xa5 rgb888 rgb888_a8 sse sse2 static-libs test" # opencl opengl
 
-DEPEND="dev-libs/eina"
+DEPEND="dev-libs/eina
+	dev-util/pkgconfig"
 RDEPEND="${DEPEND}"
 
 #S="${WORKDIR}/${P}"
@@ -43,5 +44,7 @@ src_configure() {
 		$(use_enable rgb888_a8 format-rgb888_a8) \
 		$(use_enable sse cpu-sse) \
 		$(use_enable sse2 cpu-sse2) \
+		--enable-shared
+		$(use_enable static-libs static)
 		$(use_enable test tests)
 }
