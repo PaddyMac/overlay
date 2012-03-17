@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <use>
+        <flag name='argb8888_unpre'>Enable argb8888_unpre surface format.</flag>
+        <flag name='benchmark'>Enable tests.</flag>
+        <flag name='coverage'>Compile with coverage profiling instrumentation.</flag>
+        <flag name='equanime'>Enable Equanime pool support.</flag>
+        <flag name='pthreads'>Enable threaded rendering.</flag>
+        <flag name='rgb565_b1a3'>Enable the rgb565_b1a3 surface format.</flag>
+        <flag name='rgb565_xa5'>Enable the rgb565_xa5 surface format.</flag>
+        <flag name='rgb888'>Enable the rgb888 surface format.</flag>
+        <flag name='rgb888_a8'>Enable the rgb888_a8 surface format.</flag>
+    </use>
+</pkgmetadata>
