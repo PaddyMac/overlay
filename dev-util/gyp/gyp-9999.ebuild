@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="dev-vcs/subversion"
+DEPEND="dev-python/setuptools
+	dev-vcs/subversion"
 RDEPEND="${DEPEND}
 	dev-util/scons"
 RESTRICT_PYTHON_ABIS="3.*"
