@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}"
 
+EGIT_NOUNPACK="1"
 EGIT_SOURCEDIR="${WORKDIR}"
 
 src_unpack() {
