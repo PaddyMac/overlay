@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <use>
+        <flag name='alternate_coordsystem'>alternate coordinate system, do not use unless you are very sure about it</flag>
+        <flag name='use_ogre_random'>fallback to Ogre's PRNG instead of using our own (not recommended)</flag>
+        <flag name='user_data'>ability to attach user data to entities</flag>
+    </use>
+</pkgmetadata>

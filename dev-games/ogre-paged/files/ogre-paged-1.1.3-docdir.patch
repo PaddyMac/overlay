@@ -1,0 +1,9 @@
+diff -rupN ogre-paged-1.1.3/CMakeLists.txt ogre-paged-1.1.3.new/CMakeLists.txt
+--- ogre-paged-1.1.3/CMakeLists.txt	2011-08-22 07:59:56.000000000 -0500
++++ ogre-paged-1.1.3.new/CMakeLists.txt	2012-07-03 11:11:22.075774550 -0500
+@@ -184,4 +184,4 @@ endif (DOXYGEN_FOUND)
+ 
+ # other doc files
+ set(DOC_FILES Contributors.txt zlib.txt GettingStarted.txt Todo.txt)
+-install(FILES ${DOC_FILES} DESTINATION doc/)
++install(FILES ${DOC_FILES} DESTINATION /usr/share/doc/ogre-paged-1.1.3/)
