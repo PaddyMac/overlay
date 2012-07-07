@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <use>
+	<flag name='dumb'>Enable IT/XM/S3M/MOD playback via media-libs/dumb</flag>
+	<flag name='fluidsynth'>Enable media-sound/fluidsynth for midi output</flag>
+	<flag name='pcre'>Enable demo filename pattern matching via dev-libs/libpcre</flag>
+	<flag name='png'>Enable screenshots saved in PNG format via media-libs/libpng</flag>
+	<flag name='portmidi'>Enable media-libs/portmidi for midi output</flag>
+	<flag name='sdl_image'>Enable high-resolution texture support in OpenGL mode via media-libs/sdl-image</flag>
+	<flag name='sdl_mixer'>Enable media-libs/sdl-mixer for midi output</flag>
+	<flag name='sdl_net'>Enable network play via media-libs/sdl-net</flag>
+    </use>
+</pkgmetadata>
