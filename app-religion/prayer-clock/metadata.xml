@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <longdescription lang="en">
+	Prayer Clock is a small application to remind the users to pray several Catholic prayers, eg:
+	Angelus, 3 O'Clock Prayer, some Novena prayers, etc. Angelus will be changed to Regina Caeli
+	during Eastertide.
+    </longdescription>
+</pkgmetadata>
