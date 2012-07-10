@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <longdescription lang="en">
+	bbfreeze creates stand-alone executables from python scripts. It's similar in purpose to the well known py2exe for windows, py2app for OS X, PyInstaller and
+	cx_Freeze (in fact ancient versions were based on cx_Freeze. And it uses the modulegraph package, which is also used by py2app).
+
+	It has the following features:
+
+	easy installation
+	bbfreeze can be installed with setuptools' easy_install command.
+
+	zip/egg file import tracking
+	bbfreeze tracks imports from zip files and includes whole egg files if some module is used from an eggfile. Packages using setuputils' pkg_resources
+	module will now work (new in 0.95.0)
+
+	binary dependency tracking
+	bbfreeze will track binary dependencies and will include DLLs and shared libraries needed by a frozen program.
+
+	multiple script freezing
+	bbfreeze can freeze multiple scripts at once.
+
+	python interpreter included
+	bbfreeze will create an extra executable named 'py', which might be used like the python executable itself.
+
+	automatic pathname rewriting
+	pathnames in tracebacks are replaced with relative pathnames (i.e. if you import package foo.bar from /home/jdoe/pylib/ tracebacks generated from
+	functions in foo.bar will not show your local path /home/jdoe/pylib/foo/bar.py. They will instead show foo/bar.py)
+
+	distutils command 'bdist_bbfreeze'
+	A new distutils/setuptools command bdist_bbfreeze integrates bbfreeze into your setup.py.
+
+	bbfreeze works on windows and UNIX-like operating systems. bbfreeze has been tested with python 2.4, 2.5, 2.6 and 2.7 bbfreeze will not work with python 3
+	or higher.
+    </longdescription>
+</pkgmetadata>
