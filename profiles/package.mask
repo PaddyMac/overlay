@@ -5,6 +5,7 @@ dev-games/ceimageseteditor
 dev-games/celayouteditor
 
 # Let users unmask live ebuilds at their discretion.
+=dev-games/ode-9999
 =dev-games/ogre-1.7.9999
 =dev-games/ogre-1.8.9999
 =dev-games/ogre-9999
