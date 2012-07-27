@@ -1,0 +1,16 @@
+diff -rupN freeseer/setup.py freeseer.new/setup.py
+--- freeseer/setup.py	2012-07-26 22:18:06.869805921 -0500
++++ freeseer.new/setup.py	2012-07-26 22:50:15.312563842 -0500
+@@ -22,9 +22,9 @@ Freeseer itself can run on commodity har
+                             'freeseer.frontend',
+                             'freeseer.frontend.configtool',
+                             'freeseer.frontend.qtcommon',
++                            'freeseer.frontend.record',
+                             'freeseer.frontend.reporteditor',
+                             'freeseer.frontend.talkeditor',
+-                            'freeseer.frontend.record'],
+-      scripts=['src/freeseer-record', 'src/freeseer-config', 'src/freeseer-talkeditor',
+-               'src/freeseer-reporteditor'])
++                            'freeseer.frontend.videouploader'],
++      scripts=['src/freeseer-config', 'src/freeseer-record', 'src/freeseer-reporteditor', 'src/freeseer-talkeditor', 'src/freeseer-videouploader'])
+ 

@@ -21,6 +21,7 @@ DEPEND="sys-devel/make
 	dev-python/PyQt4
 	dev-python/gst-python
 	dev-python/feedparser
+	dev-python/setuptools
 	media-plugins/gst-plugins-v4l2
 	media-plugins/gst-plugins-ximagesrc"
 RDEPEND="${DEPEND}"
