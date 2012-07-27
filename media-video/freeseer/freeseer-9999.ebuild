@@ -45,6 +45,12 @@ src_compile() {
 
 src_install() {
 	distutils_src_install
+	doicon src/freeseer/frontend/qtcommon/images/freeseer_logo.png
+	make_desktop_entry "freeseer-config" "Freeseer Configuration" "freeseer_logo" "AudioVideo;Audio;"
+	make_desktop_entry "freeseer-record" "Freeseer" "freeseer_logo" "AudioVideo;Audio;"
+	make_desktop_entry "freeseer-reporteditor" "Freeseer Report Editor" "freeseer_logo" "AudioVideo;Audio;"
+	make_desktop_entry "freeseer-talkeditor" "Freeseer Talk Editor" "freeseer_logo" "AudioVideo;Audio;"
+	make_desktop_entry "freeseer-videouploader" "Freeseer Video Uploader" "freeseer_logo" "AudioVideo;Audio;"
 }
 
 DOCS="LICENSE PACKAGE.txt README.md index.html release_notes.txt"
