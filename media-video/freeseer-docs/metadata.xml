@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <use>
+        <flag name='html'>make standalone HTML files</flag>
+        <flag name='dirhtml'>make HTML files named index.html in directories</flag>
+        <flag name='singlehtml'>make a single large HTML file</flag>
+	<flag name='pickle'>make pickle files</flag>
+	<flag name='json'>make JSON files</flag>
+	<flag name='htmlhelp'>make HTML files and a HTML help project</flag>
+	<flag name='qthelp'>make HTML files and a qthelp project</flag>
+	<flag name='devhelp'>make HTML files and a Devhelp project</flag>
+	<flag name='epub'>make an epub</flag>
+	<flag name='latex'>make LaTeX files, you can set PAPER=a4 or PAPER=letter</flag>
+	<flag name='latexpdf'>make LaTeX files and run them through pdflatex</flag>
+	<flag name='text'>make text files</flag>
+	<flag name='man'>make manual pages</flag>
+	<flag name='changes'>make an overview of all changed/added/deprecated items</flag>
+	<flag name='linkcheck'>check all external links for integrity</flag>
+	<flag name='doctest'>run all doctests embedded in the documentation (if enabled)</flag>
+    </use>
+</pkgmetadata>
