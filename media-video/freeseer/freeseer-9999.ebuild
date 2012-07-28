@@ -10,7 +10,6 @@ DESCRIPTION="Freeseer captures video from a choice of sources along with audio a
 HOMEPAGE="https://github.com/Freeseer/freeseer/wiki"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/Freeseer/freeseer.git"
-#PLUGIN_REPO_URI="https://github.com/Freeseer/freeseer-plugins-linux.git"
 
 EGIT_BRANCH="experimental"
 EGIT_COMMIT="experimental"
@@ -19,7 +18,7 @@ EGIT_PROJECT="freeseer"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+plugins"
+IUSE="doc +plugins"
 
 DEPEND="sys-devel/make
 	dev-db/sqlite:3
@@ -32,7 +31,8 @@ DEPEND="sys-devel/make
 	media-plugins/gst-plugins-v4l2
 	media-plugins/gst-plugins-ximagesrc"
 RDEPEND="${DEPEND}
-	plugins? ( media-video/freeseer-plugins-linux )"
+	doc? ( ~media-video/freeseer-docs-${PV} )
+	plugins? ( ~media-video/freeseer-plugins-linux-${PV} )"
 RESTRICT_PYTHON_ABIS="3.*"
 
 src_prepare() {
