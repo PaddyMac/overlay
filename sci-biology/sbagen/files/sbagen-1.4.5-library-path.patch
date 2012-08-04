@@ -1,0 +1,26 @@
+diff -rupN a/mp3dec.c b/mp3dec.c
+--- a/mp3dec.c	2012-08-04 02:21:42.209832631 -0500
++++ b/mp3dec.c	2012-08-04 02:22:22.952396066 -0500
+@@ -6,7 +6,7 @@
+ //      http://uazu.net/sbagen/.  Released under the GNU GPL version 2.
+ //
+ 
+-#include "libs/mad.h"
++#include <mad.h>
+ 
+ extern FILE *mix_in;
+ extern void *Alloc(size_t);
+diff -rupN a/oggdec.c b/oggdec.c
+--- a/oggdec.c	2012-08-04 02:21:42.209832631 -0500
++++ b/oggdec.c	2012-08-04 02:22:33.833008050 -0500
+@@ -9,8 +9,8 @@
+ //	See comments lower down for OGG looper parameters.
+ //	
+ 
+-#include "libs/ivorbiscodec.h"
+-#include "libs/ivorbisfile.h"
++#include <tremor/ivorbiscodec.h>
++#include <tremor/ivorbisfile.h>
+ 
+ extern FILE *mix_in;
+ extern int mix_cnt;

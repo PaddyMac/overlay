@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                           
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>no-herd</herd>
+    <maintainer>
+        <email>doctorwhoguy@gmail.com</email>
+        <name>Patrick McMunn</name>
+    </maintainer>
+    <use>
+        <flag name='examples'>Install example .sbg files.</flag>
+        <flag name='scripts'>Install predefined executable scripts.</flag>
+        <flag name='sounds'>Install included .ogg sound files.</flag>
+    </use>
+</pkgmetadata>
