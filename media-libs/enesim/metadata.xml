@@ -11,6 +11,8 @@
         <flag name='benchmark'>Enable tests.</flag>
         <flag name='coverage'>Compile with coverage profiling instrumentation.</flag>
         <flag name='equanime'>Enable Equanime pool support.</flag>
+	<flag name='jpeg'>Enable JPG module.</flag>
+	<flag name='png'>Enable PNG module.</flag>
         <flag name='pthreads'>Enable threaded rendering.</flag>
         <flag name='rgb565_b1a3'>Enable the rgb565_b1a3 surface format.</flag>
         <flag name='rgb565_xa5'>Enable the rgb565_xa5 surface format.</flag>
