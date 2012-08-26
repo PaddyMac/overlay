@@ -22,7 +22,7 @@ RDEPEND="sys-libs/zlib
 	curl? ( net-misc/curl )
 	icu? ( dev-libs/icu )"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 src_unpack() {
         subversion_src_unpack
