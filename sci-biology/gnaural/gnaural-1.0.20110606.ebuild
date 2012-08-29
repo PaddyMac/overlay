@@ -25,5 +25,5 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-util/intltool
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
