@@ -23,7 +23,7 @@ COMMON_DEPEND="gtk? ( x11-libs/gtk+:2 )"
 RDEPEND="${COMMON_DEPEND}
 	modules? ( ~media-video/em8300-modules-${PV} )"
 DEPEND="${COMMON_DEPEND}
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_PN}
 
