@@ -16,7 +16,7 @@ KEYWORDS="~x86"
 IUSE="altivec +argb8888_unpre benchmark coverage equanime jpeg mmx png pthreads +rgb565_b1a3 rgb565_xa5 rgb888 rgb888_a8 sse sse2 static-libs test" # opencl opengl
 
 DEPEND="dev-libs/eina
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 RDEPEND="${DEPEND}"
 
 #S="${WORKDIR}/${P}"
