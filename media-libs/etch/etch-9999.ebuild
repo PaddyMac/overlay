@@ -16,7 +16,7 @@ KEYWORDS="~x86"
 IUSE="doc static-libs"
 
 DEPEND="dev-libs/eina
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	media-libs/enesim
 	doc? ( app-doc/doxygen )"
 RDEPEND="${DEPEND}"
