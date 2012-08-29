@@ -35,7 +35,7 @@ RDEPEND="media-libs/freetype:2
 	tbb-threads? ( dev-cpp/tbb )"
 DEPEND="${RDEPEND}
 	x11-proto/xf86vidmodeproto
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )"
 
