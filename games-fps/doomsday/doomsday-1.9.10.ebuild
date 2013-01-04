@@ -63,19 +63,25 @@ src_prepare() {
 
 	# Various informative messages.
 	if ( use !fluidsynth && use !fmod && use !openal && use !sdl ); then
+		ewarn
 		ewarn "You have not enabled any sound drivers for Doomsday. Doomsday will"
 		ewarn "compile and run without any music or sound effects. If you wish to"
 		ewarn "have audio, enable the fluidsynth, fmod, openal, and/or, sdl USE flags."
+		ewarn
 	fi
 
 	if ( use openal && use !fluidsynth && use !fmod && use !sdl ); then
+		ewarn
 		ewarn "You have enabled OpenAL support for sound effects, but you must still"
 		ewarn "enable fmod, fluidsynth, or sdl USE flags to enable in-game music."
+		ewarn
 	fi
 
 	if ( use fluidsynth && use !fmod && use !openal && use !sdl ); then
+		ewarn
 		ewarn "You have enabled Fluidsynth for MIDI/MUS background music. However, you"
 		ewarn "must still enable fmod, openal, or sdl USE flags to enable sound effects."
+		ewarn
 	fi
 
 	# Fix installation paths.
