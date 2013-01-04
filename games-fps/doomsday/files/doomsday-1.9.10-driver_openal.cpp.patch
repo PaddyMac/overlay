@@ -1,0 +1,25 @@
+diff -rupN a/doomsday/plugins/openal/src/driver_openal.cpp b/doomsday/plugins/openal/src/driver_openal.cpp
+--- a/doomsday/plugins/openal/src/driver_openal.cpp	2012-12-28 01:04:26.459230049 -0600
++++ b/doomsday/plugins/openal/src/driver_openal.cpp	2012-12-30 11:54:41.573054106 -0600
+@@ -56,8 +56,8 @@
+ 
+ #define PI 3.141592654
+ 
+-#define SRC(buf) ((ALuint)buf->ptr3D)
+-#define BUF(buf) ((ALuint)buf->ptr)
++#define SRC(buf) ( (ALuint) PTR2INT(buf->ptr3D) )
++#define BUF(buf) ( (ALuint) PTR2INT(buf->ptr) )
+ 
+ //enum { VX, VY, VZ };
+ 
+@@ -233,8 +233,8 @@ sfxbuffer_t* DS_SFX_CreateBuffer(int fla
+     // Create the buffer object.
+     buf = static_cast<sfxbuffer_t*>(Z_Calloc(sizeof(*buf), PU_APPSTATIC, 0));
+ 
+-    buf->ptr = (void*) bufName;
+-    buf->ptr3D = (void*) srcName;
++    buf->ptr = INT2PTR(void, bufName);
++    buf->ptr3D = INT2PTR(void, srcName);
+     buf->bytes = bits / 8;
+     buf->rate = rate;
+     buf->flags = flags;

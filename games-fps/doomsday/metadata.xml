@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription>The Doomsday Engine allows you to play the classic first-person shooters DOOM, Heretic, and Hexen using modern technology, with hardware accelerated 3D graphics, surround sound and much more.</longdescription>
+<use>
+	<flag name="demo">Install launcher dor doom1.wad from <pkg>games-fps/doom-data</pkg></flag>
+	<flag name="doom">Install launcher for jdoom game</flag>
+	<flag name="fluidsynth">Enable support for <pkg>media-sound/fluidsynth</pkg> (provides only MIDI music; requires a soundfont)</flag>
+	<flag name="fmod">Enable support for <pkg>media-libs/fmod</pkg> (provides sfx and music; requires a soundfont to support MIDI/MUS)</flag>
+	<flag name="freedoom">Install launcher for doom1.wad from <pkg>games-fps/freedoom</pkg></flag>
+	<flag name="heretic">Install launcher for jheretic game</flag>
+	<flag name="hexen">Install launcher for jhexen game</flag>
+	<flag name="openal">Adds support for the Open Audio Library (provides sfx with 3D but not music)</flag>
+	<flag name="resources">Enable support for <pkg>games-fps/doomsday-resources</pkg> in jdoom launcher</flag>
+	<flag name="sdl">Enable support for <pkg>media-libs/sdl-mixer</pkg> (provides sfx and music)</flag>
+	<flag name="snowberry">Install Snowberry Doomsday front-end</flag>
+	<flag name="tools">Build and deploy the tools</flag>
+</use>
+</pkgmetadata>
