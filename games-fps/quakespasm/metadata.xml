@@ -5,12 +5,18 @@
 <maintainer>
 	<email>doctorwhoguy@gmail.com</email>
 </maintainer>
-<longdescription></longdescription>
+<longdescription>
+	QuakeSpasm is a Quake 1 engine based on the SDL port of FitzQuake.
+	It includes 64bit CPU support, a new sound driver, several
+	networking fixes and a few graphical niceities.
+</longdescription>
 <use>
-	<flag name="consolebackground"></flag>
+	<flag name="consolebackground">Embed custom Quakespasm console background picture</flag>
+	<flag name="mad">Use <pkg>media-libs/libmad</pkg> as the mp3 codec</flag>
 	<flag name="mpg123">Use <pkg>media-sound/mpg123</pkg> as the mp3 codec</flag>
 	<flag name="sdl-net">Use <pkg>media-libs/sdl-net</pkg> for network play support</flag>
 	<flag name="tremor">Use <pkg>media-libs/tremor</pkg> as the OggVorbis codec</flag>
+	<flag name="vorbis">Use <pkg>media-libs/libvorbis</pkg> as the OggVorbis codec</flag>
 	<flag name="wav">Add support for wav files</flag>
 </use>
 </pkgmetadata>
