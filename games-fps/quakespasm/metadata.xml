@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription></longdescription>
+<use>
+	<flag name="consolebackground"></flag>
+	<flag name="mpg123">Use <pkg>media-sound/mpg123</pkg> as the mp3 codec</flag>
+	<flag name="sdl-net">Use <pkg>media-libs/sdl-net</pkg> for network play support</flag>
+	<flag name="tremor">Use <pkg>media-libs/tremor</pkg> as the OggVorbis codec</flag>
+	<flag name="wav">Add support for wav files</flag>
+</use>
+</pkgmetadata>
