@@ -120,18 +120,9 @@ src_install() {
 pkg_postinst() {
 	elog
 	elog "By default, QuakeSpasm will look in the current directory for"
-	elog "a directory named \"id1\" for game data files. You can have"
-	elog "QuakeSpasm look in another subdirectory by using the -game"
-	elog "parameter. For example:"
-	elog
-	elog "\"cd ~/quake\""
-	elog "\"quakespasm -game directoryname\""
-	elog
-	elog "where \"directoryname\" is the directory containing the game data."
-	elog
-	elog
-	elog "The simplest solution may be to create a directory in your user's"
-	elog "home directory then symlink the location of game files to it."
+	elog "a directory named \"id1\" for game data files." You may install"
+	elog "Quake in your home directory, i.e. ~/quake or if the game data is"
+	elog "installed system wide you may create symlinks to the game data."
 	elog
 	elog "Example using Quake demo: # emerge -v games-fps/quake1-demodata"
 	elog "                          $ mkdir ~/quake"
