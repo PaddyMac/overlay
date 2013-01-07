@@ -121,7 +121,7 @@ pkg_postinst() {
 	elog
 	elog "By default, QuakeSpasm will look in the current directory for"
 	elog "a directory named \"id1\" for game data files." You may install"
-	elog "Quake in your home directory, i.e. ~/quake or if the game data is"
+	elog "Quake in your home directory, i.e. \~/quake or if the game data is"
 	elog "installed system wide you may create symlinks to the game data."
 	elog
 	elog "Example using Quake demo: # emerge -v games-fps/quake1-demodata"
