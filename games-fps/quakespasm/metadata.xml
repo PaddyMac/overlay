@@ -12,6 +12,7 @@
 </longdescription>
 <use>
 	<flag name="consolebackground">Embed custom Quakespasm console background picture</flag>
+	<flag name="demo">Install the shareware version of Quake <pkg>games-fps/quake1-demodata</pkg></flag>
 	<flag name="mad">Use <pkg>media-libs/libmad</pkg> as the mp3 codec</flag>
 	<flag name="mpg123">Use <pkg>media-sound/mpg123</pkg> as the mp3 codec</flag>
 	<flag name="sdl-net">Use <pkg>media-libs/sdl-net</pkg> for network play support</flag>

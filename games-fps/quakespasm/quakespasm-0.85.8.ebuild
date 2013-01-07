@@ -2,7 +2,7 @@
 
 EAPI=4
 
-inherit eutils games
+inherit games
 
 DESCRIPTION="QuakeSpasm is a Quake 1 engine based on the SDL port of FitzQuake."
 HOMEPAGE="http://quakespasm.sourceforge.net/"
@@ -11,8 +11,9 @@ SRC_URI="mirror://sourceforge/quakespasm/Source/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+consolebackground +mad +mp3 mpg123 +ogg +sdl-net tremor +vorbis +wav"
-REQUIRED_USE="mp3? ( ^^ ( mad mpg123 ) )
+IUSE="cdinstall +consolebackground demo +mad +mp3 mpg123 +ogg +sdl-net tremor +vorbis +wav"
+REQUIRED_USE="cdinstall? ( !demo )
+	      mp3? ( ^^ ( mad mpg123 ) )
 	      ogg? ( ^^ ( tremor vorbis ) )"
 
 DEPEND="media-libs/libsdl[opengl]
@@ -23,7 +24,9 @@ DEPEND="media-libs/libsdl[opengl]
 	ogg? (  tremor? ( media-libs/tremor )
 		vorbis? ( media-libs/libvorbis ) )
 	sdl-net? ( media-libs/sdl-net )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	cdinstall? ( games-fps/quake1-data )
+	demo? ( games-fps/quake1-demodata[symlink] )"
 
 src_prepare() {
 	# Apply upstream patches
@@ -94,9 +97,24 @@ src_compile() {
 }
 
 src_install() {
+	# Install binary
 	dogamesbin ${S}/Quake/quakespasm
-	dohtml README.html
+
+	# Install wrapper script
+	dogamesbin ${FILESDIR}/quakespasm.sh
+
+	# Install icon
+	newicon Misc/QuakeSpasm_512.png quakespasm.png
+
+	# Make desktop menu entry
+	make_desktop_entry "quakespasm.sh" "QuakeSpasm" "quakespasm" "Game;ActionGame;"
+
+	# Install standard documentation
 	dodoc README.music README.sgml README.txt
+	dohtml README.html
+
+	# Ensure permissions are set correctly
+	prepgamesdirs
 }
 
 pkg_postinst() {
