@@ -14,9 +14,9 @@
 	be for you.
 </longdescription>
 <use>
-	<flag name="curses"></flag>
-	<flag name="master"></flag>
-	<flag name="profiling"></flag>
-	<flag name="tools"></flag>
+	<flag name="curses">Enable support for <pkg>sys-libs/ncurses</pkg>.</flag>
+	<flag name="master">Build a master server.</flag>
+	<flag name="profiling">Include profiling information.</flag>
+	<flag name="tools">Build the optional tools.</flag>
 </use>
 </pkgmetadata>
