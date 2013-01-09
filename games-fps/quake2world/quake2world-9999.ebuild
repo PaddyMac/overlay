@@ -51,7 +51,7 @@ src_configure() {
 	fi
 
 	egamesconf \
-		--bindir=${GAMES_BINDIR}
+		--bindir=${GAMES_BINDIR} \
 		$(use_with curses) \
 		$(use_enable debug) \
 		$(use_with master) \
@@ -59,4 +59,12 @@ src_configure() {
 		$(use_enable profiling profile) \
 		$(use_with tools) \
 		${myconf}
+}
+
+src_install() {
+	default
+	doicon linux/quake2world/share/quake2world.png
+	make_desktop_entry "${PN}" "Quake2World" "${PN}"
+	dodoc README TODO
+	prepgamesdirs
 }
