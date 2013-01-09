@@ -1,0 +1,32 @@
+#!/bin/bash
+
+GAME="yamagi-quake2"
+BIN="${GAME}"
+ORIGINAL_DIRECTORY="${PWD}"
+
+if [ ! -d ~/.yq2 ]; then
+	mkdir ~/.yq2
+fi
+
+if [ ! -f ~/.yq2/ref_gl.so ] && [ ! -L ~/.yq2/ref_gl.so ]; then
+	ln -s /usr/share/games/yamagi-quake2/ref_gl.so ~/.yq2/ref_gl.so
+fi
+
+if [ ! -d  ~/.yq2/baseq2 ]; then
+	mkdir -p ~/.yq2/baseq2
+fi
+
+if [ ! -f  ~/.yq2/baseq2/game.so ] && [ ! -L ~/.yq2/baseq2/game.so ]; then
+	ln -s /usr/share/games/yamagi-quake2/baseq2/game.so ~/.yq2/baseq2/game.so
+fi
+
+if [ ! -f  ~/.yq2/yq2.cfg ] && [ ! -L ~/.yq2/yq2.cfg ]; then
+	ln -s /usr/share/games/yamagi-quake2/yq2.cfg ~/.yq2/yq2.cfg
+fi
+
+cd ~/.yq2
+
+exec $BIN "$@"
+
+cd ${ORIGINAL_DIRECTORY}
+
