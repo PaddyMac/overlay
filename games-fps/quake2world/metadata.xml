@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription>
+	Quake2World is a Free, standalone first person shooter video game. Our goal is 
+	to bring the fun and excitement of straightforward old-school death-match 
+	gaming to a more contemporary platform, and perhaps to a new generation of 
+	gamers. Quake2World is multiplayer-only. There is no single-player or offline 
+	gameplay mode. If you have no Internet and no friends, Quake2World might not 
+	be for you.
+</longdescription>
+<use>
+	<flag name="curses"></flag>
+	<flag name="master"></flag>
+	<flag name="profiling"></flag>
+	<flag name="tools"></flag>
+</use>
+</pkgmetadata>
