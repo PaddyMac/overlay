@@ -1,0 +1,30 @@
+diff -rupN a/Black_Chocobo.pro b/Black_Chocobo.pro
+--- a/Black_Chocobo.pro	2012-12-14 22:48:16.316579315 -0600
++++ b/Black_Chocobo.pro	2012-12-15 00:50:47.300907225 -0600
+@@ -16,7 +16,7 @@
+ # -------------------------------------------------
+ # Project created by QtCreator 2010-03-14T14:53:13
+ # -------------------------------------------------
+-TARGET = Black_Chocobo
++TARGET = blackchocobo
+ 
+ TEMPLATE = app
+ SOURCES += main.cpp \
+@@ -113,13 +113,13 @@ win32:{
+ unix:!macx:!symbian {
+ #base for setting up deb packages(rpm too?).
+ #becomes 'make install' when qmake generates the makefile
+-target.path = /opt/blackchocobo #set the path to deploy the build target.
++target.path = /usr/games/bin #set the path to deploy the build target.
+ 
+-lang.path = /opt/blackchocobo/lang #set path for lang folder
++lang.path = /usr/share/apps/blackchocobo/lang #set path for lang folder
+ lang.files = lang/*.qm  #grab All qm files
+ 
+-locationPreview.path=/opt/blackchocobo/
+-locationPreview.file= locations.rcc
++locationPreview.path = /usr/share/apps/blackchocobo/
++locationPreview.files = locations.rcc
+ 
+ icon.path = /usr/share/pixmaps       #system path icon.
+ icon.files = icon/Black_Chocobo.png

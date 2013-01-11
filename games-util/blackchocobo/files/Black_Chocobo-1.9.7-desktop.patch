@@ -1,0 +1,36 @@
+diff -rupN a/Black_Chocobo.desktop b/Black_Chocobo.desktop
+--- a/Black_Chocobo.desktop	2012-12-14 22:48:16.310579385 -0600
++++ b/Black_Chocobo.desktop	2012-12-15 00:46:29.211084266 -0600
+@@ -1,27 +1,25 @@
+ [Desktop Entry]
+-Categories=Application;Game;
++Version=1.0
++Categories=Game;
+ Comment[en_US]=
+ Comment=
+-Encoding=UTF-8
+-Exec=/usr/bin/blackchocobo
++Exec=/usr/games/bin/blackchocobo
+ GenericName=FF7 Save Game Editor
+ GenericName[en]=FF7 Save Game Editor
+ GenericName[es]=Editor de partidas guardadas para FF7
+ GenericName[fr]=Éditeur de sauvegardes FF7
+ GenericName[de]=FF7 Spielstand-Bearbeitungsprogramm
+-Icon=Black_Chocobo.png
++Icon=Black_Chocobo
+ MimeType=application/x-blackchocobo;
+ Name=Black Chocobo
+ Name[en]=Black Chocobo
+ Name[es]=Black Chocobo
+ Name[fr]=Black Chocobo
+ Name[de]=Black Chocobo
+-Path=
++Path=/usr/share/apps/blackchocobo
+ StartupNotify=false
+ Terminal=false
+-TerminalOptions=
+ Type=Application
+-Version=1.9.7
+ X-DBUS-ServiceName=
+ X-DBUS-StartupType=
+ X-KDE-SubstituteUID=false

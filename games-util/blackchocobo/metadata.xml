@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription>
+	Black Chocobo is a Free Software (gplv3) FF7 save game editor 
+	written in Qt. Available for Windows, Linux + Mac Os. A Full 
+	Featured Save Editor, Black Chocobo contains All The features 
+	you would expect. Black Chocobo can open and write both PC and 
+	PSX save game formats as well as saves for most emulators. Also 
+	Supports Converting Save Formats to PC or PSX. With it you can 
+	even export your ps3 saves.
+</longdescription>
+</pkgmetadata>
