@@ -11,7 +11,10 @@ SRC_URI="mirror://sourceforge/quake2xp/media/baseq2/q2xpMusic.pkx
 	 mirror://sourceforge/quake2xp/media/baseq2/q2xpTex0.pkx
 	 mirror://sourceforge/quake2xp/media/baseq2/q2xpMdl.pkx
 	 mirror://sourceforge/quake2xp/media/baseq2/q2xpCache.pkx
-	 mirror://sourceforge/quake2xp/media/baseq2/q2xp0.pkx"
+	 mirror://sourceforge/quake2xp/media/baseq2/q2xp0.pkx
+	 rogue? ( mirror://sourceforge/quake2xp/media/rogue/q2xpR.pkx )
+	 xatrix? ( mirror://sourceforge/quake2xp/media/xatrix/q2xpX.pkx
+		   mirror://sourceforge/quake2xp/media/xatrix/q2xpXcache.pkx )"
 ESVN_REPO_URI="svn://svn.code.sf.net/p/quake2xp/code/trunk"
 
 LICENSE="GPL-2"
@@ -51,7 +54,23 @@ src_install() {
 	dodoc Readme_Linux.txt
 
 	insinto "${GAMES_DATADIR}"/${PN}/baseq2
-	doins ${DISTDIR}/*.pkx
+	doins ${DISTDIR}/q2xpMusic.pkx
+	doins ${DISTDIR}/q2xpMdl1.pkx
+	doins ${DISTDIR}/q2xpTex0.pkx
+	doins ${DISTDIR}/q2xpMdl.pkx
+	doins ${DISTDIR}/q2xpCache.pkx
+	doins ${DISTDIR}/q2xp0.pkx
+
+	if use rogue; then
+		insinto "${GAMES_DATADIR}"/${PN}/rogue
+		doins ${DISTDIR}/q2xpR.pkx
+	fi
+
+	if use xatrix; then
+		insinto "${GAMES_DATADIR}"/${PN}/xatrix
+		doins ${DISTDIR}/q2xpX.pkx
+		doins ${DISTDIR}/q2xpXcache.pkx
+	fi
 
 	# Setup symlinks to Quake2's data so that Quake2XP thinks Quake2 and Quake2XP data are in the same directory
 	dosym ${GAMES_DATADIR}/quake2/baseq2/maps.lst ${GAMES_DATADIR}/quake2xp/baseq2/maps.lst
