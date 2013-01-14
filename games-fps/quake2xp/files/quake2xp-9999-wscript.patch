@@ -1,0 +1,39 @@
+diff -rupN a/wscript b/wscript
+--- a/wscript	2013-01-07 21:06:16.001942263 -0600
++++ b/wscript	2013-01-07 22:28:33.145219478 -0600
+@@ -59,7 +59,7 @@ def build(bld):
+     #src_dir = bld.path.find_dir('src')
+ 
+     bld.env.append_value('CFLAGS', ['-Wno-unused-result'])
+-    bld.env.append_value('CFLAGS', ['-O3', '-march=native'])
++    #bld.env.append_value('CFLAGS', ['-O3', '-march=native'])
+     #bld.env.append_value('CFLAGS', ['-g', '-Wall'])
+     #bld.env.append_value('CFLAGS', ['-pg', '-O3', '-march=native'])
+     #bld.env.append_value('LINKFLAGS', ['-pg'])
+@@ -71,7 +71,7 @@ def build(bld):
+         for pat in v:
+             sources[k] += src_dir.ant_glob(pat)
+ 
+-    bld.env.DATADIR = bld.env.PREFIX + '/share/quake2xp'
++    bld.env.DATADIR = bld.env.PREFIX + '/share/games/quake2xp'
+ 
+     # Game shared library environment
+     genv = bld.env.derive()
+@@ -105,10 +105,13 @@ def build(bld):
+         env = genv
+         )
+ 
++    bld.env.BINDIR = bld.env.PREFIX + '/games/bin'
++
+     bld.program(
+         cflags = '-DSYSTEMWIDE="' + bld.env.DATADIR + '"',
+         source = sources['client'],
+-        target = 'quake2xp',
++        target = 'bin/quake2xp',
+         lib = ['z', 'm', 'dl'],
+-        use = ['IL', 'ILU', 'ILUT', 'OPENAL', 'SDL', 'OGG', 'VORBIS', 'VORBISFILE']
+-    )
+\ No newline at end of file
++        use = ['IL', 'ILU', 'ILUT', 'OPENAL', 'SDL', 'OGG', 'VORBIS', 'VORBISFILE'],
++        install_path = '${BINDIR}'
++    )
