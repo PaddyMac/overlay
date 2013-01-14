@@ -46,9 +46,8 @@ src_configure() {
 
 src_install() {
 	waf-utils_src_install
-	dogamesbin ${FILESDIR}/quake2xp.sh
 	newicon linux/q2icon.xbm quake2xp.xbm
-	make_desktop_entry "quake2xp.sh" "Quake2XP" "quake2xp" "Game;ActionGame;"
+	make_desktop_entry "quake2xp" "Quake2XP" "quake2xp" "Game;ActionGame;"
 	dodoc Readme_Linux.txt
 
 	insinto "${GAMES_DATADIR}"/${PN}/baseq2
