@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-physics</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription lang="en">
+  Bullet is a professional open source multi-threaded 
+  3D Collision Detection and Rigid Body Dynamics Library
+  for games and animation.
+</longdescription>
+	<use>
+		<flag name="custom_vector_math">Use custom vectormath library</flag>
+		<flag name="demos">Build and install the demo programs</flag>
+		<flag name="doc">Build API documentation with Doxygen</flag>
+		<flag name="double-precision">Build libraries in double precision</flag>
+		<flag name="examples">Install the source code for the extra libraries and demo programs</flag>
+		<flag name="extras">Build additional libraries</flag>
+		<flag name="graphical_benchmark">Use graphical benchmark in the demos</flag>
+		<flag name="internal_update_serialization_structures">Internal update serialization structures</flag>
+		<flag name="threads">Use multithreading. Requires <pkg>virtual/opencl</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">bullet</remote-id>
+	</upstream>
+</pkgmetadata>
