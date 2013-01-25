@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/doomsday/doomsday-1.9.8.ebuild,v 1.6 2012/07/16 10:32:00 kensington Exp $
+# $Header: $
 
 EAPI=4
 
@@ -119,7 +119,7 @@ src_prepare() {
 		echo "CONFIG += deng_nosnowberry" >> config_user.pri
 	fi
 
-	if use use !tools; then
+	if use !tools; then
 		echo "CONFIG += deng_notools" >> config_user.pri
 	fi
 
