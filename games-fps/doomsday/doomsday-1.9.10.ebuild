@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
-PYTHON_DEPEND="snowberry? 2"
+PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit python confutils eutils qt4-r2 games
+inherit python-single-r1 confutils eutils qt4-r2 games
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
 HOMEPAGE="http://www.dengine.net/"
@@ -52,10 +52,10 @@ REQUIRED_USE="demo? ( doom ) freedoom? ( doom ) resources? ( doom )"
 #			   these patches should be unnecessary in future ebuilds.
 
 PATCHES=( "${FILESDIR}"/${PN}-1.9.10-driver_openal.cpp.patch
-	  "${FILESDIR}"/${PN}-1.9.10-threadsafe.patch )
+	  "${FILESDIR}"/${PN}-1.9.10-threadsafe.patch
+	  "${FILESDIR}"/${PN}-1.9.10-python_build.patch )
 
 pkg_setup(){
-	python_pkg_setup
 	games_pkg_setup
 }
 
@@ -87,6 +87,9 @@ src_prepare() {
 	# Fix installation paths.
 	sed -i -e "/^DENG_BIN_DIR =/s:\$\$PREFIX/bin:${GAMES_BINDIR}:" config_unix.pri
 	sed -i -e "/^DENG_BASE_DIR =/s:\$\$PREFIX/share:${GAMES_DATADIR}:" config_unix.pri
+
+	# Set the python interpreter to use in the launch-doomsday script which runs Snowberry
+	echo "SCRIPT_PYTHON = /usr/bin/python2" >> config_user.pri
 
 	if use debug; then
 		echo "CONFIG += debug" >> config_user.pri
@@ -145,12 +148,6 @@ src_install() {
 	mv "${D}/${GAMES_DATADIR}"/{${PN}/data/jdoom,doom-data} || die
 	dosym "${GAMES_DATADIR}"/doom-data "${GAMES_DATADIR}"/${PN}/data/jdoom || die
 
-	if use snowberry; then
-		doicon ../snowberry/graphics/snowberry.png
-		python_convert_shebangs 2 "${D}"/"${GAMES_BINDIR}"/launch-doomsday
-		make_desktop_entry launch-doomsday "Snowberry DoomsDay" snowberry
-	fi
-
 	if use doom; then
 		local res_arg
 		if use resources; then
@@ -158,23 +155,23 @@ src_install() {
 		fi
 
 		doicon ../snowberry/graphics/orb-doom.png
-		doom_make_wrapper jdoom doom1 orb-doom "DoomsDay Engine: Doom 1" "${res_arg}"
+		doom_make_wrapper jdoom doom1 orb-doom "Doomsday Engine: Doom 1" "${res_arg}"
 		elog "Created jdoom launcher. To play Doom place your doom.wad to"
 		elog "\"${GAMES_DATADIR}/doom-data\""
 		elog
 
 		if use demo; then
-			doom_make_wrapper jdoom-demo doom1-share orb-doom "DoomsDay Engine: Doom 1 Demo" \
+			doom_make_wrapper jdoom-demo doom1-share orb-doom "Doomsday Engine: Doom 1 Demo" \
 				"-iwad \"${GAMES_DATADIR}\"/doom-data/doom1.wad ${res_arg}"
 		fi
 		if use freedoom; then
-			doom_make_wrapper jdoom-freedoom doom1-share orb-doom "DoomsDay Engine: FreeDoom" \
+			doom_make_wrapper jdoom-freedoom doom1-share orb-doom "Doomsday Engine: FreeDoom" \
 				"-iwad \"${GAMES_DATADIR}\"/doom-data/freedoom/doom1.wad"
 		fi
 	fi
 	if use hexen; then
 		doicon ../snowberry/graphics/orb-hexen.png
-		doom_make_wrapper jhexen hexen orb-hexen "DoomsDay Engine: Hexen"
+		doom_make_wrapper jhexen hexen orb-hexen "Doomsday Engine: Hexen"
 
 		elog "Created jhexen launcher. To play Hexen place your hexen.wad to"
 		elog "\"${GAMES_DATADIR}/${PN}/data/jhexen\""
@@ -182,7 +179,7 @@ src_install() {
 	fi
 	if use heretic; then
 		doicon ../snowberry/graphics/orb-heretic.png
-		doom_make_wrapper jheretic heretic orb-heretic "DoomsDay Engine: Heretic"
+		doom_make_wrapper jheretic heretic orb-heretic "Doomsday Engine: Heretic"
 
 		elog "Created jheretic launcher. To play Heretic place your heretic.wad to"
 		elog "\"${GAMES_DATADIR}/${PN}/data/jheretic\""

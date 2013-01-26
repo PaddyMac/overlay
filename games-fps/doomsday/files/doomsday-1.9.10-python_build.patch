@@ -1,0 +1,44 @@
+diff -rupN a/doomsday/build/build.pro b/doomsday/build/build.pro
+--- a/doomsday/build/build.pro	2013-01-25 21:10:34.527416378 -0600
++++ b/doomsday/build/build.pro	2013-01-25 21:54:28.198490959 -0600
+@@ -13,7 +13,7 @@ QMAKE_STRIP = true
+ 
+ # Update the PK3 files.
+ !deng_nopackres {
+-    system(cd $$PWD/scripts/ && python packres.py --quiet \"$$OUT_PWD/..\")
++    system(cd $$PWD/scripts/ && python2 packres.py --quiet \"$$OUT_PWD/..\")
+ }
+ 
+ # Install the launcher.
+diff -rupN a/doomsday/libdeng2/libdeng2.pro b/doomsday/libdeng2/libdeng2.pro
+--- a/doomsday/libdeng2/libdeng2.pro	2013-01-25 21:10:34.510416591 -0600
++++ b/doomsday/libdeng2/libdeng2.pro	2013-01-25 21:52:33.008931027 -0600
+@@ -34,7 +34,7 @@ win32 {
+     TARGET_EXT = .dll
+ 
+     # For Windows, an .rc file is generated for embedded version info in the binary.
+-    system(python "$$PWD/res/win32/generate_rc.py" "$$PWD/res/win32/deng2.rc" \
++    system(python2 "$$PWD/res/win32/generate_rc.py" "$$PWD/res/win32/deng2.rc" \
+         $$LIBDENG2_MAJOR_VERSION $$LIBDENG2_MINOR_VERSION $$LIBDENG2_PATCHLEVEL \
+         $$LIBDENG2_RELEASE_LABEL $$DENG_BUILD)
+     RC_FILE = res/win32/deng2.rc
+diff -rupN a/doomsday/versions.pri b/doomsday/versions.pri
+--- a/doomsday/versions.pri	2013-01-25 21:10:34.527416378 -0600
++++ b/doomsday/versions.pri	2013-01-25 21:51:46.088517612 -0600
+@@ -6,14 +6,14 @@
+ # be on the system path.
+ 
+ defineReplace(findVersion) {
+-    info = $$system(python \"$$PWD/../distrib/build_version.py\" \"$$PWD/$$1\")
++    info = $$system(python2 \"$$PWD/../distrib/build_version.py\" \"$$PWD/$$1\")
+     # Result: versionbase buildnum reltype winver
+     # Just use the base version (x.y.z) for now.
+     return($$member(info, 0))
+ }
+ 
+ defineReplace(dengReleaseType) {
+-    info = $$system(python \"$$PWD/../distrib/build_version.py\"  \"$$PWD/engine/api/dd_version.h\")
++    info = $$system(python2 \"$$PWD/../distrib/build_version.py\"  \"$$PWD/engine/api/dd_version.h\")
+     return($$member(info, 2))
+ }
+ 
