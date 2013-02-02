@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription>
+	 EDuke32 is an awesome, free homebrew game engine and source port of the classic
+	 PC first person shooter Duke Nukem 3D— Duke3D for short—to Windows, Linux, Mac
+	 OS X, FreeBSD, several handhelds, your family toaster, and to your girlfriend's
+	 vibrator. We've added thousands of cool and useful features and upgrades for
+	 regular players and additional editing capabilities and scripting extensions
+	 for homebrew developers and mod creators. EDuke32 is completely free, open
+	 source software.
+
+	 Created by Duke4.net community leader Richard "TerminX" Gobeille and a team of
+	 elite ninja programmers including NVIDIA software engineer Pierre-Loup
+	 "Plagman" Griffais and Philipp "Helixhorned" Kutin (based on work by Todd
+	 Replogle/Ken Silverman/Jonathon Fowler/Matt Saettler), EDuke32 is the
+	 undeniable king of Duke Nukem 3D ports.
+
+	 EDuke32 is licensed under the GNU GPL and the BUILD license.
+</longdescription>
+<use>
+	<flag name="asm">Enable 32-bit assembly code for the classic renderer.</flag>
+	<flag name="c++">Enable C++ building.</flag>
+	<flag name="clang">Enable this flag to build with <pkg>sys-devel/clang</pkg> instead of GCC.</flag>
+	<flag name="demo">Install the Duke Nukem 1.3d shareware data via <pkg>games-fps/duke3d-demodata</pkg>.</flag>
+	<flag name="extras">Install optional addon packages.</flag>
+	<flag name="lunatic">Build Lunatic (experimental).</flag>
+	<flag name="network">Enable support for network play.</flag>
+	<flag name="polymer">Enable the Polymer renderer.</flag>
+	<flag name="tools">Build the map editing and creation tools.</flag>
+	<flag name="vpx">Enable support for <pkg>media-libs/libvpx</pkg>.</flag>
+</use>
+</pkgmetadata>

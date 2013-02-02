@@ -1,0 +1,17 @@
+diff -rupN a/Makefile b/Makefile
+--- a/Makefile	2013-02-01 21:01:59.570529112 -0600
++++ b/Makefile	2013-02-01 21:23:23.771474391 -0600
+@@ -498,11 +498,11 @@ $(OBJ)/%.$o: $(RSRC)/%.c
+ 
+ $(OBJ)/game_banner.$o: $(RSRC)/game_banner.c
+ 	$(COMPILE_STATUS)
+-	if $(COMPILER) $(OURCFLAGS) -Wno-pointer-sign -c $< -o $@; then $(COMPILE_OK); else $(COMPILE_FAILED); fi
++	if $(COMPILER) $(OURCFLAGS) -c $< -o $@; then $(COMPILE_OK); else $(COMPILE_FAILED); fi
+ 
+ $(OBJ)/editor_banner.$o: $(RSRC)/editor_banner.c
+ 	$(COMPILE_STATUS)
+-	if $(COMPILER) $(OURCFLAGS) -Wno-pointer-sign -c $< -o $@; then $(COMPILE_OK); else $(COMPILE_FAILED); fi
++	if $(COMPILER) $(OURCFLAGS) -c $< -o $@; then $(COMPILE_OK); else $(COMPILE_FAILED); fi
+ 
+ $(RSRC)/game_banner.c: $(RSRC)/game.bmp
+ 	echo "#include <gdk-pixbuf/gdk-pixdata.h>" > $@

@@ -1,0 +1,87 @@
+diff -rupN a/Makefile b/Makefile
+--- a/Makefile	2013-02-01 21:01:59.570529112 -0600
++++ b/Makefile	2013-02-01 21:46:49.879895617 -0600
+@@ -408,7 +408,7 @@ endif
+ 
+ $(EBACKTRACEDLL): Windows/src/backtrace.c
+ 	$(COMPILE_STATUS)
+-	if $(CC) $(OURCONLYFLAGS) -O2 -shared -Wall -Wextra -I$(EINC) -o $@ $^ -lbfd -liberty -limagehlp; then $(COMPILE_OK); else $(COMPILE_FAILED); fi
++	if $(CC) $(OURCONLYFLAGS) -shared -Wall -Wextra -I$(EINC) -o $@ $^ -lbfd -liberty -limagehlp; then $(COMPILE_OK); else $(COMPILE_FAILED); fi
+ 
+ $(OBJ)/%.$o: $(SRC)/%.nasm
+ 	$(COMPILE_STATUS)
+diff -rupN a/Makefile.common b/Makefile.common
+--- a/Makefile.common	2013-02-01 21:02:00.814513560 -0600
++++ b/Makefile.common	2013-02-02 11:16:23.198597049 -0600
+@@ -8,12 +8,12 @@ MAKEFILE_COMMON:=$(lastword $(MAKEFILE_L
+ PRETTY_OUTPUT ?= 1
+ 
+ # Tools
+-CC=gcc
+-CXX=g++
++#CC=gcc
++#CXX=g++
+ AS=nasm
+-AR=ar
++#AR=ar
+ RC=windres
+-RANLIB=ranlib
++#RANLIB=ranlib
+ STRIP=strip
+ 
+ L_CC=$(CC)
+@@ -246,7 +246,7 @@ ifndef OPTOPT
+         endif
+ 
+         ifeq (i686,$(findstring i686, $(OPTOPTARCH)))
+-            OPTOPT=-march=pentium3 $(M_TUNE_GENERIC) -mmmx
++            OPTOPT=
+             # -msse2 -mfpmath=sse,387 -malign-double $(M_STACKREALIGN)
+         else
+             OPTOPT=
+@@ -268,11 +268,11 @@ endif
+ 
+ 
+ # compiler flags etc.
+-BASECFLAGS=
++BASECFLAGS=$(CFLAGS)
+ BASECONLYFLAGS=-Wimplicit -Wdeclaration-after-statement
+-BASECXXFLAGS= -fno-exceptions -fno-rtti -fpermissive -Wno-write-strings -Wno-narrowing
+-BASEASFLAGS=-s #-g
+-BASELDFLAGS=
++BASECXXFLAGS=$(CXXFLAGS) -fno-exceptions -fno-rtti -fpermissive -Wno-write-strings -Wno-narrowing
++BASEASFLAGS=$(ASFLAGS)
++BASELDFLAGS=$(LDFLAGS)
+ 
+ 
+ ifeq (1,$(strip $(shell expr $(GCC_MAJOR) \>= 4)))
+@@ -307,9 +307,9 @@ endif
+ 
+ ifneq (0,$(RELEASE))
+     # Debugging disabled
+-    debug+= -O$(OPTLEVEL)
++    debug+=
+     ifeq (0,$(CLANG))
+-        debug+= -funswitch-loops
++        debug+=
+         ifeq (1,$(strip $(shell expr $(GCC_MAJOR) \< 4)))
+             LTO=0
+         endif
+@@ -320,7 +320,7 @@ ifneq (0,$(RELEASE))
+         endif
+     endif
+     ifeq (0,$(DEBUGANYWAY))
+-        debug+= -fomit-frame-pointer -DNDEBUG
++        debug+= -DNDEBUG
+     else
+         debug+= -DDEBUGGINGAIDS
+     endif
+@@ -330,7 +330,7 @@ ifneq (0,$(RELEASE))
+     endif
+ else
+     # Debugging enabled
+-    debug+= -O0
++    debug+=
+ 
+     ifeq (0,$(DEBUGANYWAY))
+         debug+= -DDEBUGGINGAIDS
