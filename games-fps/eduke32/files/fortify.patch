@@ -1,0 +1,12 @@
+diff -rupN a/Makefile.common b/Makefile.common
+--- a/Makefile.common	2013-02-01 21:02:00.814513560 -0600
++++ b/Makefile.common	2013-02-03 19:07:05.159833553 -0600
+@@ -385,7 +385,7 @@ CWARNS := -W -Wall -Werror-implicit-func
+     #-Waddress -Wlogical-op
+ 
+ BASECOMMONFLAGS=$(debug) $(OPTOPT) $(CWARNS) \
+-	-funsigned-char -fno-strict-aliasing -DNO_GCC_BUILTINS -D_FORTIFY_SOURCE=2 \
++	-funsigned-char -fno-strict-aliasing -DNO_GCC_BUILTINS -D_FORTIFY_SOURCE=1 \
+ 	$(F_JUMP_TABLES) $(W_NO_UNUSED_RESULT) $(ARCH)
+ ifneq (0,$(CLANG))
+     BASECOMMONFLAGS+= -Wno-unused-value -Wno-parentheses

@@ -1,6 +1,6 @@
 diff -rupN a/Makefile b/Makefile
 --- a/Makefile	2013-02-01 21:01:59.570529112 -0600
-+++ b/Makefile	2013-02-01 21:46:49.879895617 -0600
++++ b/Makefile	2013-02-03 19:25:10.427265843 -0600
 @@ -408,7 +408,7 @@ endif
  
  $(EBACKTRACEDLL): Windows/src/backtrace.c
@@ -12,7 +12,7 @@ diff -rupN a/Makefile b/Makefile
  	$(COMPILE_STATUS)
 diff -rupN a/Makefile.common b/Makefile.common
 --- a/Makefile.common	2013-02-01 21:02:00.814513560 -0600
-+++ b/Makefile.common	2013-02-02 11:16:23.198597049 -0600
++++ b/Makefile.common	2013-02-03 19:25:41.932871969 -0600
 @@ -8,12 +8,12 @@ MAKEFILE_COMMON:=$(lastword $(MAKEFILE_L
  PRETTY_OUTPUT ?= 1
  
@@ -85,3 +85,12 @@ diff -rupN a/Makefile.common b/Makefile.common
  
      ifeq (0,$(DEBUGANYWAY))
          debug+= -DDEBUGGINGAIDS
+@@ -385,7 +385,7 @@ CWARNS := -W -Wall -Werror-implicit-func
+     #-Waddress -Wlogical-op
+ 
+ BASECOMMONFLAGS=$(debug) $(OPTOPT) $(CWARNS) \
+-	-funsigned-char -fno-strict-aliasing -DNO_GCC_BUILTINS -D_FORTIFY_SOURCE=2 \
++	-funsigned-char -fno-strict-aliasing \
+ 	$(F_JUMP_TABLES) $(W_NO_UNUSED_RESULT) $(ARCH)
+ ifneq (0,$(CLANG))
+     BASECOMMONFLAGS+= -Wno-unused-value -Wno-parentheses
