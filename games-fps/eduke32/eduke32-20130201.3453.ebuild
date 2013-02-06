@@ -51,6 +51,9 @@ src_prepare() {
 		epatch ${FILESDIR}/${PN}-20130128.3443-cxx.patch
 	fi
 
+	#Change all references to "luajit" to "luajit-2"
+	epatch ${FILESDIR}/${PN}-20130128.3443-luajit-2.patch
+
 	#Remove mandatory optimization flags and CC/CXX settings, and add flags from Make.conf
 	epatch ${FILESDIR}/${PN}-20130128.3443-respect-cflags.patch
 

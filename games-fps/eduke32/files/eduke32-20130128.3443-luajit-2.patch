@@ -1,0 +1,90 @@
+diff -rupN a/source/lunatic/bigytiles.lua b/source/lunatic/bigytiles.lua
+--- a/source/lunatic/bigytiles.lua	2013-02-01 21:01:59.106534913 -0600
++++ b/source/lunatic/bigytiles.lua	2013-02-06 00:46:28.214763981 -0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env luajit
++#!/usr/bin/env luajit-2
+ 
+ if (arg[1]==nil) then
+     print("Usage: "..arg[0].." ../path/to/*.ART")
+diff -rupN a/source/lunatic/bittest.lua b/source/lunatic/bittest.lua
+--- a/source/lunatic/bittest.lua	2013-02-01 21:01:59.179534000 -0600
++++ b/source/lunatic/bittest.lua	2013-02-06 00:47:00.995354168 -0600
+@@ -1,6 +1,6 @@
+-#!/usr/bin/env luajit
++#!/usr/bin/env luajit-2
+ 
+--- Usage: luajit bittest.lua <number or "x"> [-ffi] [-bchk]
++-- Usage: luajit-2 bittest.lua <number or "x"> [-ffi] [-bchk]
+ 
+ local string = require "string"
+ local math = require "math"
+diff -rupN a/source/lunatic/foreachmap.lua b/source/lunatic/foreachmap.lua
+--- a/source/lunatic/foreachmap.lua	2013-02-01 21:01:59.134534563 -0600
++++ b/source/lunatic/foreachmap.lua	2013-02-06 00:48:21.563346929 -0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env luajit
++#!/usr/bin/env luajit-2
+ 
+ -- Generic map iterator.
+ 
+diff -rupN a/source/lunatic/map2text.lua b/source/lunatic/map2text.lua
+--- a/source/lunatic/map2text.lua	2013-02-01 21:01:59.314532313 -0600
++++ b/source/lunatic/map2text.lua	2013-02-06 00:48:53.979941666 -0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env luajit
++#!/usr/bin/env luajit-2
+ 
+ local B = require("build")
+ local string = require("string")
+diff -rupN a/source/lunatic/mapdiff.sh b/source/lunatic/mapdiff.sh
+--- a/source/lunatic/mapdiff.sh	2013-02-01 21:01:59.171534100 -0600
++++ b/source/lunatic/mapdiff.sh	2013-02-06 00:49:10.395736440 -0600
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ DIFF="git diff -U2 --no-index --color-words"
+-CMD="/usr/bin/env luajit ./map2text.lua"
++CMD="/usr/bin/env luajit-2 ./map2text.lua"
+ 
+ opt=""
+ 
+diff -rupN a/source/lunatic/mapypan.lua b/source/lunatic/mapypan.lua
+--- a/source/lunatic/mapypan.lua	2013-02-01 21:01:59.339532000 -0600
++++ b/source/lunatic/mapypan.lua	2013-02-06 00:49:24.979554117 -0600
+@@ -33,7 +33,7 @@ function init(arg)
+     end
+ 
+     if (artargend==nil or artargend==0) then
+-        printf("Usage: luajit ./foreachmap.lua <tilesXXX.ART> [, ...] -- <filename1.map> ...\n")
++        printf("Usage: luajit-2 ./foreachmap.lua <tilesXXX.ART> [, ...] -- <filename1.map> ...\n")
+         return 1
+     end
+ 
+diff -rupN a/source/lunatic/profdemo.lua b/source/lunatic/profdemo.lua
+--- a/source/lunatic/profdemo.lua	2013-02-01 21:01:59.196533788 -0600
++++ b/source/lunatic/profdemo.lua	2013-02-06 00:49:31.907467507 -0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env luajit
++#!/usr/bin/env luajit-2
+ 
+ local stat = require "stat"
+ 
+diff -rupN a/source/lunatic/test/tables.lua b/source/lunatic/test/tables.lua
+--- a/source/lunatic/test/tables.lua	2013-02-01 21:01:59.246533163 -0600
++++ b/source/lunatic/test/tables.lua	2013-02-06 00:50:36.152664331 -0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env luajit
++#!/usr/bin/env luajit-2
+ 
+ local ffi = require "ffi"
+ local io = require "io"
+diff -rupN a/source/lunatic/test/test_geom.lua b/source/lunatic/test/test_geom.lua
+--- a/source/lunatic/test/test_geom.lua	2013-02-01 21:01:59.257533025 -0600
++++ b/source/lunatic/test/test_geom.lua	2013-02-06 00:51:20.964104111 -0600
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env luajit
++#!/usr/bin/env luajit-2
+ 
+ local os = require("os")
+ 
