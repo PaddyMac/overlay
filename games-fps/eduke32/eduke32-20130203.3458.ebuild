@@ -132,13 +132,8 @@ src_install() {
 	dodoc build/buildlic.txt
 
 	dodir ${GAMES_LOGDIR}
-	touch ${D}/${GAMES_LOGDIR}/${PN}.log
-	touch ${D}/${GAMES_LOGDIR}/mapster32.log
 
 	prepgamesdirs
-
-	fowners ${GAMES_USER_DED}:${GAMES_GROUP} ${GAMES_LOGDIR}/${PN}.log
-	fowners ${GAMES_USER_DED}:${GAMES_GROUP} ${GAMES_LOGDIR}/mapster32.log
 }
 
 pkg_preinst() {
@@ -156,6 +151,18 @@ pkg_postinst() {
 		ewarn "games-fps/duke3d-data or games-fps/duke3d-demodata before playing."
 		echo
 	}
+
+	einfo
+	elog "${PN} reads data files from ${GAMES_DATADIR}/duke3d"
+	einfo
+
+	[[ -e ${ROOT}/${GAMES_LOGDIR} ]] || mkdir -p "${ROOT}/${GAMES_LOGDIR}"
+	touch "${ROOT}/${GAMES_LOGDIR}"/${PN}.log
+	touch "${ROOT}/${GAMES_LOGDIR}"/mapster32.log
+	chown ${GAMES_USER}:${GAMES_GROUP} "${ROOT}/${GAMES_LOGDIR}"/${PN}.log
+	chown ${GAMES_USER}:${GAMES_GROUP} "${ROOT}/${GAMES_LOGDIR}"/mapster32.log
+	chmod g+w "${ROOT}/${GAMES_LOGDIR}"/${PN}.log
+	chmod g+w "${ROOT}/${GAMES_LOGDIR}"/mapster32.log
 }
 
 pkg_postrm() {
