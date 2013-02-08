@@ -2,11 +2,12 @@
 
 EAPI=5
 
-inherit autotools games
+inherit autotools subversion games
 
 DESCRIPTION="Doom port designed to act identically to the original game"
 HOMEPAGE="http://www.chocolate-doom.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI=""
+ESVN_REPO_URI="https://chocolate-doom.svn.sourceforge.net/svnroot/chocolate-doom/trunk/chocolate-doom/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,6 +20,10 @@ DEPEND=">=media-libs/libsdl-1.1.3
 	python? ( dev-lang/python )
 	timidity? ( media-libs/sdl-mixer[midi,timidity] )"
 RDEPEND="${DEPEND}"
+
+src_unpack() {
+	subversion_src_unpack
+}
 
 src_prepare() {
 

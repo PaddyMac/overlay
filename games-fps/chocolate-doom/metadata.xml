@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription>
+In 1998 the Doom source code was released. Since then, there have been a large 
+number of Doom source ports created by programmers who have extended the code, 
+adding new features and removing some of the limitations of DOS Doom (which is 
+now often referred to as "Vanilla Doom"). These efforts should be commended, 
+and many of the modern Doom source ports are truly impressive pieces of work.
+
+Chocolate Doom, however, takes the opposite approach. It instead aims to 
+accurately reproduce the experience of playing Vanilla Doom. It is a 
+conservative, historically accurate Doom source port, which is compatible with 
+the thousands of mods and levels that were made before the Doom source code 
+was released. Rather than flashy new graphics, Chocolate Doom's main features 
+are its accurate reproduction of the game as it was played in the 1990s.
+
+The source code to Chocolate Doom is Free Software under the GNU General Public 
+License, and is portable to a variety of different operating systems. It 
+therefore preserves the gameplay of the original game for modern computers, 
+many of which are now unable to run the original. 
+</longdescription>
+<use>
+</use>
+</pkgmetadata>
