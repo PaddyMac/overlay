@@ -1,0 +1,63 @@
+Binary files a/data/48x48-freeseer.png and b/data/48x48-freeseer.png differ
+diff -rupN a/data/freeseer-config.desktop b/data/freeseer-config.desktop
+--- a/data/freeseer-config.desktop	1969-12-31 18:00:00.000000000 -0600
++++ b/data/freeseer-config.desktop	2013-02-08 16:31:53.833708622 -0600
+@@ -0,0 +1,10 @@
++[Desktop Entry]
++Encoding=UTF-8
++Name=Freeseer Configuration
++Comment=Video studio in a backpack
++GenericName=
++Type=Application
++Exec=freeseer-config
++Icon=freeseer
++Categories=AudioVideo;Video;
++
+diff -rupN a/data/freeseer-reporteditor.desktop b/data/freeseer-reporteditor.desktop
+--- a/data/freeseer-reporteditor.desktop	1969-12-31 18:00:00.000000000 -0600
++++ b/data/freeseer-reporteditor.desktop	2013-02-08 16:31:08.542274843 -0600
+@@ -0,0 +1,10 @@
++[Desktop Entry]
++Encoding=UTF-8
++Name=Freeseer Report Editor
++Comment=Video studio in a backpack
++GenericName=
++Type=Application
++Exec=freeseer-reporteditor
++Icon=freeseer
++Categories=AudioVideo;Video;
++
+diff -rupN a/data/freeseer-talkeditor.desktop b/data/freeseer-talkeditor.desktop
+--- a/data/freeseer-talkeditor.desktop	1969-12-31 18:00:00.000000000 -0600
++++ b/data/freeseer-talkeditor.desktop	2013-02-08 16:31:31.360989569 -0600
+@@ -0,0 +1,10 @@
++[Desktop Entry]
++Encoding=UTF-8
++Name=Freeseer Talk Editor
++Comment=Video studio in a backpack
++GenericName=
++Type=Application
++Exec=freeseer-talkeditor
++Icon=freeseer
++Categories=AudioVideo;Video;
++
+diff -rupN a/data/freeseer.desktop b/data/freeseer.desktop
+--- a/data/freeseer.desktop	2013-02-08 16:21:25.248567017 -0600
++++ b/data/freeseer.desktop	2013-02-08 16:31:42.138854828 -0600
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Name=freeseer
+-Comment=Video capture utility
++Name=Freeseer
++Comment=Video studio in a backpack
+ GenericName=
+ Type=Application
+-Exec=/usr/bin/freeseer-record
+-Icon=48x48-freeseer.png
+-Categories=AudioVideo;Recorder;
++Exec=freeseer-record
++Icon=freeseer
++Categories=AudioVideo;Video;
+ 
+Binary files a/data/freeseer.png and b/data/freeseer.png differ

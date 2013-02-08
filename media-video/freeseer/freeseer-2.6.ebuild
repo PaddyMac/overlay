@@ -8,7 +8,7 @@ inherit distutils
 
 DESCRIPTION="Freeseer captures video from a choice of sources along with audio and mixes them together to produce a video."
 HOMEPAGE="https://github.com/Freeseer/freeseer/wiki"
-SRC_URI="https://github.com/downloads/Freeseer/freeseer/freeseer-2.5.3.tar.gz"
+SRC_URI="http://www.fosslc.org/downloads/freeseer-2.6/freeseer-2.6.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

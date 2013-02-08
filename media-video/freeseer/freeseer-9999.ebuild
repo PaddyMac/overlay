@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=3
-PYTHON_DEPEND="2:2.6:2.7"
-inherit eutils distutils git-2 python
+EAPI=4-python
+PYTHON_DEPEND="<<2:2.6>>"
+inherit eutils distutils git-2
 
 DESCRIPTION="Freeseer captures video from a choice of sources along with audio and mixes them together to produce a video."
 HOMEPAGE="https://github.com/Freeseer/freeseer/wiki"
@@ -15,7 +15,7 @@ EGIT_BRANCH="experimental"
 EGIT_COMMIT="experimental"
 EGIT_PROJECT="freeseer"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc +plugins"
@@ -23,34 +23,27 @@ IUSE="doc +plugins"
 DEPEND="sys-devel/make
 	dev-db/sqlite:3
 	dev-lang/python[sqlite]
-	dev-python/PyQt4
+	dev-python/PyQt4[sql]
 	dev-python/gst-python
 	dev-python/feedparser
+	dev-python/passlib
+	dev-python/python-xlib
 	dev-python/setuptools
 	dev-python/yapsy
 	media-plugins/gst-plugins-v4l2
-	media-plugins/gst-plugins-ximagesrc"
+	media-plugins/gst-plugins-ximagesrc
+	x11-libs/qt-sql[sqlite]"
 RDEPEND="${DEPEND}
 	doc? ( ~media-video/freeseer-docs-${PV} )
 	plugins? ( ~media-video/freeseer-plugins-linux-${PV} )"
-RESTRICT_PYTHON_ABIS="3.*"
-
-src_prepare() {
-	epatch "${FILESDIR}"/"${P}"-setup.py.patch
-}
-
-src_compile() {
-	distutils_src_compile
-}
 
 src_install() {
 	distutils_src_install
-	doicon src/freeseer/frontend/qtcommon/images/freeseer_logo.png
-	make_desktop_entry "freeseer-config" "Freeseer Configuration" "freeseer_logo" "AudioVideo;Audio;"
-	make_desktop_entry "freeseer-record" "Freeseer" "freeseer_logo" "AudioVideo;Audio;"
-	make_desktop_entry "freeseer-reporteditor" "Freeseer Report Editor" "freeseer_logo" "AudioVideo;Audio;"
-	make_desktop_entry "freeseer-talkeditor" "Freeseer Talk Editor" "freeseer_logo" "AudioVideo;Audio;"
-	make_desktop_entry "freeseer-videouploader" "Freeseer Video Uploader" "freeseer_logo" "AudioVideo;Audio;"
+	newicon src/freeseer/frontend/qtcommon/images/freeseer_logo.png freeseer.png
+	make_desktop_entry ${PN}-config "Freeseer Configuration" ${PN}
+	make_desktop_entry ${PN}-record Freeseer ${PN}
+	make_desktop_entry ${PN}-reporteditor "Freeseer Report Editor" ${PN}
+	make_desktop_entry ${PN}-talkeditor "Freeseer Talk Editor" ${PN}
 }
 
-DOCS="LICENSE PACKAGE.txt README.md index.html release_notes.txt"
+DOCS="PACKAGE.txt README.md release_notes.txt docs/"
