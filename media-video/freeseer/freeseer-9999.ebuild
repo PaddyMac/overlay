@@ -18,7 +18,7 @@ EGIT_PROJECT="freeseer"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +plugins"
+IUSE="doc"
 
 DEPEND="sys-devel/make
 	dev-db/sqlite:3
@@ -34,8 +34,7 @@ DEPEND="sys-devel/make
 	media-plugins/gst-plugins-ximagesrc
 	x11-libs/qt-sql[sqlite]"
 RDEPEND="${DEPEND}
-	doc? ( ~media-video/freeseer-docs-${PV} )
-	plugins? ( ~media-video/freeseer-plugins-linux-${PV} )"
+	doc? ( ~media-video/freeseer-docs-${PV} )"
 
 src_install() {
 	distutils_src_install

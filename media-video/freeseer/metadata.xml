@@ -17,6 +17,5 @@
         Freeseer itself can run on commodity hardware such as a laptop or desktop.
     </longdescription>
     <use>
-	<flag name='plugins'>Install additional Linux-specific plugins.</flag>
     </use>
 </pkgmetadata>
