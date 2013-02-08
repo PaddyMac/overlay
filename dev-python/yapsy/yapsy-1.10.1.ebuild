@@ -28,7 +28,7 @@ src_compile() {
 	distutils_src_compile
 
 	if use doc; then
-		emake -C src2/package/doc dirhtml
+		emake -C src2/package/doc html
 	fi
 }
 
@@ -38,6 +38,6 @@ src_install() {
 	doicon src2/package/artwork/yapsy.svg
 
 	if use doc; then
-		dohtml -r src2/package/doc/_build/dirhtml/
+		dohtml -r src2/package/doc/_build/html/
 	fi
 }
