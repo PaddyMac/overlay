@@ -1,29 +1,25 @@
-# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=3
+EAPI=4-python
+
+PYTHON_MULTIPLE_ABIS=1
+PYTHON_RESTRICTED_ABIS="3.*"
+DISTUTILS_SRC_TEST="setup.py"
+
 inherit distutils
 
-DESCRIPTION="Yapsy is a small library implementing the core mechanisms needed to build a plugin system into a wider application."
+MY_PN="Yapsy"
+
+DESCRIPTION="Yet Another Plugin System: A simple plugin system for Python applications."
 HOMEPAGE="http://yapsy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/yapsy/Yapsy-${PV}/Yapsy-${PV}.tar.gz"
+SRC_URI="mirror://sourceforge/yapsy/${MY_PN}-${PV}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror"
-DEPEND=""
-RDEPEND="${DEPEND}"
-S="${WORKDIR}/Yapsy-${PV}"
 
-src_compile() {
-	distutils_src_compile
-}
-        
-src_install() {
-	distutils_src_install
-}
-                                        
-DOCS="PKG-INFO README.txt"
+DEPEND="dev-python/setuptools"
+RDEPEND=""
+
+S="${WORKDIR}/${MY_PN}-${PV}"
