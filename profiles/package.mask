@@ -17,6 +17,9 @@ dev-games/celayouteditor
 games-engines/openmw
 
 # Let users unmask live ebuilds at their discretion.
+=games-fps/chocolate-doom-9999
+
+# Let users unmask live ebuilds at their discretion.
 =games-rpg/sumwars-9999
 
 # Magarena doesn't support system-wide installation yet, so it's not yet working properly.
