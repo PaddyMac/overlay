@@ -26,6 +26,7 @@ src_install() {
 	exeinto "${GAMES_PREFIX_OPT}/${MY_PN}"
 	insinto "${GAMES_PREFIX_OPT}/${MY_PN}"
 	doins -r Magarena
+	doins -r lib
 	doins Magarena.exe || die
 	doexe Magarena.sh || die
 	dodoc README.txt
