@@ -1,0 +1,33 @@
+#!/bin/bash
+
+GAME="virtualjaguar"
+BIN="${GAME}"
+ORIGINAL_DIRECTORY="${PWD}"
+RUN_DIRECTORY=~/.vj
+DATADIR="@DATADIR@"
+
+if [ ! -d ${RUN_DIRECTORY} ] ; then
+	mkdir ${RUN_DIRECTORY}
+fi
+
+if [ ! -d ${RUN_DIRECTORY}/bios ] ; then
+	mkdir ${RUN_DIRECTORY}/bios
+fi
+
+if [ ! -d ${RUN_DIRECTORY}/eeproms ] ; then
+	mkdir ${RUN_DIRECTORY}/eeproms
+fi
+
+if [ ! -d ${RUN_DIRECTORY}/software ] ; then
+	mkdir ${RUN_DIRECTORY}/software
+fi
+
+if [ ! -L ${RUN_DIRECTORY}/software/Downfall.zip ] ; then
+	ln -s ${DATADIR}/software/Downfall.zip ${RUN_DIRECTORY}/software/Downfall.zip
+fi
+
+cd ${RUN_DIRECTORY}
+
+exec $BIN "$@"
+
+cd ${ORIGINAL_DIRECTORY}
