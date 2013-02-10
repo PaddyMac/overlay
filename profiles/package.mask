@@ -13,6 +13,9 @@ dev-games/celayouteditor
 # Mask 1.8 branch because many applications require 1.7.x and will not work with 1.8
 =dev-games/ogre-1.8.0_rc1
 
+# Let users unmask live ebuilds at their discretion.
+=games-emulation/virtualjaguar-9999
+
 # Masked until it can be properly tested
 games-engines/openmw
 
