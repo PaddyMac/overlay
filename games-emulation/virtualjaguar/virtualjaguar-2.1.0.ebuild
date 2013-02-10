@@ -35,7 +35,7 @@ src_install() {
 	doins -r software
 
 	newicon res/vj-icon.png virtualjaguar.png
-	make_desktop_entry ${PN} "Virtual Jaguar" ${PN}
+	make_desktop_entry vj "Virtual Jaguar" ${PN}
 
 	dodoc docs/{README,TODO,WHATSNEW}
 	dohtml res/help.html
