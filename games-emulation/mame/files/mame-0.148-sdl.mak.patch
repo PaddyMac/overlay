@@ -1,0 +1,12 @@
+diff -rupN a/src/osd/sdl/sdl.mak b/src/osd/sdl/sdl.mak
+--- a/src/osd/sdl/sdl.mak	2013-02-13 20:05:36.413294628 -0600
++++ b/src/osd/sdl/sdl.mak	2013-02-13 20:07:53.740577800 -0600
+@@ -74,7 +74,7 @@ USE_DISPATCH_GL = 1
+ 
+ # uncomment to use Xinput for multiple mice on X11 systems
+ # (currently defaults disabled due to causing issues with mouse capture, esp. in MESS)
+-NO_USE_XINPUT = 1
++# NO_USE_XINPUT = 1
+ 
+ # uncomment to try the experimental new Qt debugger
+ #USE_QTDEBUG = 1

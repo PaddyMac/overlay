@@ -1,0 +1,198 @@
+diff -rupN a/makefile b/makefile
+--- a/makefile	2013-02-10 02:19:45.824681390 -0600
++++ b/makefile	2013-02-10 22:35:12.527684095 -0600
+@@ -214,16 +214,16 @@ endif
+ # BIGENDIAN = 1
+ 
+ # uncomment next line to build expat as part of MAME build
+-BUILD_EXPAT = 1
++# BUILD_EXPAT = 1
+ 
+ # uncomment next line to build zlib as part of MAME build
+-BUILD_ZLIB = 1
++# BUILD_ZLIB = 1
+ 
+ # uncomment next line to build libflac as part of MAME build
+-BUILD_FLAC = 1
++# BUILD_FLAC = 1
+ 
+ # uncomment next line to build jpeglib as part of MAME build
+-BUILD_JPEGLIB = 1
++# BUILD_JPEGLIB = 1
+ 
+ # uncomment next line to build PortMidi as part of MAME/MESS build
+ BUILD_MIDILIB = 1
+@@ -262,20 +262,20 @@ BUILD_MIDILIB = 1
+ #-------------------------------------------------
+ 
+ # specify a default optimization level if none explicitly stated
+-ifndef OPTIMIZE
+-ifndef SYMBOLS
+-OPTIMIZE = 3
+-else
+-OPTIMIZE = 0
+-endif
+-endif
++#ifndef OPTIMIZE
++#ifndef SYMBOLS
++#OPTIMIZE = 3
++#else
++#OPTIMIZE = 0
++#endif
++#endif
+ 
+ # profiler defaults to on for DEBUG builds
+-ifdef DEBUG
+-ifndef PROFILER
+-PROFILER = 1
+-endif
+-endif
++#ifdef DEBUG
++#ifndef PROFILER
++#PROFILER = 1
++#endif
++#endif
+ 
+ # allow gprof profiling as well, which overrides the internal PROFILER
+ # also enable symbols as it is useless without them
+@@ -314,13 +314,13 @@ BUILD_EXE = $(EXE)
+ endif
+ 
+ # compiler, linker and utilities
+-AR = @ar
+-CC = @gcc
+-LD = @g++
+-MD = -mkdir$(EXE)
+-RM = @rm -f
+-OBJDUMP = @objdump
+-PYTHON = @python
++AR ?= @ar
++CC ?= @gcc
++LD ?= @g++
++MD ?= -mkdir$(EXE)
++RM ?= @rm -f
++OBJDUMP ?= @objdump
++PYTHON ?= @python
+ 
+ 
+ #-------------------------------------------------
+@@ -341,19 +341,19 @@ endif
+ endif
+ 
+ # 64-bit builds get a '64' suffix
+-ifeq ($(PTR64),1)
+-SUFFIX64 = 64
+-endif
++#ifeq ($(PTR64),1)
++#SUFFIX64 = 64
++#endif
+ 
+ # debug builds just get the 'd' suffix and nothing more
+-ifdef DEBUG
+-SUFFIXDEBUG = d
+-endif
++#ifdef DEBUG
++#SUFFIXDEBUG = d
++#endif
+ 
+ # gprof builds get an addition 'p' suffix
+-ifdef PROFILE
+-SUFFIXPROFILE = p
+-endif
++#ifdef PROFILE
++#SUFFIXPROFILE = p
++#endif
+ 
+ # the name is just 'target' if no subtarget; otherwise it is
+ # the concatenation of the two (e.g., mametiny)
+@@ -464,7 +464,7 @@ CPPONLYFLAGS += -x c++ -std=gnu++98
+ COBJFLAGS += -x objective-c++
+ 
+ # this speeds it up a bit by piping between the preprocessor/compiler/assembler
+-CCOMFLAGS += -pipe
++# CCOMFLAGS += -pipe
+ 
+ # add -g if we need symbols, and ensure we have frame pointers
+ ifdef SYMBOLS
+@@ -482,7 +482,7 @@ CCOMFLAGS += -pg
+ endif
+ 
+ # add the optimization flag
+-CCOMFLAGS += -O$(OPTIMIZE)
++# CCOMFLAGS += -O$(OPTIMIZE)
+ 
+ # add the error warning flag
+ ifndef NOWERROR
+@@ -541,12 +541,12 @@ INCPATH += \
+ # archiving flags
+ #-------------------------------------------------
+ # Default to something reasonable for all platforms
+-ARFLAGS = -cr
++ARFLAGS ?= -cr
+ # Deal with macosx brain damage if COMMAND_MODE is in
+ # the luser's environment:
+ ifeq ($(TARGETOS),macosx)
+ ifeq ($(COMMAND_MODE),"legacy")
+-ARFLAGS = -crs
++ARFLAGS ?= -crs
+ endif
+ endif
+ 
+@@ -557,11 +557,11 @@ endif
+ 
+ # LDFLAGS are used generally; LDFLAGSEMULATOR are additional
+ # flags only used when linking the core emulator
+-LDFLAGS =
++LDFLAGS ?=
+ ifneq ($(TARGETOS),macosx)
+ ifneq ($(TARGETOS),os2)
+ ifneq ($(TARGETOS),solaris)
+-LDFLAGS = -Wl,--warn-common
++LDFLAGS ?= -Wl,--warn-common
+ endif
+ endif
+ endif
+@@ -573,11 +573,11 @@ LDFLAGS += -pg
+ endif
+ 
+ # strip symbols and other metadata in non-symbols and non profiling builds
+-ifndef SYMBOLS
+-ifneq ($(TARGETOS),macosx)
+-LDFLAGS += -s
+-endif
+-endif
++#ifndef SYMBOLS
++#ifneq ($(TARGETOS),macosx)
++#LDFLAGS += -s
++#endif
++#endif
+ 
+ # output a map file (emulator only)
+ ifdef MAP
+@@ -627,7 +627,7 @@ ifeq ($(BUILD_EXPAT),1)
+ INCPATH += -I$(SRC)/lib/expat
+ EXPAT = $(OBJ)/libexpat.a
+ else
+-LIBS += -lexpat
++LIBS += $(shell pkg-config --libs-only-l expat)
+ EXPAT =
+ endif
+ 
+@@ -636,7 +636,7 @@ ifeq ($(BUILD_ZLIB),1)
+ INCPATH += -I$(SRC)/lib/zlib
+ ZLIB = $(OBJ)/libz.a
+ else
+-LIBS += -lz
++LIBS += $(shell pkg-config --libs-only-l zlib)
+ ZLIB =
+ endif
+ 
+@@ -646,7 +646,7 @@ INCPATH += -I$(SRC)/lib/util
+ FLAC_LIB = $(OBJ)/libflac.a
+ # $(OBJ)/libflac++.a
+ else
+-LIBS += -lFLAC
++LIBS += $(shell pkg-config --libs-only-l flac)
+ FLAC_LIB =
+ endif
+ 

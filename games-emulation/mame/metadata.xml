@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription>
+</longdescription>
+<use>
+	<flag name="gtk_debug">When debug is enabled, use the older and more stable GTK2 debugger.</flag>
+	<flag name="network">Enable network support.</flag>
+	<flag name="qt_debug">When debug is enabled, use the new and experimental QT4 debugger.</flag>
+	<flag name="xinput">Enable support for X11's Xinput extension to support various peripherals. Disabled by default because it may cause problems with mouse capture.</flag>
+</use>
+</pkgmetadata>
