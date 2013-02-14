@@ -1,6 +1,6 @@
 diff -rupN a/makefile b/makefile
---- a/makefile	2013-02-10 02:19:45.824681390 -0600
-+++ b/makefile	2013-02-10 22:35:12.527684095 -0600
+--- a/makefile	2013-02-13 20:05:37.101286027 -0600
++++ b/makefile	2013-02-13 23:27:22.503947667 -0600
 @@ -214,16 +214,16 @@ endif
  # BIGENDIAN = 1
  
@@ -105,6 +105,18 @@ diff -rupN a/makefile b/makefile
  
  # the name is just 'target' if no subtarget; otherwise it is
  # the concatenation of the two (e.g., mametiny)
+@@ -449,9 +449,9 @@ endif
+ 
+ # start with empties for everything
+ CCOMFLAGS =
+-CONLYFLAGS =
++CONLYFLAGS = $(CFLAGS)
+ COBJFLAGS =
+-CPPONLYFLAGS =
++CPPONLYFLAGS = $(CXXFLAGS)
+ 
+ # CFLAGS is defined based on C or C++ targets
+ # (remember, expansion only happens when used, so doing it here is ok)
 @@ -464,7 +464,7 @@ CPPONLYFLAGS += -x c++ -std=gnu++98
  COBJFLAGS += -x objective-c++
  

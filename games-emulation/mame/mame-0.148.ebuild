@@ -110,17 +110,17 @@ src_compile() {
 	# Generate default config files
 	if use mame; then
 		if use tinymame; then
-			exec mametiny -cc
+			mametiny -cc
 		else
-			exec mame -cc
+			mame -cc
 		fi
 	fi
 
 	if use mess; then
 		if use tinymess; then
-			exec messtiny -cc
+			messtiny -cc
 		else
-			exec mess -cc
+			mess -cc
 		fi
 	fi
 }
@@ -131,8 +131,8 @@ src_install() {
 	use mess && use !tinymame && dogamesbin mess
 	use mess && use tinymess && dogamesbin messtiny
 
-	dobin chdman jedutil ldresample ldverify regrep romcmp split src2html srcclean testkeys unidasm
-	use mess && use !tiny && dobin castool floptool imgtool
+	dogamesbin chdman jedutil ldresample ldverify regrep romcmp split src2html srcclean testkeys unidasm
+	use mess && use !tiny && dogamesbin castool floptool imgtool
 
 	insinto ${GAMES_DATADIR}/${PN}
 	doins artwork/ hash/ hlsl/ keymaps/
