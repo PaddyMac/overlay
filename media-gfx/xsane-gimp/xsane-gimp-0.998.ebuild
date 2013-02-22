@@ -20,7 +20,7 @@ RDEPEND="media-gfx/sane-backends
 	media-gfx/gimp"
 
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

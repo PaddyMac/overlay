@@ -26,7 +26,7 @@ RDEPEND="${COMMON_DEPEND}
 	!x11-drivers/xf86-input-wacom"
 
 DEPEND="${COMMON_DEPEND}
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	usb? ( >=sys-kernel/linux-headers-2.6 )"
 S=${WORKDIR}/${P/_p/-}
 

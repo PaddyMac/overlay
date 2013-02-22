@@ -16,7 +16,7 @@ KEYWORDS="~x86"
 IUSE="jpeg +png static-libs"
 
 DEPEND="dev-libs/eina
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	jpg? ( virtual/jpeg )
 	png? ( media-libs/libpng )"
 RDEPEND="${DEPEND}"

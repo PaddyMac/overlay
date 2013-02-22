@@ -16,10 +16,10 @@ KEYWORDS="~x86"
 IUSE="altivec doc mmx sse sse2 static-libs"
 
 DEPEND="dev-libs/eina
-	dev-util/pkgconfig
 	media-libs/freetype
 	media-libs/emage
 	media-libs/enesim
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 RDEPEND="${DEPEND}"
 

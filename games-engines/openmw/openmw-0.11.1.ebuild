@@ -17,8 +17,8 @@ IUSE="audiere debug ffmpeg +mpg123"
 DEPEND=">=dev-games/ogre-1.7.0
 	dev-games/ois
 	>=dev-libs/boost-1.45.0
-	dev-util/pkgconfig
 	sci-physics/bullet
+	virtual/pkgconfig
 	audiere? ( media-libs/audiere )
 	ffmpeg? ( media-video/ffmpeg )
 	mpg123? ( media-sound/mpg123

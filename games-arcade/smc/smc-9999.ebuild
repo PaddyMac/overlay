@@ -28,7 +28,7 @@ RDEPEND=">=dev-games/cegui-0.7.4[opengl,devil]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-ttf"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig
+	virtual/pkgconfig
 	music? ( app-arch/unzip )
 	sys-devel/gettext"
 
