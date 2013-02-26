@@ -157,6 +157,15 @@ src_unpack() {
 }
 
 src_prepare() {
+	if use opencl; then
+		ewarn
+		ewarn "You have enabled Mesa's OpenCL library implementation."
+		ewarn "Please be aware that eselect-opencl does not support this yet,"
+		ewarn "and you will get file collisions if you have another OpenCL"
+		ewarn "implementation installed. I hope to have this fixed soon."
+		ewarn
+	fi
+
 	# apply patches
 	if [[ ${PV} != 9999* && -n ${SRC_PATCHES} ]]; then
 		EPATCH_FORCE="yes" \
