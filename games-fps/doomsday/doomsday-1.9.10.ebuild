@@ -1,6 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=5
 
@@ -17,15 +15,15 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug demo +doom fluidsynth fmod freedoom heretic hexen openal resources +sdl snowberry +tools"
 
-DEPEND="media-libs/libpng
+DEPEND="dev-qt/qtcore:4
+	dev-qt/qtgui:4
+	dev-qt/qtopengl:4
+	media-libs/libpng
 	media-libs/libsdl[joystick,opengl]
 	media-libs/sdl-net
 	net-misc/curl
 	sys-libs/ncurses
 	sys-libs/zlib
-	x11-libs/qt-core:4
-	x11-libs/qt-gui:4
-	x11-libs/qt-opengl:4
 	x11-libs/libXrandr
 	x11-libs/libXxf86vm
 	virtual/glu
