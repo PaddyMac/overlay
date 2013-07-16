@@ -1,3 +1,6 @@
+# Let users unmask live ebuilds at their discretion.
+=app-text/sword-9999
+
 # Masked until it can be properly tested
 dev-games/ceimageseteditor
 
