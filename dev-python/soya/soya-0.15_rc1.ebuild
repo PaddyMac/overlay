@@ -27,7 +27,6 @@ IUSE="doc examples"
 
 DEPEND=">=dev-games/ode-0.10[-double-precision]
 	dev-python/editobj
-	>=dev-python/imaging-1.1.5
 	>=dev-python/pyopenal-0.1.6
 	media-fonts/freefonts
 	>=media-libs/cal3d-0.10
@@ -36,7 +35,8 @@ DEPEND=">=dev-games/ode-0.10[-double-precision]
 	>=media-libs/glew-1.3.3
 	>=media-libs/libsdl-1.2.8[opengl]
 	media-libs/openal
-	virtual/opengl"
+	virtual/opengl
+	virtual/python-imaging"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
