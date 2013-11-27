@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+	<email>doctorwhoguy@gmail.com</email>
+</maintainer>
+<longdescription>
+</longdescription>
+<use>
+	<flag name="fake-plugins">Build plugins that are used for development purposes only.</flag>
+	<flag name="legacy-plugins">Build plugins for discontinued source ports.</flag>
+</use>
+</pkgmetadata>
