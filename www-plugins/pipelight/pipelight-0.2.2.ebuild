@@ -2,7 +2,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils multilib
 
 DESCRIPTION="A browser plugin which allows one to use windows-only plugins inside Linux browsers."
 HOMEPAGE="http://fds-team.de/cms/index.html https://launchpad.net/pipelight"
@@ -16,7 +16,7 @@ IUSE="+binary-pluginloader flash installation-dialogs shockwave +silverlight sta
 
 DEPEND="!binary-pluginloader? ( cross-i686-w64-mingw32/gcc[cxx] )"
 RDEPEND="${DEPEND}
-	app-emulation/wine-1.7.8-r100"
+	>=app-emulation/wine-1.7.8-r100[abi_x86_32]"
 
 S="${WORKDIR}/mmueller2012-pipelight-4b45f39450b3"
 
