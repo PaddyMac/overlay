@@ -43,7 +43,7 @@ src_prepare() {
 
 src_configure() {
 
-	local myargs gccruntimedlls
+	local myargs
 	if use binary-pluginloader; then
 		myargs+="--win32-prebuilt"
 	elif use !binary-pluginloader; then
@@ -58,9 +58,6 @@ src_configure() {
 	fi
 
 	# We're not using econf because this is not an autotools configure script
-	einfo "debug output"
-	einfo "My arguments are ${myargs}"
-	einfo "debug output"
 	./configure \
 		--prefix=/usr \
 		--wine-path=/usr/bin/wine \
