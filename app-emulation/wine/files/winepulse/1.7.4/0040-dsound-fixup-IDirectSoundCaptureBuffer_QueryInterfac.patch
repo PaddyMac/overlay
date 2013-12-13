@@ -1,0 +1,47 @@
+From fdf1f91aaefdeabca3e1f18b3c9da54886cead59 Mon Sep 17 00:00:00 2001
+From: Maarten Lankhorst <wine@mblankhorst.nl>
+Date: Wed, 2 Oct 2013 17:01:07 +0200
+Subject: [PATCH 40/40] dsound: fixup IDirectSoundCaptureBuffer_QueryInterface
+
+Don't expose v8, and actually respond to iunknown.
+---
+ dlls/dsound/capture.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/dlls/dsound/capture.c b/dlls/dsound/capture.c
+index 40f1702..0fe300c 100644
+--- a/dlls/dsound/capture.c
++++ b/dlls/dsound/capture.c
+@@ -51,7 +51,7 @@ typedef struct IDirectSoundCaptureBufferImpl
+     IDirectSoundCaptureBuffer8          IDirectSoundCaptureBuffer8_iface;
+     IDirectSoundNotify                  IDirectSoundNotify_iface;
+     LONG                                numIfaces; /* "in use interfaces" refcount */
+-    LONG                                ref, refn;
++    LONG                                ref, refn, has_dsc8;
+     /* IDirectSoundCaptureBuffer fields */
+     DirectSoundCaptureDevice            *device;
+     DSCBUFFERDESC                       *pdscbd;
+@@ -241,8 +241,9 @@ static HRESULT WINAPI IDirectSoundCaptureBufferImpl_QueryInterface(IDirectSoundC
+ 
+     *ppobj = NULL;
+ 
+-    if ( IsEqualGUID( &IID_IDirectSoundCaptureBuffer, riid ) ||
+-         IsEqualGUID( &IID_IDirectSoundCaptureBuffer8, riid ) ) {
++    if ( IsEqualIID( &IID_IUnknown, riid ) ||
++         IsEqualIID( &IID_IDirectSoundCaptureBuffer, riid ) ||
++         (This->has_dsc8 && IsEqualIID( &IID_IDirectSoundCaptureBuffer8, riid )) ) {
+ 	IDirectSoundCaptureBuffer8_AddRef(iface);
+         *ppobj = iface;
+         return S_OK;
+@@ -1239,6 +1240,8 @@ static HRESULT WINAPI IDirectSoundCaptureImpl_CreateCaptureBuffer(IDirectSoundCa
+ 
+     if (hr != DS_OK)
+ 	WARN("IDirectSoundCaptureBufferImpl_Create failed\n");
++    else
++        This->device->capture_buffer->has_dsc8 = This->has_dsc8;
+ 
+     return hr;
+ }
+-- 
+1.8.3.2
+
