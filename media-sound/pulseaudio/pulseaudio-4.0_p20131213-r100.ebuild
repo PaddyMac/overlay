@@ -2,7 +2,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic multilib-minimal user versionator udev
+inherit eutils autotools flag-o-matic multilib-minimal user versionator udev
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="http://www.pulseaudio.org/"
@@ -103,6 +103,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch_user
+	echo "4.0-332-g6f95" > .tarball-version
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -122,7 +124,8 @@ multilib_src_configure() {
 		$(use_enable alsa)
 		$(use_enable asyncns)
 		$(use_enable avahi)
-		$(use_enable bluetooth bluez)
+		$(use_enable bluetooth bluez4)
+		--disable-bluez5
 		$(use_with   caps)
 		$(use_enable dbus)
 		$(use_enable esd esound)
