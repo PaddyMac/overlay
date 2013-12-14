@@ -7,7 +7,7 @@ inherit eutils flag-o-matic multilib-minimal user versionator udev
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="http://www.pulseaudio.org/"
 
-SRC_URI="http://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
+SRC_URI="http://cgit.freedesktop.org/pulseaudio/pulseaudio/snapshot/pulseaudio-6f954c76745acaaa8cae5a569702e23e83115b3b.tar.gz -> ${P}.tar.gz"
 
 # libpulse-simple and libpulse link to libpulse-core; this is daemon's
 # library and can link to gdbm and other GPL-only libraries. In this
@@ -19,6 +19,8 @@ KEYWORDS="~*"
 IUSE="adrian-aec +alsa +asyncns avahi bluetooth +caps dbus doc equalizer esd +gdbm +glib gnome
 gtk ipv6 jack libsamplerate lirc neon +orc oss qt4 realtime speex ssl systemd
 system-wide tcpd tdb test +udev +webrtc-aec +X xen"
+
+S="${WORKDIR}/pulseaudio-6f954c76745acaaa8cae5a569702e23e83115b3b"
 
 RDEPEND="X? (
 		>=x11-libs/libX11-1.4.0[${MULTILIB_USEDEP}]
