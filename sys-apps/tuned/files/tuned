@@ -1,0 +1,18 @@
+#!/sbin/runscript
+# Distributed under the terms of the GNU General Purpose License v2
+
+depend() {
+	need dbus
+}
+
+start() {
+	ebegin "Starting tuned"
+	start-stop-daemon --start --quiet --exec /usr/sbin/tuned -- -d
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tuned"
+	start-stop-daemon --stop --quiet --pidfile /run/tuned/tuned.pid
+	eend $?
+}
