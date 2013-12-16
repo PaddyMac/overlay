@@ -12,13 +12,13 @@ SRC_URI="https://bitbucket.org/mmueller2012/pipelight/get/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+binary-pluginloader flash installation-dialogs shockwave +silverlight static unity3d"
+IUSE="+binary-pluginloader flash foxitpdf grandstream installation-dialogs shockwave +silverlight static unity3d"
 
 DEPEND="!binary-pluginloader? ( cross-i686-w64-mingw32/gcc[cxx] )"
 RDEPEND="${DEPEND}
 	>=app-emulation/wine-1.7.8-r100[abi_x86_32]"
 
-S="${WORKDIR}/mmueller2012-pipelight-4b45f39450b3"
+S="${WORKDIR}/mmueller2012-pipelight-4006752d5f96"
 
 src_prepare() {
 	# Just in case someone runs 'emerge -O pipelight'
@@ -75,9 +75,16 @@ pkg_postinst() {
 	einfo "Creating copies of libpipelight.so..."
 	pipelight-plugin --create-mozilla-plugins
 
+	#The following plugins are not created by "pipelight-plugin --create-mozilla-plugins" and must be "unlocked"
+	use foxitpdf && pipelight-plugin --unlock-plugin foxitpdf
+	use grandstream && pipelight-plugin --unlock-plugin grandstream	
+	use shockwave && pipelight-plugin --unlock-plugin shockwave
+
 	einfo "Enabling plugins..."
         # Setup symlinks to enable plugins based on USE flags
         use flash && ln -sf /usr/$(get_libdir)/pipelight/libpipelight-flash.so /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-flash.so
+	use foxitpdf && ln -sf /usr/$(get_libdir)/pipelight/libpipelight-foxitpdf.so /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-foxitpdf.so
+	use grandstream && ln -sf /usr/$(get_libdir)/pipelight/libpipelight-grandstream.so /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-grandstream.so
         use shockwave && ln -sf /usr/$(get_libdir)/pipelight/libpipelight-shockwave.so /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-shockwave.so
         use silverlight && ln -sf /usr/$(get_libdir)/pipelight/libpipelight-silverlight5.1.so /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-silverlight5.1.so
         use unity3d && ln -sf /usr/$(get_libdir)/pipelight/libpipelight-unity3d.so /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-unity3d.so
@@ -109,6 +116,12 @@ pkg_prerm() {
 	einfo "Disabling plugins..."
 	if [ -h /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-flash.so ] ; then
 		rm /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-flash.so
+	fi
+	if [ -h /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-foxitpdf.so ] ; then
+		rm /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-foxitpdf.so
+	fi
+	if [ -h /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-grandstream.so ] ; then
+		rm /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-grandstream.so
 	fi
 	if [ -h /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-shockwave.so ] ; then
 		rm /usr/$(get_libdir)/nsbrowser/plugins/libpipelight-shockwave.so
