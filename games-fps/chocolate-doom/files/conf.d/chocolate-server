@@ -1,0 +1,17 @@
+#	-ignoreversion
+#		Ignore version mismatches between the server and the client. 
+#		Using this option may cause game desyncs to occur, or 
+#		differences in  protocol may mean the netgame will simply not 
+#		function at all.
+#
+#	-port <n>
+#		Use the specified UDP port for communications, instead of the 
+#		default (2342).
+#
+#	-privateserver
+#		Don't register with the global master server.
+#
+#	-servername <name>
+#		Specify a name for the server.
+#
+CHOCOLATE_SERVER_OPTS="-servername ChocolateServer"

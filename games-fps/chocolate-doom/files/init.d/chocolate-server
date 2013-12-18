@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Distributed under the terms of the GNU General Purpose License v2
+
+depend() {
+	use net
+	after bootmisc
+}
+
+start() {
+	ebegin "Starting chocolate-server"
+	start-stop-daemon --background --group games --make-pidfile \
+		--pidfile "/var/games"/run/chocolate-doom/chocolate-server.pid \
+		--progress --quiet --start --user games \
+		--exec "/usr/games/bin"/chocolate-server -- ${CHOCOLATE_SERVER_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping chocolate-server"
+	start-stop-daemon --quiet --stop \
+		--pidfile "/var/games"/run/chocolate-doom/chocolate-server.pid
+	eend $?
+}
