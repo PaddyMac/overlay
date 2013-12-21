@@ -1,0 +1,30 @@
+#!/sbin/runscript
+
+depend() {
+	after modules
+}
+
+checkconfig() {
+	if [ ! -e /proc/i8k ] ; then
+		eerror "The i8k driver is not installed"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting i8kmon"
+	start-stop-daemon --start -b --quiet  \
+		--pidfile /run/i8kmon.pid \
+		--make-pidfile \
+		--exec /usr/bin/i8kmon --background \
+		--name "tclsh /usr/bin/i8kmon" \
+		-- -d -nc ${I8KMON_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping i8kmon"
+	start-stop-daemon --stop --quiet --pidfile /run/i8kmon.pid
+	eend $?
+}
