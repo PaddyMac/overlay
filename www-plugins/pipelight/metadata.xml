@@ -34,6 +34,8 @@ from that "magic" and you can simply use Silverlight the same way as on Windows.
 	<flag name="binary-pluginloader">If enabled, use the upstream binary pluginloader.exe. 
 		If disabled, compile your own binary; this requires a cross compiler.</flag>
 	<flag name="flash">Enable Flash plugin by default.</flag>
+	<flag name="foxitpdf">Enable Foxit PDF Reader plugin by default.</flag>
+	<flag name="grandstream">Enable Grandstream plugin by default.</flag>
 	<flag name="installation-dialogs">If enabled, you will be presented with the installation 
 		dialogs of the browser plugins when they are downloaded. If disabled, Pipelight 
 		will install them automatically without user intervention.</flag>
