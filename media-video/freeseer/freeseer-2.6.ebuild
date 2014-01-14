@@ -19,11 +19,11 @@ DEPEND="sys-devel/make
 	dev-db/sqlite:3
 	dev-lang/python[sqlite]
 	dev-python/PyQt4
-	dev-python/gst-python
+	dev-python/gst-python:0.10
 	dev-python/feedparser
 	dev-python/setuptools
-	media-plugins/gst-plugins-v4l2
-	media-plugins/gst-plugins-ximagesrc"
+	media-plugins/gst-plugins-v4l2:0.10
+	media-plugins/gst-plugins-ximagesrc:0.10"
 RDEPEND="${DEPEND}"
                                         
 DOCS="PKG-INFO README.txt"
