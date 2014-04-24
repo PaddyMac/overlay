@@ -13,6 +13,9 @@ dev-games/celayouteditor
 =dev-games/ogre-1.8.9999
 =dev-games/ogre-9999
 
+# Masked because gcc currently will not build with isl-0.13 due to the isl_int abstraction removal.
+=dev-libs/isl-0.13-r100
+
 # Mask 1.8 branch because many applications require 1.7.x and will not work with 1.8
 =dev-games/ogre-1.8.0_rc1
 
