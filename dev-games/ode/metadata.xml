@@ -15,5 +15,14 @@
     <use>
         <flag name="double-precision">more precise calculations at the expense of speed</flag>
         <flag name="gyroscopic">enable gyroscopic term (may cause instability)</flag>
+	<flag name="libccd">enable all libccd colliders (except box-cylinder)</flag>
+	<flag name="old-trimesh">enable use of the old trimesh collider</flag>
+	<flag name="ou">use TLS for global caches (allows threaded collision checks for isolated spaces)</flag>
+	<flag name="profiling">enable profiling with gprof</flag>
+	<flag name="threads">enable threading interface support</flag>
+	<flag name="threads-builtin">include built-in multithreaded threading implementation (still must be created and assigned to be used)</flag>
+	<flag name="trimesh_gimpact">use the gimpact system for trimesh support</flag>
+	<flag name="trimesh_none">disable trimesh support</flag>
+	<flag name="trimesh_opcode">use the opcode system for trimesh support</flag>
     </use>
 </pkgmetadata>
