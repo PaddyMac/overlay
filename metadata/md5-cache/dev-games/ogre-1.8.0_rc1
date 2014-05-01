@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/freetype:2 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt boost? ( dev-libs/boost ) boost-threads? ( dev-libs/boost ) cg? ( media-gfx/nvidia-cg-toolkit ) freeimage? ( media-libs/freeimage ) dev-games/ois poco-threads? ( dev-libs/poco ) zip? ( sys-libs/zlib dev-libs/zziplib ) tbb-threads? ( dev-cpp/tbb ) x11-proto/xf86vidmodeproto virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit ) sys-devel/make >=dev-util/cmake-2.8.9 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Object-oriented Graphics Rendering Engine
+EAPI=3
+HOMEPAGE=http://www.ogre3d.org/
+IUSE=+boost +boost-threads +bsp debug doc cg +dds double-precision examples +freeimage nedmalloc +octree +opengl +paging +particlefx +pcz poco-threads +pooling profiling +property pvrtc +rtshader +scriptcompiler source static +stl string tbb-threads +terrain test +threading tools tracker unity viewport +zip
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=media-libs/freetype:2 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt boost? ( dev-libs/boost ) boost-threads? ( dev-libs/boost ) cg? ( media-gfx/nvidia-cg-toolkit ) freeimage? ( media-libs/freeimage ) dev-games/ois poco-threads? ( dev-libs/poco ) zip? ( sys-libs/zlib dev-libs/zziplib ) tbb-threads? ( dev-cpp/tbb )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/ogre/ogre_src_v1-8-0RC1.tar.bz2
+_eclasses_=cmake-utils	78f778163242acffc7a1c2f1bc571159	eutils	025442f2eecab39ad0b4e541b6e142af	flag-o-matic	9a539029fe1d390c1828ff633baf26b5	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=3d794a51b7ae2d5a1085642d8796b712

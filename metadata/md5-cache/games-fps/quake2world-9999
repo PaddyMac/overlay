@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/libsdl media-libs/sdl-image media-libs/sdl-mixer net-misc/curl sys-libs/zlib virtual/jpeg curses? ( sys-libs/ncurses ) doc? ( app-doc/doxygen ) mysql? ( virtual/mysql ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.13:1.13 >=sys-devel/automake-1.14:1.14 ) >=sys-devel/autoconf-2.68 sys-devel/libtool || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=Quake2World is a Free, standalone first person shooter video game.
+EAPI=4
+HOMEPAGE=http://quake2world.net/
+IUSE=curses debug dedicated doc master mysql profiling tools
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=games-fps/quake2world-data media-libs/libsdl media-libs/sdl-image media-libs/sdl-mixer net-misc/curl sys-libs/zlib virtual/jpeg curses? ( sys-libs/ncurses ) mysql? ( virtual/mysql ) games-misc/games-envd
+SLOT=0
+_eclasses_=autotools	5256b4f4c1798109f39f308f9f7eaf5f	base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	libtool	b9b3340e3a19510f0d9f05cfccbf209f	multilib	fac675dcccf94392371a6abee62d909f	multiprocessing	c2d96fb38f2596209e98fceda58ba1ed	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=1a10d1c8e30970c9dc9d714f31a3cc22

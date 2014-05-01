@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-games/ode-0.7 >=dev-python/pyrex-0.9.4.1[python_targets_python2_6(-)?,python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_6(-),-python_single_target_python2_7(-),-python_single_target_pypy(-)] userland_GNU? ( >=sys-apps/coreutils-8.5 ) python_targets_python2_6? ( >=dev-lang/python-2.6.8-r3:2.6 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) dev-lang/python-exec:=[python_targets_python2_6(-)?,python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_6(-),-python_single_target_python2_7(-),-python_single_target_pypy(-)]
+DESCRIPTION=Python bindings to the ODE physics engine
+EAPI=5
+HOMEPAGE=http://pyode.sourceforge.net/
+IUSE=examples python_targets_python2_6 python_targets_python2_7 python_targets_pypy
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-games/ode-0.7 >=dev-python/pyrex-0.9.4.1[python_targets_python2_6(-)?,python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_6(-),-python_single_target_python2_7(-),-python_single_target_pypy(-)] python_targets_python2_6? ( >=dev-lang/python-2.6.8-r3:2.6 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) dev-lang/python-exec:=[python_targets_python2_6(-)?,python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_6(-),-python_single_target_python2_7(-),-python_single_target_pypy(-)]
+REQUIRED_USE=|| ( python_targets_python2_6 python_targets_python2_7 python_targets_pypy )
+SLOT=0
+SRC_URI=http://sourceforge.net/code-snapshots/git/p/py/pyode/git.git/pyode-git-dfd6cbbe296560119a08035924ac7826bd0a8a4d.zip -> PyODE-snapshot-2013-04-26.zip
+_eclasses_=distutils-r1	364122897f9dc771167ee5ff362e54e1	eutils	025442f2eecab39ad0b4e541b6e142af	multibuild	d3794110bf67450fe5ea134a46a77ec9	multilib	fac675dcccf94392371a6abee62d909f	multiprocessing	c2d96fb38f2596209e98fceda58ba1ed	python-r1	1356c4bb8f56765cff4b74c0128d2a4f	python-utils-r1	30d5d7986d3f80d0f2c2726366426859	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=1c1bdb1f48248138e86b04f2f45a31ec

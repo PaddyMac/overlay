@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-libs/glib:2 x11-libs/libva[X,opengl] x11-libs/libvdpau x11-libs/libX11 x11-libs/libXext media-libs/glu virtual/opengl virtual/ffmpeg sys-devel/make >=dev-util/cmake-2.8.9 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=VDPAU driver with VA-API/OpenGL backend.
+EAPI=5
+HOMEPAGE=https://github.com/i-rinat/libvdpau-va-gl/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-libs/glib:2 x11-libs/libva[X,opengl] x11-libs/libvdpau x11-libs/libX11 x11-libs/libXext media-libs/glu virtual/opengl virtual/ffmpeg
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/i-rinat/libvdpau-va-gl/archive/v0.2.1.tar.gz -> libvdpau-va-gl-0.2.1.tar.gz
+_eclasses_=cmake-utils	78f778163242acffc7a1c2f1bc571159	eutils	025442f2eecab39ad0b4e541b6e142af	flag-o-matic	9a539029fe1d390c1828ff633baf26b5	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=407bdfb8c46a130f7bd8d62dae7a1fb7

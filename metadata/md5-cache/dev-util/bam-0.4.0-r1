@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=dev-lang/lua doc? ( dev-lang/python ) test? ( dev-lang/python ) =dev-lang/python-2*
+DESCRIPTION=Fast and flexible Lua-based build system
+EAPI=3
+HOMEPAGE=http://matricks.github.com/bam/
+IUSE=doc test
+KEYWORDS=amd64 x86
+LICENSE=ZLIB
+RDEPEND=dev-lang/lua =dev-lang/python-2*
+SLOT=0
+SRC_URI=http://github.com/downloads/matricks/bam/bam-0.4.0.tar.bz2
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	python	46d9f0382a194b2c30ac61862799b58c	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=cd76711fbfcff49ac2f2ab37e4b3b75d

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst preinst prepare unpack
+DEPEND=sys-libs/zlib curl? ( net-misc/curl ) icu? ( dev-libs/icu ) virtual/pkgconfig || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=Library for Bible reading software.
+EAPI=3
+HOMEPAGE=http://www.crosswire.org/sword/
+IUSE=curl debug doc icu
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib curl? ( net-misc/curl ) icu? ( dev-libs/icu )
+SLOT=0
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	flag-o-matic	9a539029fe1d390c1828ff633baf26b5	multilib	fac675dcccf94392371a6abee62d909f	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=01afb4cc798cace748d638faec56a8d5

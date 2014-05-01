@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=app-arch/bzip2 dev-qt/qtcore:4 dev-qt/qtgui:4 sys-libs/zlib sys-devel/make >=dev-util/cmake-2.8.9 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Doomseeker is a cross-platform server browser for Doom.
+EAPI=4
+HOMEPAGE=http://doomseeker.drdteam.org/
+IUSE=fake-plugins legacy-plugins
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 dev-qt/qtcore:4 dev-qt/qtgui:4 sys-libs/zlib games-misc/games-envd
+SLOT=0
+SRC_URI=http://doomseeker.drdteam.org/files/doomseeker-0.11b_src.tar.bz2
+_eclasses_=base	5f55566958e88506923ea360535053cc	cmake-utils	78f778163242acffc7a1c2f1bc571159	eutils	025442f2eecab39ad0b4e541b6e142af	flag-o-matic	9a539029fe1d390c1828ff633baf26b5	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=538f426f293bb0b97eacc66fe64e6f54

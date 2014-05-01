@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=bidi? ( dev-libs/fribidi ) devil? ( media-libs/devil ) directfb? ( dev-libs/DirectFB ) expat? ( dev-libs/expat ) freeimage? ( media-libs/freeimage ) gtk? ( x11-libs/gtk+:2 ) irrlicht? ( dev-games/irrlicht ) lua? ( dev-lang/lua dev-lua/toluapp ) ogre? ( >=dev-games/ogre-1.7.1 ) opengl? ( virtual/opengl virtual/glu media-libs/freeglut media-libs/glew ) pcre? ( dev-libs/libpcre ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) rapidxml? ( dev-libs/rapidxml ) silly? ( media-libs/silly ) tinyxml? ( dev-libs/tinyxml ) truetype? ( media-libs/freetype:2 ) xerces-c? ( dev-libs/xerces-c ) xml? ( dev-libs/libxml2 ) zip? ( sys-libs/zlib[minizip] ) virtual/pkgconfig doc? ( app-doc/doxygen ) python? ( sys-apps/mlocate )
+DESCRIPTION=Crazy Eddie's GUI System
+EAPI=5
+HOMEPAGE=http://www.cegui.org.uk/
+IUSE=bidi debug devil directfb doc examples expat freeimage gtk irrlicht lua +null ogre opengl pcre python rapidxml silly static-libs stb tga tinyxml truetype xerces-c +xml zip
+KEYWORDS=~amd64 -ppc ~x86
+LICENSE=MIT
+RDEPEND=bidi? ( dev-libs/fribidi ) devil? ( media-libs/devil ) directfb? ( dev-libs/DirectFB ) expat? ( dev-libs/expat ) freeimage? ( media-libs/freeimage ) gtk? ( x11-libs/gtk+:2 ) irrlicht? ( dev-games/irrlicht ) lua? ( dev-lang/lua dev-lua/toluapp ) ogre? ( >=dev-games/ogre-1.7.1 ) opengl? ( virtual/opengl virtual/glu media-libs/freeglut media-libs/glew ) pcre? ( dev-libs/libpcre ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) rapidxml? ( dev-libs/rapidxml ) silly? ( media-libs/silly ) tinyxml? ( dev-libs/tinyxml ) truetype? ( media-libs/freetype:2 ) xerces-c? ( dev-libs/xerces-c ) xml? ( dev-libs/libxml2 ) zip? ( sys-libs/zlib[minizip] )
+REQUIRED_USE=|| ( expat rapidxml tinyxml xerces-c xml )
+SLOT=0
+SRC_URI=mirror://sourceforge/crayzedsgui/CEGUI-0.7.9.tar.gz doc? ( mirror://sourceforge/crayzedsgui/CEGUI-DOCS-0.7.9.tar.gz )
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=e5028e0aa6292b9ce4c69d540edb0b7a

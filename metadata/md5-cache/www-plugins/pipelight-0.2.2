@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare prerm
+DEPEND=!binary-pluginloader? ( cross-i686-w64-mingw32/gcc[cxx] )
+DESCRIPTION=A browser plugin which allows one to use windows-only plugins inside Linux browsers.
+EAPI=5
+HOMEPAGE=http://fds-team.de/cms/index.html https://launchpad.net/pipelight
+IUSE=+binary-pluginloader flash installation-dialogs shockwave +silverlight static unity3d
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1 MPL-1.1
+RDEPEND=!binary-pluginloader? ( cross-i686-w64-mingw32/gcc[cxx] ) app-arch/cabextract >=app-emulation/wine-1.7.8-r100[abi_x86_32] x11-apps/mesa-progs
+SLOT=0
+SRC_URI=https://bitbucket.org/mmueller2012/pipelight/get/v0.2.2.tar.gz -> pipelight-0.2.2.tar.gz binary-pluginloader? ( https://launchpad.net/pipelight/trunk/0.2/+download/pluginloader-prebuilt-v0.2.2.tar.xz )
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=61bf4eba570c7fbe03a3ce9b63c217df

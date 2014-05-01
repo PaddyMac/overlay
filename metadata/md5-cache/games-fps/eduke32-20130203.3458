@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=media-libs/flac media-libs/libogg media-libs/libsdl:0[audio,joystick,video] media-libs/libvorbis media-libs/sdl-mixer:0[timidity] gtk? ( x11-libs/gtk+:2 ) lunatic? ( dev-lang/luajit:2 ) opengl? ( media-libs/libsdl[opengl] virtual/glu virtual/opengl ) png? ( media-libs/libpng sys-libs/zlib ) vpx? ( media-libs/libvpx ) media-libs/libicns asm? ( x86? ( dev-lang/nasm ) ) clang? ( sys-devel/clang ) >=sys-apps/sed-4
+DESCRIPTION=Port of Duke Nukem 3D for SDL
+EAPI=5
+HOMEPAGE=http://www.eduke32.com
+IUSE=+asm cxx cdinstall clang debug demo extras gtk lunatic +network +opengl +png +polymer tools +vpx
+KEYWORDS=amd64 ~x86
+LICENSE=BUILD GPL-2
+RDEPEND=media-libs/flac media-libs/libogg media-libs/libsdl:0[audio,joystick,video] media-libs/libvorbis media-libs/sdl-mixer:0[timidity] gtk? ( x11-libs/gtk+:2 ) lunatic? ( dev-lang/luajit:2 ) opengl? ( media-libs/libsdl[opengl] virtual/glu virtual/opengl ) png? ( media-libs/libpng sys-libs/zlib ) vpx? ( media-libs/libvpx ) cdinstall? ( games-fps/duke3d-data ) demo? ( games-fps/duke3d-demodata ) extras? ( games-fps/eduke32-extras ) games-misc/games-envd
+REQUIRED_USE=polymer? ( opengl ) vpx? ( opengl )
+SLOT=0
+SRC_URI=http://dukeworld.duke4.net/eduke32/synthesis/20130203-3458/eduke32_src_20130203-3458.tar.bz2
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	gnome2-utils	924d80d23c665d976484b8bfb50ae08b	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=891d0e1bf9445cdce6a5edbb5e38eeb3

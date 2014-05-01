@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) dev-vcs/mercurial
+DESCRIPTION=em8300 (RealMagic Hollywood+/Creative DXR3) video decoder card kernel modules
+EAPI=2
+HOMEPAGE=http://dxr3.sourceforge.net
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	linux-info	90944ede7e9761bd7ef07602acdef9e3	linux-mod	101302d4b7b694ea9622bbffb187d0de	mercurial	6bb94b704fb44f17b02994ca3fa756a9	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=a6f9dd70d32b6e3c6eef8faa5b3c6c55

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=|| ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=Quake2World game data
+EAPI=4
+HOMEPAGE=http://quake2world.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=CC0-1.0-Universal CCPL-Attribution-2.0 CCPL-Attribution-2.5 CCPL-Attribution-3.0 CCPL-Attribution-NoDerivs-2.5 CCPL-Attribution-NoDerivs-3.0 CCPL-Attribution-NonCommercial-2.5 CCPL-Attribution-NonCommercial-NoDerivs-2.0 CCPL-Attribution-NonCommercial-NoDerivs-2.5 CCPL-Attribution-NonCommercial-ShareAlike-2.5 CCPL-Attribution-NonCommercial-ShareAlike-3.0 CCPL-Attribution-ShareAlike-2.0 CCPL-Attribution-ShareAlike-2.5 CCPL-Attribution-ShareAlike-3.0 CCPL-Attribution-ShareAlike-NonCommercial-2.5 CCPL-Attribution-ShareAlike-NonCommercial-3.0 CCPL-Sampling-Plus-1.0 CCPL-ShareAlike-1.0 GPL MIT WTFPL-2 ZLIB
+RDEPEND=games-fps/quake2world games-misc/games-envd
+SLOT=0
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=7310457b493efa1eb85862bc834bd810

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=music and sound effects library, and a sound processing system
+HOMEPAGE=http://www.fmod.org
+IUSE=designer examples tools
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD BSD-2 fmod
+RESTRICT=strip test
+SLOT=4.24.16
+SRC_URI=amd64? ( http://www.fmod.org/download/fmodex/api/Linux/fmodapi42416linux64.tar.gz ) x86? ( http://www.fmod.org/download/fmodex/api/Linux/fmodapi42416linux.tar.gz )
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=a73178fb30cdd9d26d929ae0ed837f8f

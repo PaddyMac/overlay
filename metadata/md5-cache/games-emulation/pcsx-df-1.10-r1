@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=x11-libs/gtk+:2 x11-proto/videoproto gnome-base/libglade dev-lang/nasm alsa? ( media-libs/alsa-lib ) nls? ( virtual/libintl ) bin_image? ( media-libs/portaudio <x11-libs/fltk-2 ) opengl? ( virtual/opengl x11-libs/libXxf86vm ) gnome? ( gnome-extra/nautilus-cd-burner )
+DESCRIPTION=GNU/Linux fork of the discontinued PlayStation emulator PCSX
+EAPI=2
+HOMEPAGE=http://pcsx-df.sourceforge.net/
+IUSE=alsa nls bin_image opengl gnome
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 x11-proto/videoproto gnome-base/libglade dev-lang/nasm alsa? ( media-libs/alsa-lib ) nls? ( virtual/libintl ) bin_image? ( media-libs/portaudio <x11-libs/fltk-2 ) opengl? ( virtual/opengl x11-libs/libXxf86vm ) gnome? ( gnome-extra/nautilus-cd-burner ) !games-emulation/pcsx nls? ( sys-devel/gettext ) games-misc/games-envd
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://downloads.sourceforge.net/pcsx-df/pcsx-df-1.10.tar.gz
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=bb64ff29b965057bf74d22db9fdce249

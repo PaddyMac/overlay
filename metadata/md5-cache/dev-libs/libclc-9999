@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=An implementation of the library requirements of the OpenCL C programming language, as specified by the OpenCL 1.1 Specification.
+EAPI=4-python
+HOMEPAGE=http://libclc.llvm.org/ http://dri.freedesktop.org/wiki/GalliumCompute
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT UoI-NCSA )
+SLOT=0
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	git-2	2027b81a576527fa16bece425941e094	git-r3	b458f14fede2f605e71a5210c76e1085	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=051a173e24227ecaa6c304ea512f451a

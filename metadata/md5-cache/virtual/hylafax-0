@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual package for Hylafax implementation
+EAPI=4
+IUSE=html jbig ldap mgetty pam
+KEYWORDS=~amd64 ~hppa ~ppc ~sparc ~x86
+RDEPEND=|| ( net-misc/hylafax[html=,jbig=,ldap=,mgetty=,pam=] net-misc/hylafax+[html=,jbig=,ldap=,mgetty=,pam=] )
+SLOT=0
+_md5_=8fd0a57cd1a99ae0bdf21da37b9c0528

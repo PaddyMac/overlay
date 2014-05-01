@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=virtual/jre
+DESCRIPTION=A single-player fantasy card game inspired by Magic: The Gathering
+EAPI=3
+HOMEPAGE=http://code.google.com/p/magarena/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=virtual/jre games-misc/games-envd
+SLOT=0
+SRC_URI=http://magarena.googlecode.com/files/Magarena-1.24.zip
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=bf6ccc3589590fc5bd131ad1992e8515

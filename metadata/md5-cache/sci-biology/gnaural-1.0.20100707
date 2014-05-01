@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst unpack
+DEPEND=>=x11-libs/gtk+-2 >=gnome-base/libglade-2 >=dev-libs/glib-2 >=media-libs/libsndfile-1.0.2 >=media-libs/portaudio-19_pre20071207 dev-util/intltool virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.13 >=sys-devel/automake-1.14 ) >=sys-devel/autoconf-2.68 sys-devel/libtool >=sys-apps/sed-4
+DESCRIPTION=An opensource binaural-beat generator
+HOMEPAGE=http://gnaural.sourceforge.net
+IUSE=debug
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2 >=gnome-base/libglade-2 >=dev-libs/glib-2 >=media-libs/libsndfile-1.0.2 >=media-libs/portaudio-19_pre20071207
+SLOT=0
+SRC_URI=mirror://sourceforge/project/gnaural/Gnaural/gnaural-1.0.20100707.tar.gz
+_eclasses_=autotools	5256b4f4c1798109f39f308f9f7eaf5f	eutils	025442f2eecab39ad0b4e541b6e142af	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	d6a3125760ce1a56efda628043f4acec	gnome2-utils	924d80d23c665d976484b8bfb50ae08b	libtool	b9b3340e3a19510f0d9f05cfccbf209f	multilib	fac675dcccf94392371a6abee62d909f	multiprocessing	c2d96fb38f2596209e98fceda58ba1ed	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=096a2175215df57143879b6eac94d0a5

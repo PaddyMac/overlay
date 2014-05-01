@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=sys-devel/make dev-db/sqlite:3 dev-lang/python[sqlite] dev-python/PyQt4[sql] dev-python/gst-python:0.10 dev-python/feedparser dev-python/httplib2 dev-python/oauth dev-python/passlib dev-python/python-xlib dev-python/setuptools dev-python/simplejson dev-python/yapsy dev-qt/qtsql:4[sqlite] media-plugins/gst-plugins-v4l2:0.10 media-plugins/gst-plugins-ximagesrc:0.10 =dev-lang/python-2.7*
+DESCRIPTION=Freeseer captures video from a choice of sources along with audio and mixes them together to produce a video.
+EAPI=4-python
+HOMEPAGE=https://github.com/Freeseer/freeseer/wiki
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=sys-devel/make dev-db/sqlite:3 dev-lang/python[sqlite] dev-python/PyQt4[sql] dev-python/gst-python:0.10 dev-python/feedparser dev-python/httplib2 dev-python/oauth dev-python/passlib dev-python/python-xlib dev-python/setuptools dev-python/simplejson dev-python/yapsy dev-qt/qtsql:4[sqlite] media-plugins/gst-plugins-v4l2:0.10 media-plugins/gst-plugins-ximagesrc:0.10 doc? ( media-video/freeseer-docs ) =dev-lang/python-2.7*
+SLOT=0
+SRC_URI=https://github.com/Freeseer/freeseer/releases/download/v3.0.0/freeseer-3.0.0.tar.gz
+_eclasses_=distutils	cbbc1b446ecf8bec39c0ad32a3904452	eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	python	46d9f0382a194b2c30ac61862799b58c	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=c813a0e463cc7ee4518dd981365d8c23

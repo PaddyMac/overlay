@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=media-gfx/sane-backends =media-gfx/xsane-0.998[-gimp] media-gfx/gimp virtual/pkgconfig
+DESCRIPTION=XSane plugin for GIMP
+EAPI=2
+HOMEPAGE=http://www.xsane.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-gfx/sane-backends =media-gfx/xsane-0.998[-gimp] media-gfx/gimp
+SLOT=0
+SRC_URI=http://www.xsane.org/download/xsane-0.998.tar.gz
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=783ce38c3ea20e36909c65c220050947

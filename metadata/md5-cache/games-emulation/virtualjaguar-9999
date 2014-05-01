@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=dev-libs/libcdio media-libs/libsdl[audio,joystick,opengl,video] sys-libs/zlib virtual/opengl x11-libs/qt-core x11-libs/qt-gui x11-libs/qt-opengl dev-vcs/git
+DESCRIPTION=an Atari Jaguar emulator
+EAPI=5
+HOMEPAGE=http://www.icculus.org/virtualjaguar/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=games-misc/games-envd
+SLOT=0
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	git-2	2027b81a576527fa16bece425941e094	git-r3	b458f14fede2f605e71a5210c76e1085	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=c28eb3d230e2a1941a8c74a15c821292

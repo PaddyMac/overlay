@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=virtual/libc >=sys-libs/slang-1.4.1 >=dev-libs/newt-0.50
+DESCRIPTION=MondoRescue is a GPL Disaster Recovery and Cloning Solution
+HOMEPAGE=http://www.mondorescue.org
+KEYWORDS=~x86 ~ia64 ~amd64 -*
+LICENSE=GPL-2
+RDEPEND=app-arch/afio sys-block/buffer sys-devel/binutils >=app-arch/bzip2-0.9 virtual/cdrtools >=sys-apps/mindi-2.0.7 >=dev-libs/newt-0.50 >=sys-libs/slang-1.4.1 sys-block/parted >=sys-boot/syslinux-1.52
+SLOT=0
+SRC_URI=ftp://ftp.mondorescue.org//src/mondo-3.0.1.tar.gz
+_eclasses_=libtool	b9b3340e3a19510f0d9f05cfccbf209f	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=024a2628433b0f5b07cc98641aa8a103

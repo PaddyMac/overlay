@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Kernel module and helper library for WebcamStudio.
+EAPI=2
+HOMEPAGE=http://www.ws4gl.org/
+IUSE=kernel_linux
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://gentoo.plexyplanet.org/distfiles/webcamstudio-module-104_p416.tar.bz2
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	linux-info	90944ede7e9761bd7ef07602acdef9e3	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=99373ef41824edcaf203d00d3a3311ea

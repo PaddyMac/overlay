@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup test
+DEPEND=dev-python/setuptools python_abis_2.6? ( dev-lang/python:2.6 ) python_abis_2.7? ( dev-lang/python:2.7 ) python_abis_2.7-jython? ( dev-lang/jython:2.7 ) python_abis_2.7-pypy-2.0? ( virtual/pypy:2.0 )
+DESCRIPTION=Yet Another Plugin System: A simple plugin system for Python applications.
+EAPI=4-python
+HOMEPAGE=http://yapsy.sourceforge.net/
+IUSE=python_abis_2.6 python_abis_2.7 python_abis_2.7-jython python_abis_2.7-pypy-2.0
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=python_abis_2.6? ( dev-lang/python:2.6 ) python_abis_2.7? ( dev-lang/python:2.7 ) python_abis_2.7-jython? ( dev-lang/jython:2.7 ) python_abis_2.7-pypy-2.0? ( virtual/pypy:2.0 )
+REQUIRED_USE=|| ( python_abis_2.6 python_abis_2.7 python_abis_2.7-jython python_abis_2.7-pypy-2.0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/yapsy/Yapsy-1.9/Yapsy-1.9.tar.gz
+_eclasses_=distutils	cbbc1b446ecf8bec39c0ad32a3904452	python	46d9f0382a194b2c30ac61862799b58c
+_md5_=3c67903075e1e49c7f96452be3b1ae73

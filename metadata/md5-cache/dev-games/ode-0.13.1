@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=examples? ( virtual/opengl ) doc? ( app-doc/doxygen )
+DESCRIPTION=Open Dynamics Engine SDK
+EAPI=5
+HOMEPAGE=http://ode.org/
+IUSE=debug doc double-precision examples libccd old-trimesh ou profiling static-libs +threads threads-builtin trimesh_gimpact trimesh_none +trimesh_opcode
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=|| ( LGPL-2.1 BSD )
+RDEPEND=examples? ( virtual/opengl )
+REQUIRED_USE=^^ ( trimesh_gimpact trimesh_none trimesh_opcode ) old-trimesh? ( !trimesh_none ) threads-builtin? ( threads )
+SLOT=0
+SRC_URI=https://bitbucket.org/odedevs/ode/downloads/ode-0.13.1.tar.gz
+_md5_=90e5ab854ed3113ebabc5280fcf16650

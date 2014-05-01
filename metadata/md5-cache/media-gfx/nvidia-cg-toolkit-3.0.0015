@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=NVIDIA's C graphics compiler toolkit
+EAPI=2
+HOMEPAGE=http://developer.nvidia.com/object/cg_toolkit.html
+IUSE=multilib symlink_binaries
+KEYWORDS=~amd64 ~x86
+LICENSE=NVIDIA
+RDEPEND=media-libs/freeglut x86? ( virtual/libstdc++:3.3 ) multilib? ( amd64? ( app-emulation/emul-linux-x86-xlibs ) )
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( http://developer.download.nvidia.com/cg/Cg_3.0/3.0.0015/Cg-3.0_November2010_x86.tgz ) amd64? ( http://developer.download.nvidia.com/cg/Cg_2.0/3.0.0015/Cg-3.0_November2010_x86_64.tgz multilib? ( http://developer.download.nvidia.com/cg/Cg_3.0/3.0.0015/Cg-3.0_November2010_x86.tgz ) )
+_eclasses_=eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=09fecf33576016aefc002513d11b8bca

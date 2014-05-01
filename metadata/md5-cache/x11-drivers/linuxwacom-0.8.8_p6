@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=x11-proto/inputproto <x11-base/xorg-server-1.7 gtk? ( >=x11-libs/gtk+-2 ) tcl? ( dev-lang/tcl ) tk? ( dev-lang/tk ) sys-fs/udev sys-libs/ncurses virtual/pkgconfig usb? ( >=sys-kernel/linux-headers-2.6 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.13 >=sys-devel/automake-1.14 ) >=sys-devel/autoconf-2.68 sys-devel/libtool kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Input driver for Wacom tablets and drawing devices
+HOMEPAGE=http://linuxwacom.sourceforge.net/
+IUSE=gtk tcl tk usb modules kernel_linux
+KEYWORDS=amd64 hppa ~ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=x11-proto/inputproto <x11-base/xorg-server-1.7 gtk? ( >=x11-libs/gtk+-2 ) tcl? ( dev-lang/tcl ) tk? ( dev-lang/tk ) sys-fs/udev sys-libs/ncurses !x11-drivers/xf86-input-wacom kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/linuxwacom/linuxwacom-0.8.8-6.tar.bz2
+_eclasses_=autotools	5256b4f4c1798109f39f308f9f7eaf5f	eutils	025442f2eecab39ad0b4e541b6e142af	libtool	b9b3340e3a19510f0d9f05cfccbf209f	linux-info	90944ede7e9761bd7ef07602acdef9e3	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	fac675dcccf94392371a6abee62d909f	multiprocessing	c2d96fb38f2596209e98fceda58ba1ed	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	versionator	a8a3963967d6140be9a14b08bb8f047f
+_md5_=aee68fa7b37055fc274f05781d5fd5d6

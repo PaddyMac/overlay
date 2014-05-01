@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=bidi? ( dev-libs/fribidi ) devil? ( media-libs/devil ) directfb? ( dev-libs/DirectFB ) expat? ( dev-libs/expat ) freeimage? ( media-libs/freeimage ) gtk? ( x11-libs/gtk+:2 ) irrlicht? ( dev-games/irrlicht ) lua? ( dev-lang/lua dev-lua/toluapp ) ogre? ( >=dev-games/ogre-1.7.1 ) opengl? ( virtual/opengl virtual/glu media-libs/freeglut media-libs/glew ) pcre? ( dev-libs/libpcre ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) rapidxml? ( dev-libs/rapidxml ) silly? ( media-libs/silly ) tinyxml? ( dev-libs/tinyxml ) truetype? ( media-libs/freetype:2 ) xerces-c? ( dev-libs/xerces-c ) xml? ( dev-libs/libxml2 ) zip? ( sys-libs/zlib[minizip] ) virtual/pkgconfig doc? ( app-doc/doxygen ) python? ( sys-apps/mlocate )
+DESCRIPTION=Crazy Eddie's GUI System
+EAPI=4
+HOMEPAGE=http://www.cegui.org.uk/
+IUSE=bidi debug devil directfb doc examples expat freeimage gtk irrlicht lua +null ogre opengl pcre python rapidxml silly static-libs stb tga tinyxml truetype xerces-c xml zip
+KEYWORDS=~amd64 -ppc ~x86
+LICENSE=MIT
+RDEPEND=bidi? ( dev-libs/fribidi ) devil? ( media-libs/devil ) directfb? ( dev-libs/DirectFB ) expat? ( dev-libs/expat ) freeimage? ( media-libs/freeimage ) gtk? ( x11-libs/gtk+:2 ) irrlicht? ( dev-games/irrlicht ) lua? ( dev-lang/lua dev-lua/toluapp ) ogre? ( >=dev-games/ogre-1.7.1 ) opengl? ( virtual/opengl virtual/glu media-libs/freeglut media-libs/glew ) pcre? ( dev-libs/libpcre ) python? ( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) rapidxml? ( dev-libs/rapidxml ) silly? ( media-libs/silly ) tinyxml? ( dev-libs/tinyxml ) truetype? ( media-libs/freetype:2 ) xerces-c? ( dev-libs/xerces-c ) xml? ( dev-libs/libxml2 ) zip? ( sys-libs/zlib[minizip] )
+REQUIRED_USE=|| ( expat rapidxml tinyxml xerces-c xml )
+SLOT=0
+SRC_URI=mirror://sourceforge/crayzedsgui/CEGUI-0.7.6.tar.gz doc? ( mirror://sourceforge/crayzedsgui/CEGUI-DOCS-0.7.6.tar.gz )
+_md5_=33738eb169d7dce49f317b45893eebef

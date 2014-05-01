@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install preinst prepare test unpack
+DEPEND=dev-libs/openssl media-libs/alsa-lib x11-libs/qt-core[ssl,qt3support] x11-libs/qt-gui app-arch/unzip sys-devel/make >=dev-util/cmake-2.8.9 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.13:1.13 >=sys-devel/automake-1.14:1.14 ) >=sys-devel/autoconf-2.68 sys-devel/libtool || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=a modern terminal emulator for Linux
+EAPI=3
+HOMEPAGE=http://fqterm.googlecode.com
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/openssl media-libs/alsa-lib x11-libs/qt-core[ssl,qt3support] x11-libs/qt-gui
+SLOT=0
+SRC_URI=http://fqterm.googlecode.com/files/QQWry.Dat.zip
+_eclasses_=autotools	5256b4f4c1798109f39f308f9f7eaf5f	cmake-utils	78f778163242acffc7a1c2f1bc571159	eutils	025442f2eecab39ad0b4e541b6e142af	flag-o-matic	9a539029fe1d390c1828ff633baf26b5	googlecode	57d6bc4902e1b0cc813a0f251a7e2716	libtool	b9b3340e3a19510f0d9f05cfccbf209f	multilib	fac675dcccf94392371a6abee62d909f	multiprocessing	c2d96fb38f2596209e98fceda58ba1ed	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=ca1bd526d56ca96fdf6eb4b5c04193d7

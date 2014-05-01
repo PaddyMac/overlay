@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=>=dev-games/ogre-1.7.0 dev-games/ois >=dev-libs/boost-1.45.0 sci-physics/bullet virtual/pkgconfig audiere? ( media-libs/audiere ) ffmpeg? ( media-video/ffmpeg ) mpg123? ( media-sound/mpg123 media-libs/libsndfile ) sys-devel/make >=dev-util/cmake-2.8.9 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=An open source reimplementation of the role playing game The Elder Scrolls III: Morrowind.
+EAPI=3
+HOMEPAGE=http://openmw.org/
+IUSE=audiere debug ffmpeg +mpg123
+KEYWORDS=~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-games/ogre-1.7.0 dev-games/ois >=dev-libs/boost-1.45.0 sci-physics/bullet virtual/pkgconfig audiere? ( media-libs/audiere ) ffmpeg? ( media-video/ffmpeg ) mpg123? ( media-sound/mpg123 media-libs/libsndfile ) games-misc/games-envd
+SLOT=0
+SRC_URI=http://openmw.googlecode.com/files/openmw-0.11.1-source.tar.bz2
+_eclasses_=base	5f55566958e88506923ea360535053cc	cmake-utils	78f778163242acffc7a1c2f1bc571159	eutils	025442f2eecab39ad0b4e541b6e142af	flag-o-matic	9a539029fe1d390c1828ff633baf26b5	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=459355f6246769e02520f0b8e203f252

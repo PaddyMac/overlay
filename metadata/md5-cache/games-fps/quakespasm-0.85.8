@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/libsdl[opengl] virtual/opengl x11-libs/libX11 mp3? ( mad? ( media-libs/libmad ) mpg123? ( media-sound/mpg123 ) ) ogg? ( tremor? ( media-libs/tremor ) vorbis? ( media-libs/libvorbis ) ) sdl-net? ( media-libs/sdl-net )
+DESCRIPTION=QuakeSpasm is a Quake 1 engine based on the SDL port of FitzQuake.
+EAPI=4
+HOMEPAGE=http://quakespasm.sourceforge.net/
+IUSE=cdinstall +consolebackground demo +mad +mp3 mpg123 +ogg +sdl-net tremor +vorbis +wav
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[opengl] virtual/opengl x11-libs/libX11 mp3? ( mad? ( media-libs/libmad ) mpg123? ( media-sound/mpg123 ) ) ogg? ( tremor? ( media-libs/tremor ) vorbis? ( media-libs/libvorbis ) ) sdl-net? ( media-libs/sdl-net ) cdinstall? ( games-fps/quake1-data ) demo? ( games-fps/quake1-demodata[symlink] ) games-misc/games-envd
+REQUIRED_USE=cdinstall? ( !demo ) mp3? ( ^^ ( mad mpg123 ) ) ogg? ( ^^ ( tremor vorbis ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/quakespasm/Source/quakespasm-0.85.8.tgz
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=4c63ed61f8a4824be7bbcab5cff2b5a5

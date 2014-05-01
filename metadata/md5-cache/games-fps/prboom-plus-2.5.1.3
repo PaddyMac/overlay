@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=dumb? ( media-libs/dumb ) fluidsynth? ( media-sound/fluidsynth ) mad? ( media-libs/libmad ) opengl? ( virtual/opengl virtual/glu ) pcre? ( dev-libs/libpcre ) png? ( media-libs/libpng ) portmidi? ( media-libs/portmidi ) sdl_image? ( media-libs/sdl-image ) sdl_mixer? ( media-libs/sdl-mixer[midi,timidity] ) sdl_net? ( media-libs/sdl-net ) vorbis? ( media-libs/libvorbis ) media-libs/libsdl[joystick,video]
+DESCRIPTION=PrBoom+ is a Doom source port developed from the original PrBoom project by Andrey Budko
+EAPI=4
+HOMEPAGE=http://prboom-plus.sourceforge.net/ http://sourceforge.net/projects/prboom-plus/
+IUSE=dumb fluidsynth mad +opengl +pcre +png portmidi +sdl_image +sdl_mixer +sdl_net vorbis
+KEYWORDS=~amd64 ~x86
+RDEPEND=dumb? ( media-libs/dumb ) fluidsynth? ( media-sound/fluidsynth ) mad? ( media-libs/libmad ) opengl? ( virtual/opengl virtual/glu ) pcre? ( dev-libs/libpcre ) png? ( media-libs/libpng ) portmidi? ( media-libs/portmidi ) sdl_image? ( media-libs/sdl-image ) sdl_mixer? ( media-libs/sdl-mixer[midi,timidity] ) sdl_net? ( media-libs/sdl-net ) vorbis? ( media-libs/libvorbis ) media-libs/libsdl[joystick,video] games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/prboom-plus/prboom-plus-2.5.1.3.tar.gz mirror://gentoo/prboom.png
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28
+_md5_=173fe0503378e78881c432491882c1b2

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install preinst
+DEPEND=>=sys-apps/hotplug-20040923
+DESCRIPTION=Firmware for the BCM43xx Broadcom adapters using mac80211 driver
+HOMEPAGE=http://bcm43xx.berlios.de/
+KEYWORDS=~amd64 ~x86
+LICENSE=AS-IS
+RDEPEND=>=sys-apps/hotplug-20040923
+SLOT=0
+SRC_URI=http://distfiles.sabayon.org/net-wireless/bcm43xx-firmware/bcm-4.80.53.0-4.tar.bz2
+_md5_=54f27983609dffad8f769ae1b4ab52b0

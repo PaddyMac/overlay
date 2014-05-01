@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) sys-libs/zlib
+DESCRIPTION=Silly image codec
+EAPI=4
+HOMEPAGE=http://www.cegui.org.uk/wiki/index.php/SILLY
+IUSE=debug doc inline profiling jpeg png
+KEYWORDS=~x86
+LICENSE=MIT
+RDEPEND=jpeg? ( virtual/jpeg ) png? ( media-libs/libpng ) sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/crayzedsgui/SILLY-0.1.0.tar.gz doc? ( mirror://sourceforge/crayzedsgui/SILLY-DOCS-0.1.0.tar.gz )
+_eclasses_=base	5f55566958e88506923ea360535053cc	eutils	025442f2eecab39ad0b4e541b6e142af	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3
+_md5_=8729821f39a7dfaf5cd21c2b6d8a3aa0

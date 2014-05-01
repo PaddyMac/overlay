@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=app-arch/p7zip app-arch/xz-utils >=dev-util/cmake-2.8 >=dev-lang/lua-5.1 dev-libs/icu dev-libs/libxml2 >=dev-libs/xerces-c-3 media-libs/fontconfig freetype? ( media-libs/freetype ) ftgl? ( media-libs/ftgl ) media-libs/glew >=media-libs/libsdl-1.2.5[audio,joystick,video] media-libs/libogg >=media-libs/libpng-1.4 media-libs/libvorbis media-libs/openal net-libs/gnutls libircclient? ( !static-libs? ( >=net-libs/libircclient-1.6 ) ) >=net-misc/curl-7.21.0 miniupnpc? ( !static-libs? ( >=net-libs/miniupnpc-1.6-r1 ) ) manpages? ( sys-apps/help2man ) sys-libs/zlib virtual/jpeg virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXext configurator? ( x11-libs/wxGTK:2.8[X] ) editor? ( x11-libs/wxGTK:2.8[X] ) viewer? ( x11-libs/wxGTK:2.8[X] ) sys-devel/make >=dev-util/cmake-2.8.9 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Cross-platform 3D realtime strategy game
+EAPI=3
+HOMEPAGE=http://www.megaglest.org/
+IUSE=+configurator curl_dynamic debug +editor freetype +ftgl +libircclient +manpages +miniupnpc sse sse2 sse3 static-libs +streflop +tools +unicode universal +viewer
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-arch/p7zip app-arch/xz-utils >=dev-util/cmake-2.8 >=dev-lang/lua-5.1 dev-libs/icu dev-libs/libxml2 >=dev-libs/xerces-c-3 media-libs/fontconfig freetype? ( media-libs/freetype ) ftgl? ( media-libs/ftgl ) media-libs/glew >=media-libs/libsdl-1.2.5[audio,joystick,video] media-libs/libogg >=media-libs/libpng-1.4 media-libs/libvorbis media-libs/openal net-libs/gnutls libircclient? ( !static-libs? ( >=net-libs/libircclient-1.6 ) ) >=net-misc/curl-7.21.0 miniupnpc? ( !static-libs? ( >=net-libs/miniupnpc-1.6-r1 ) ) manpages? ( sys-apps/help2man ) sys-libs/zlib virtual/jpeg virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXext configurator? ( x11-libs/wxGTK:2.8[X] ) editor? ( x11-libs/wxGTK:2.8[X] ) viewer? ( x11-libs/wxGTK:2.8[X] ) =games-strategy/megaglest-data-3.6.0.3 games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/megaglest/megaglest-source-3.6.0.3.tar.xz
+_eclasses_=base	5f55566958e88506923ea360535053cc	cmake-utils	78f778163242acffc7a1c2f1bc571159	eutils	025442f2eecab39ad0b4e541b6e142af	flag-o-matic	9a539029fe1d390c1828ff633baf26b5	games	016d5de1968de77e56a90938ed6e5aba	multilib	fac675dcccf94392371a6abee62d909f	toolchain-funcs	48b38a216afb92db6314d6c3187abea3	user	d0a4d0735a6c0183d707ca919bd72f28	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=7e19ded673264f1cc1b89ad3b358b183

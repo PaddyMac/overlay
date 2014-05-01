@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=A set of C headers allowing a simpler access to binary structures such as specified by MPEG, DVB, IETF, etc.
+EAPI=5
+HOMEPAGE=http://www.videolan.org/developers/bitstream.html
+KEYWORDS=~amd64 ~x86
+LICENSE=as-is
+SLOT=0
+SRC_URI=http://download.videolan.org/pub/videolan/bitstream/1.0/bitstream-1.0.tar.bz2
+_md5_=229e3c61a6c37e7e5962c60119cfc9cc
