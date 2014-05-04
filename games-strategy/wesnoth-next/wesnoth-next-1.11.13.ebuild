@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	fribidi? ( dev-libs/fribidi )
 	openmp? ( sys-cluster/openmpi )"
 
-S="${WORKDIR}/wesnoth"
+S="${WORKDIR}/wesnoth-${PV}"
 
 src_prepare() {
 	if use dedicated || use server ; then
