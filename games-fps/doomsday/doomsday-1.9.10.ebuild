@@ -33,7 +33,7 @@ DEPEND="dev-qt/qtcore:4
 	fmod? ( >=media-libs/fmod-4.44.03 )
 	openal? ( media-libs/freealut
 		media-libs/openal )
-	sdl? ( media-libs/libsdl[audio]
+	sdl? ( media-libs/libsdl[sound]
 		media-libs/sdl-mixer[midi,mod,mp3,vorbis] )"
 RDEPEND="${DEPEND}
 	snowberry? ( dev-python/wxpython )"

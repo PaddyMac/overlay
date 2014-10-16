@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="app-arch/libarchive
 	media-libs/alsa-lib
-	>=media-libs/libsdl-1.2.12[audio,joystick,video]
+	>=media-libs/libsdl-1.2.12[joystick,sound,video]
 	sys-libs/zlib
 	x11-libs/gtk+:3
 	x11-libs/libX11

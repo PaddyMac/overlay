@@ -32,7 +32,7 @@ DEPEND="app-arch/p7zip
 	freetype? ( media-libs/freetype )
 	ftgl? ( media-libs/ftgl )
 	media-libs/glew
-	>=media-libs/libsdl-1.2.5[audio,joystick,video]
+	>=media-libs/libsdl-1.2.5[joystick,sound,video]
 	media-libs/libogg
 	>=media-libs/libpng-1.4
 	media-libs/libvorbis

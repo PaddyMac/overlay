@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-DEPEND=dev-libs/libcdio media-libs/libsdl[audio,joystick,opengl,video] sys-libs/zlib virtual/opengl x11-libs/qt-core x11-libs/qt-gui x11-libs/qt-opengl dev-vcs/git
+DEPEND=dev-libs/libcdio media-libs/libsdl[joystick,opengl,sound,video] sys-libs/zlib virtual/opengl x11-libs/qt-core x11-libs/qt-gui x11-libs/qt-opengl dev-vcs/git
 DESCRIPTION=an Atari Jaguar emulator
 EAPI=5
 HOMEPAGE=http://www.icculus.org/virtualjaguar/

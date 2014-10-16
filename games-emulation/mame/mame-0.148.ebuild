@@ -23,7 +23,7 @@ REQUIRED_USE="debug? ( X ^^ ( gtk_debug qt_debug ) )
 RDEPEND="dev-libs/expat
 	media-libs/flac
 	media-libs/fontconfig
-	media-libs/libsdl:0[audio,joystick,opengl?,video]
+	media-libs/libsdl:0[joystick,opengl?,sound,video]
 	media-libs/portmidi
 	media-libs/sdl-ttf
 	sys-libs/zlib

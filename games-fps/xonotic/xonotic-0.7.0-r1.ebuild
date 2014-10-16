@@ -30,7 +30,7 @@ UIRDEPEND="
 	virtual/opengl
 	media-libs/freetype:2
 	alsa? ( media-libs/alsa-lib )
-	sdl? ( media-libs/libsdl[X,audio,joystick,opengl,video,alsa?] )"
+	sdl? ( media-libs/libsdl[X,joystick,opengl,sound,video,alsa?] )"
 UIDEPEND="
 	x11-proto/xextproto
 	x11-proto/xf86dgaproto

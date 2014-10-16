@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="dev-libs/libcdio
-	media-libs/libsdl[audio,joystick,opengl,video]
+	media-libs/libsdl[joystick,opengl,sound,video]
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/qt-core

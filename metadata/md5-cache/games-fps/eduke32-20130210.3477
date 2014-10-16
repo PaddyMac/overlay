@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=media-libs/flac media-libs/libogg media-libs/libsdl:0[audio,joystick,video] media-libs/libvorbis media-libs/sdl-mixer:0[timidity] gtk? ( x11-libs/gtk+:2 ) lunatic? ( dev-lang/luajit:2 ) opengl? ( media-libs/libsdl[opengl] virtual/glu virtual/opengl ) png? ( media-libs/libpng sys-libs/zlib ) vpx? ( media-libs/libvpx ) media-libs/libicns asm? ( x86? ( dev-lang/nasm ) ) clang? ( sys-devel/clang ) >=sys-apps/sed-4
+DEPEND=media-libs/flac media-libs/libogg media-libs/libsdl:0[joystick,sound,video] media-libs/libvorbis media-libs/sdl-mixer:0[timidity] gtk? ( x11-libs/gtk+:2 ) lunatic? ( dev-lang/luajit:2 ) opengl? ( media-libs/libsdl[opengl] virtual/glu virtual/opengl ) png? ( media-libs/libpng sys-libs/zlib ) vpx? ( media-libs/libvpx ) media-libs/libicns asm? ( x86? ( dev-lang/nasm ) ) clang? ( sys-devel/clang ) >=sys-apps/sed-4
 DESCRIPTION=Port of Duke Nukem 3D for SDL
 EAPI=5
 HOMEPAGE=http://www.eduke32.com
 IUSE=+asm cxx cdinstall clang debug demo extras gtk lunatic +network +opengl +png +polymer tools +vpx
 KEYWORDS=amd64 ~x86
 LICENSE=BUILD GPL-2
-RDEPEND=media-libs/flac media-libs/libogg media-libs/libsdl:0[audio,joystick,video] media-libs/libvorbis media-libs/sdl-mixer:0[timidity] gtk? ( x11-libs/gtk+:2 ) lunatic? ( dev-lang/luajit:2 ) opengl? ( media-libs/libsdl[opengl] virtual/glu virtual/opengl ) png? ( media-libs/libpng sys-libs/zlib ) vpx? ( media-libs/libvpx ) cdinstall? ( games-fps/duke3d-data ) demo? ( games-fps/duke3d-demodata ) extras? ( games-fps/eduke32-extras ) games-misc/games-envd
+RDEPEND=media-libs/flac media-libs/libogg media-libs/libsdl:0[joystick,sound,video] media-libs/libvorbis media-libs/sdl-mixer:0[timidity] gtk? ( x11-libs/gtk+:2 ) lunatic? ( dev-lang/luajit:2 ) opengl? ( media-libs/libsdl[opengl] virtual/glu virtual/opengl ) png? ( media-libs/libpng sys-libs/zlib ) vpx? ( media-libs/libvpx ) cdinstall? ( games-fps/duke3d-data ) demo? ( games-fps/duke3d-demodata ) extras? ( games-fps/eduke32-extras ) games-misc/games-envd
 REQUIRED_USE=polymer? ( opengl ) vpx? ( opengl )
 SLOT=0
 SRC_URI=http://dukeworld.duke4.net/eduke32/synthesis/20130210-3477/eduke32_src_20130210-3477.tar.bz2

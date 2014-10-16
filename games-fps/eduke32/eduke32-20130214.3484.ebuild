@@ -19,7 +19,7 @@ REQUIRED_USE="polymer? ( opengl ) vpx? ( opengl )"
 
 COMMON_DEPEND="media-libs/flac
 		media-libs/libogg
-		media-libs/libsdl:0[audio,joystick,video]
+		media-libs/libsdl:0[joystick,sound,video]
 		media-libs/libvorbis
 		media-libs/sdl-mixer:0[timidity]
 		gtk? ( x11-libs/gtk+:2 )
